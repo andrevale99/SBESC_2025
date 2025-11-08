@@ -17,8 +17,6 @@
 #include "pico/unique_id.h"
 #include "hardware/irq.h"
 
-#include "Ble.h"
-
 // #define WIFI_SSID "brisa-2532295" // Substitua pelo nome da sua rede Wi-Fi
 // #define WIFI_PASSWORD "zlgy1ssc"
 #define WIFI_SSID "LARS-301-2.4GHz" // Substitua pelo nome da sua rede Wi-Fi
@@ -49,56 +47,11 @@ extern float glicose[50];
 extern uint8_t idxGlicose;
 
 uint16_t glicoseSensor[50] = {
-178.99999999999997, 
-183.0, 
-188.0, 
-193.0, 
-200.0, 
-208.0, 
-183.0, 
-188.0, 
-193.0, 
-200.0, 
-208.0, 
-215.0, 
-188.0, 
-193.0, 
-200.0, 
-208.0, 
-215.0, 
-219.0, 
-193.0, 
-200.0, 
-208.0, 
-215.0, 
-219.0, 
-234.0, 
-200.0, 
-208.0, 
-215.0, 
-219.0, 
-234.0, 
-247.0, 
-208.0, 
-215.0, 
-219.0, 
-234.0, 
-247.0, 
-257.0, 
-215.0, 
-219.0, 
-234.0, 
-247.0, 
-257.0, 
-270.0, 
-219.0, 
-234.0, 
-247.0, 
-257.0, 
-270.0, 
-283.0, 
-234.0, 
-247.0, 
+178.99999999999997, 183.0, 188.0, 193.0, 200.0, 208.0, 183.0, 188.0, 193.0, 
+200.0, 208.0, 215.0, 188.0, 193.0, 200.0, 208.0, 215.0, 
+219.0, 193.0, 200.0, 208.0,215.0,219.0,234.0,200.0,208.0,215.0,219.0,
+234.0,247.0,208.0,215.0,219.0,234.0,247.0,257.0,215.0,
+219.0,234.0,247.0,257.0,270.0,219.0,234.0,247.0,257.0,270.0,283.0,234.0, 247.0, 
 };
 
 typedef struct
@@ -113,30 +66,6 @@ typedef struct
     int subscribe_count;
     bool stop_client;
 } MQTT_CLIENT_DATA_T;
-
-/* References for this implementation:
- * raspberry-pi-pico-c-sdk.pdf, Section '4.1.1. hardware_adc'
- * pico-examples/adc/adc_console/adc_console.c */
-static float read_onboard_temperature(const char unit)
-{
-
-    /* 12-bit conversion, assume max value == ADC_VREF == 3.3 V */
-    const float conversionFactor = 3.3f / (1 << 12);
-
-    float adc = (float)adc_read() * conversionFactor;
-    float tempC = 27.0f - (adc - 0.706f) / 0.001721f;
-
-    if (unit == 'C' || unit != 'F')
-    {
-        return tempC;
-    }
-    else if (unit == 'F')
-    {
-        return tempC * 9 / 5 + 32;
-    }
-
-    return -1.0f;
-}
 
 /// @brief  Callback for publish requests
 /// @param arg argumentos

@@ -21,15 +21,9 @@
 #include "pico/unique_id.h"
 #include "hardware/irq.h"
 
-// lib/pico-tflmicro/src/tensorflow/lite/micro
-// #include "lib/pico-tflmicro/src/tensorflow/lite/micro/micro_interpreter.h"
-// #include "lib/pico-tflmicro/src/tensorflow/lite/micro/micro_log.h"
-// #include "lib/pico-tflmicro/src/tensorflow/lite/micro/micro_mutable_op_resolver.h"
-// #include "lib/pico-tflmicro/src/tensorflow/lite/micro/system_setup.h"
-// #include "lib/pico-tflmicro/src/tensorflow/lite/schema/schema_generated.h"
-
 #include "Ble.h"
 #include "Mqtt.h"
+
 
 void VtaskBLE(void *pvArgs)
 {
@@ -60,10 +54,6 @@ void vTaskMqtt(void *pvArgs)
 int main()
 {
     stdio_init_all();
-
-    // adc_init();
-    // adc_set_temp_sensor_enabled(true);
-    // adc_select_input(4);
 
     // initialize CYW43 driver architecture (will enable BT if/because CYW43_ENABLE_BLUETOOTH == 1)
     if (cyw43_arch_init())
