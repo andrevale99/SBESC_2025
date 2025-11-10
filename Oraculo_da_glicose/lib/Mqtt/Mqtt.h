@@ -9,21 +9,12 @@
 #include "lwip/dns.h"
 #include "lwip/apps/mqtt.h"
 #include "lwip/apps/mqtt_priv.h" // needed to set hostname
-#include "lwip/dns.h"
-#include "lwip/altcp_tls.h"
-#include "pico/unique_id.h"
-#include "hardware/adc.h"
-
-#include "pico/unique_id.h"
-#include "hardware/irq.h"
 
 // #define WIFI_SSID "brisa-2532295" // Substitua pelo nome da sua rede Wi-Fi
 // #define WIFI_PASSWORD "zlgy1ssc"
 #define WIFI_SSID "LARS-301-2.4GHz" // Substitua pelo nome da sua rede Wi-Fi
 #define WIFI_PASSWORD "LARS@ROBOTICA"
 #define MQTT_SERVER "test.mosquitto.org"
-
-#define TEMPERATURE_UNITS 'C' // Set to 'F' for Fahrenheit
 
 // qos passed to mqtt_subscribe
 // At most once (QoS 0)
@@ -66,6 +57,10 @@ typedef struct
     int subscribe_count;
     bool stop_client;
 } MQTT_CLIENT_DATA_T;
+
+//=================================================
+//  STATIC FUNCTIONS
+//=================================================
 
 /// @brief  Callback for publish requests
 /// @param arg argumentos
@@ -235,6 +230,10 @@ static void mqtt_connection_cb(mqtt_client_t *client, void *arg, mqtt_connection
     else
         printf("Unexpected status");
 }
+
+//=================================================
+//  PUBLIC FUNCTIONS
+//=================================================
 
 /// @brief  Inicia o cliente MQTT
 /// @param state Estrutura MQTT

@@ -24,20 +24,17 @@
 #include "Ble.h"
 #include "Mqtt.h"
 
-
-void VtaskBLE(void *pvArgs)
-{
-    while (1)
-    {
-        vTaskDelay(pdMS_TO_TICKS(1000));
-    }
-}
+QueueHandle_t handleQueu_to_Mqtt = NULL;
 
 void vTaskMqtt(void *pvArgs)
 {
+    uint16_t temp = 0;
     MQTT_CLIENT_DATA_T state = *(MQTT_CLIENT_DATA_T *)pvArgs;
     while (1)
     {
+        if (xQueueReceive(handleQueu_to_Mqtt, &temp, pdMS_TO_TICKS(20)) == pdTRUE)
+            printf("TEMP: %d\n", temp);
+        
         if (!state.connect_done || mqtt_client_is_connected(state.mqtt_client_inst))
         {
             cyw43_arch_poll();
@@ -53,6 +50,8 @@ void vTaskMqtt(void *pvArgs)
 //======================================
 int main()
 {
+    handleQueu_to_Mqtt = xQueueCreate(2, sizeof(uint16_t));
+
     stdio_init_all();
 
     // initialize CYW43 driver architecture (will enable BT if/because CYW43_ENABLE_BLUETOOTH == 1)
@@ -62,7 +61,7 @@ int main()
         return -1;
     }
 
-    BLE_Init();
+    BLE_Init(&handleQueu_to_Mqtt);
 
     //======================================
     //  MQTT SETUP
@@ -143,7 +142,6 @@ int main()
     //======================================
     //  TASKS
     //======================================
-    xTaskCreate(VtaskBLE, "BLE Task", 128, NULL, 1, NULL);
     xTaskCreate(vTaskMqtt, "MQTT Task", 2048, (void *)&state, 1, NULL);
 
     vTaskStartScheduler();

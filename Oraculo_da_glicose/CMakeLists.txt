@@ -45,7 +45,7 @@ include_directories(${CMAKE_CURRENT_LIST_DIR}/lib/Mqtt)
 # Flashes twice quickly each second when connected to another device and reading it's temperature
 add_executable(ORACULO
     main.c
-    )
+)
 
 set_target_properties(
   ORACULO
@@ -87,7 +87,7 @@ target_link_libraries(ORACULO
     # pico-tflmicro
     )
 
-target_include_directories(ORACULO PRIVATE
+target_include_directories(ORACULO PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}
     ${CMAKE_CURRENT_LIST_DIR}/.. # For our common btstack config
     )
