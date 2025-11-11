@@ -38,7 +38,7 @@ pico_sdk_init()
 include_directories(${CMAKE_CURRENT_LIST_DIR}/include)
 include_directories(${CMAKE_CURRENT_LIST_DIR}/lib/Ble)
 include_directories(${CMAKE_CURRENT_LIST_DIR}/lib/Mqtt)
-
+include_directories(${CMAKE_CURRENT_LIST_DIR}/lib/Ntp)
 
 # Standalone example that connects to picow_ble_temp_sensor and reads the temperature
 # Flahes once quickly each second when it's running but not connected to another device
@@ -71,7 +71,7 @@ include(FreeRTOS-Kernel/portable/ThirdParty/GCC/RP2040/FreeRTOS_Kernel_import.cm
 pico_enable_stdio_uart(ORACULO 1)
 pico_enable_stdio_usb(ORACULO 1)
 
-target_link_libraries(ORACULO
+target_link_libraries(ORACULO PUBLIC
     FreeRTOS-Kernel 
     FreeRTOS-Kernel-Heap4
     pico_stdlib

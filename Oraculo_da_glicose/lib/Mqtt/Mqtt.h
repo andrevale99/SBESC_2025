@@ -12,8 +12,10 @@
 
 // #define WIFI_SSID "brisa-2532295" // Substitua pelo nome da sua rede Wi-Fi
 // #define WIFI_PASSWORD "zlgy1ssc"
-#define WIFI_SSID "LARS-301-2.4GHz" // Substitua pelo nome da sua rede Wi-Fi
-#define WIFI_PASSWORD "LARS@ROBOTICA"
+// #define WIFI_SSID "LARS-301-2.4GHz" // Substitua pelo nome da sua rede Wi-Fi
+// #define WIFI_PASSWORD "LARS@ROBOTICA"
+#define WIFI_SSID "LASEM" // Substitua pelo nome da sua rede Wi-Fi
+#define WIFI_PASSWORD "besourosuco"
 #define MQTT_SERVER "test.mosquitto.org"
 
 // qos passed to mqtt_subscribe

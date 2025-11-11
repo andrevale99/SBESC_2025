@@ -23,8 +23,9 @@
 
 #include "Ble.h"
 #include "Mqtt.h"
+#include "Ntp.h"
 
-QueueHandle_t handleQueu_to_Mqtt = NULL;
+QueueHandle_t handleQueue_to_Mqtt = NULL;
 
 void vTaskMqtt(void *pvArgs)
 {
@@ -32,7 +33,7 @@ void vTaskMqtt(void *pvArgs)
     MQTT_CLIENT_DATA_T state = *(MQTT_CLIENT_DATA_T *)pvArgs;
     while (1)
     {
-        if (xQueueReceive(handleQueu_to_Mqtt, &temp, pdMS_TO_TICKS(20)) == pdTRUE)
+        if (xQueueReceive(handleQueue_to_Mqtt, &temp, pdMS_TO_TICKS(20)) == pdTRUE)
             printf("TEMP: %d\n", temp);
         
         if (!state.connect_done || mqtt_client_is_connected(state.mqtt_client_inst))
@@ -45,12 +46,41 @@ void vTaskMqtt(void *pvArgs)
     }
 }
 
+void vTaskNTP(void *pvArgs)
+{
+    NTP_T *state = ntp_init();
+    if (!state)
+        return;
+    printf("Press 'q' to quit\n");
+    hard_assert(async_context_add_at_time_worker_in_ms(cyw43_arch_async_context(),  &state->request_worker, 0)); // make the first request
+    while(true) {
+        int key = getchar_timeout_us(0);
+        if (key == 'q' || key == 'Q') {
+            break;
+        }
+#if PICO_CYW43_ARCH_POLL
+        // if you are using pico_cyw43_arch_poll, then you must poll periodically from your
+        // main loop (not from a timer interrupt) to check for Wi-Fi driver or lwIP work that needs to be done.
+        cyw43_arch_poll();
+        // you can poll as often as you like, however if you have nothing else to do you can
+        // choose to sleep until either a specified time, or cyw43_arch_poll() has work to do:
+        cyw43_arch_wait_for_work_until(at_the_end_of_time);
+#else
+        // if you are not using pico_cyw43_arch_poll, then WiFI driver and lwIP work
+        // is done via interrupt in the background. This sleep is just an example of some (blocking)
+        // work you might be doing.
+        sleep_ms(1000);
+#endif
+    }
+    free(state);
+}
+
 //======================================
 //  MAIN
 //======================================
 int main()
 {
-    handleQueu_to_Mqtt = xQueueCreate(2, sizeof(uint16_t));
+    handleQueue_to_Mqtt = xQueueCreate(2, sizeof(uint16_t));
 
     stdio_init_all();
 
@@ -61,7 +91,7 @@ int main()
         return -1;
     }
 
-    BLE_Init(&handleQueu_to_Mqtt);
+    BLE_Init(&handleQueue_to_Mqtt);
 
     //======================================
     //  MQTT SETUP
@@ -143,26 +173,9 @@ int main()
     //  TASKS
     //======================================
     xTaskCreate(vTaskMqtt, "MQTT Task", 2048, (void *)&state, 1, NULL);
+    xTaskCreate(vTaskNTP, "NTP Task", 2048, NULL, 1, NULL);
 
     vTaskStartScheduler();
 
-    /*
-        // btstack_run_loop_execute is only required when using the 'polling' method (e.g. using pico_cyw43_arch_poll library).
-        // This example uses the 'threadsafe background` method, where BT work is handled in a low priority IRQ, so it
-        // is fine to call bt_stack_run_loop_execute() but equally you can continue executing user code.
-
-    #if 0 // this is only necessary when using polling (which we aren't, but we're showing it is still safe to call in this case)
-        btstack_run_loop_execute();
-    #else
-        // this core is free to do it's own stuff except when using 'polling' method (in which case you should use
-        // btstacK_run_loop_ methods to add work to the run loop.
-
-        // this is a forever loop in place of where user code would go.
-        while (true)
-        {
-            sleep_ms(1000);
-        }
-    #endif
-    */
     return 0;
 }
