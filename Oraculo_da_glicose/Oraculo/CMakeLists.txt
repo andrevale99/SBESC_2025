@@ -28,38 +28,37 @@ set(PICO_BOARD pico_w CACHE STRING "Board type")
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
 
-project(ORACULO C CXX ASM)
+project(Oraculo C CXX ASM)
 
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
-# Standalone example that connects to picow_ble_temp_sensor and reads the temperature
-# Flahes once quickly each second when it's running but not connected to another device
-# Flashes twice quickly each second when connected to another device and reading it's temperature
-add_executable(ORACULO)
 
-target_sources(ORACULO PUBLIC
+add_executable(Oraculo)
+
+target_sources(Oraculo PUBLIC
 main.c
+lib/BLE/BLE.c
 lib/Mqtt/Mqtt.c
 )
 
-pico_set_program_name(ORACULO "ORACULO")
-pico_set_program_version(ORACULO "0.1")
+
+pico_set_program_name(Oraculo "Oraculo")
+pico_set_program_version(Oraculo "0.1")
 
 # Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_uart(ORACULO 1)
-pico_enable_stdio_usb(ORACULO 1)
+pico_enable_stdio_uart(Oraculo 1)
+pico_enable_stdio_usb(Oraculo 1)
 
 # Pull in FreeRTOS
-include(FreeRTOS-Kernel/portable/ThirdParty/GCC/RP2040/FreeRTOS_Kernel_import.cmake)
+include(lib/FreeRTOS-Kernel/portable/ThirdParty/GCC/RP2040/FreeRTOS_Kernel_import.cmake)
 
 include_directories(${CMAKE_CURRENT_LIST_DIR}/include)
-include_directories(${CMAKE_CURRENT_LIST_DIR}/lib/Ble)
-include_directories(${CMAKE_CURRENT_LIST_DIR}/lib/Mqtt)
-include_directories(${CMAKE_CURRENT_LIST_DIR}/lib/Ntp)
+include_directories(${CMAKE_CURRENT_LIST_DIR}/lib/BLE)
 
-target_link_libraries(ORACULO
+# Add the standard library to the build
+target_link_libraries(Oraculo
     FreeRTOS-Kernel 
     FreeRTOS-Kernel-Heap4
     pico_stdlib
@@ -71,16 +70,24 @@ target_link_libraries(ORACULO
     pico_lwip_mbedtls
     pico_lwip_http
     hardware_adc
-    )
+        )
 
-target_include_directories(ORACULO PRIVATE
+# Add the standard include files to the build
+target_include_directories(Oraculo PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}
     ${CMAKE_CURRENT_LIST_DIR}/.. # For our common btstack config
+    lib/BLE/
     lib/Mqtt/
-    )
+)
 
-target_compile_definitions(ORACULO PRIVATE
+# Add any user requested libraries
+# target_link_libraries(Oraculo 
+        
+#         )
+
+target_compile_definitions(Oraculo PRIVATE
     RUNNING_AS_CLIENT=1
 )
 
-pico_add_extra_outputs(ORACULO)
+pico_add_extra_outputs(Oraculo)
+

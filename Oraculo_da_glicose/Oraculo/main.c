@@ -1,13 +1,8 @@
-/**
- * Copyright (c) 2023 Raspberry Pi (Trading) Ltd.
- *
- * SPDX-License-Identifier: BSD-3-Clause
- */
-
 #include <stdio.h>
 
 #include "FreeRTOS.h"
 #include "task.h"
+#include "queue.h"
 
 #include "btstack.h"
 #include "pico/cyw43_arch.h"
@@ -21,13 +16,12 @@
 #include "pico/unique_id.h"
 #include "hardware/irq.h"
 
-#include "Ble.h"
+#include "BLE.h"
 #include "Mqtt.h"
-#include "Ntp.h"
 
 QueueHandle_t handleQueue_to_Mqtt = NULL;
 
-void vTaskMqtt(void *pvArgs)
+static void vTaskMqtt(void *pvArgs)
 {
     uint16_t temp = 0;
     MQTT_CLIENT_DATA_T state = *(MQTT_CLIENT_DATA_T *)pvArgs;
@@ -46,27 +40,6 @@ void vTaskMqtt(void *pvArgs)
     }
 }
 
-void vTaskNTP(void *pvArgs)
-{
-    NTP_T *state = ntp_init();
-    if (!state)
-        return;
-
-    hard_assert(async_context_add_at_time_worker_in_ms(cyw43_arch_async_context(),  &state->request_worker, 0)); // make the first request
-    while(true) {
-
-        cyw43_arch_poll();
- 
-        cyw43_arch_wait_for_work_until(at_the_end_of_time);
-
-        vTaskDelay(pdMS_TO_TICKS(2000));
-    }
-    free(state);
-}
-
-//======================================
-//  MAIN
-//======================================
 int main()
 {
     handleQueue_to_Mqtt = xQueueCreate(2, sizeof(uint16_t));
@@ -82,11 +55,7 @@ int main()
 
     BLE_Init(&handleQueue_to_Mqtt);
 
-    //======================================
-    //  MQTT SETUP
-    //======================================
     static MQTT_CLIENT_DATA_T state;
-
     // Use board unique id
     char unique_id_buf[5];
     pico_get_unique_board_id_string(unique_id_buf, sizeof(unique_id_buf));
@@ -158,13 +127,8 @@ int main()
         panic("dns request failed");
     }
 
-    //======================================
-    //  TASKS
-    //======================================
     xTaskCreate(vTaskMqtt, "MQTT Task", 2048, (void *)&state, 1, NULL);
-    xTaskCreate(vTaskNTP, "NTP Task", 2048, NULL, 1, NULL);
 
     vTaskStartScheduler();
 
-    return 0;
 }

@@ -10,6 +10,8 @@
 #include "lwip/dns.h"
 #include "lwip/apps/mqtt.h"
 #include "lwip/apps/mqtt_priv.h" // needed to set hostname
+#include "lwip/altcp_tls.h"
+#include "pico/unique_id.h"
 
 // #define WIFI_SSID "brisa-2532295" // Substitua pelo nome da sua rede Wi-Fi
 // #define WIFI_PASSWORD "zlgy1ssc"
@@ -36,17 +38,6 @@
 
 // keep alive in seconds
 #define MQTT_KEEP_ALIVE_S 60
-
-extern float glicose[50];
-extern uint8_t idxGlicose;
-
-static uint16_t glicoseSensor[50] = {
-178.99999999999997, 183.0, 188.0, 193.0, 200.0, 208.0, 183.0, 188.0, 193.0, 
-200.0, 208.0, 215.0, 188.0, 193.0, 200.0, 208.0, 215.0, 
-219.0, 193.0, 200.0, 208.0,215.0,219.0,234.0,200.0,208.0,215.0,219.0,
-234.0,247.0,208.0,215.0,219.0,234.0,247.0,257.0,215.0,
-219.0,234.0,247.0,257.0,270.0,219.0,234.0,247.0,257.0,270.0,283.0,234.0, 247.0, 
-};
 
 typedef struct
 {
@@ -83,6 +74,6 @@ void start_client(MQTT_CLIENT_DATA_T *state);
 // Call back with a DNS result
 void dns_found(const char *hostname, const ip_addr_t *ipaddr, void *arg);
 
-void hello();
+void Mqtt_setup(MQTT_CLIENT_DATA_T *state_);
 
 #endif

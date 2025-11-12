@@ -22,7 +22,7 @@ typedef struct NTP_T_ {
 #define NTP_MSG_LEN 48
 #define NTP_PORT 123
 #define NTP_DELTA 2208988800 // seconds between 1 Jan 1900 and 1 Jan 1970
-#define NTP_TEST_TIME_MS (30 * 1000)
+#define NTP_TEST_TIME_MS (5 * 1000)
 #define NTP_RESEND_TIME_MS (10 * 1000)
 
 #include "Ntp.h"
@@ -129,35 +129,6 @@ NTP_T* ntp_init(void) {
     state->resend_worker.do_work = resend_worker_fn;
     state->resend_worker.user_data = state;
     return state;
-}
-
-// Runs ntp test forever
-void run_ntp_test(void) {
-    NTP_T *state = ntp_init();
-    if (!state)
-        return;
-    printf("Press 'q' to quit\n");
-    hard_assert(async_context_add_at_time_worker_in_ms(cyw43_arch_async_context(),  &state->request_worker, 0)); // make the first request
-    while(true) {
-        int key = getchar_timeout_us(0);
-        if (key == 'q' || key == 'Q') {
-            break;
-        }
-#if PICO_CYW43_ARCH_POLL
-        // if you are using pico_cyw43_arch_poll, then you must poll periodically from your
-        // main loop (not from a timer interrupt) to check for Wi-Fi driver or lwIP work that needs to be done.
-        cyw43_arch_poll();
-        // you can poll as often as you like, however if you have nothing else to do you can
-        // choose to sleep until either a specified time, or cyw43_arch_poll() has work to do:
-        cyw43_arch_wait_for_work_until(at_the_end_of_time);
-#else
-        // if you are not using pico_cyw43_arch_poll, then WiFI driver and lwIP work
-        // is done via interrupt in the background. This sleep is just an example of some (blocking)
-        // work you might be doing.
-        sleep_ms(1000);
-#endif
-    }
-    free(state);
 }
 
 #endif
