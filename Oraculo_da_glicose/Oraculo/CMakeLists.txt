@@ -41,6 +41,7 @@ target_sources(Oraculo PUBLIC
 main.c
 lib/BLE/BLE.c
 lib/Mqtt/Mqtt.c
+lib/NTP/NTP.c
 )
 
 
@@ -55,7 +56,6 @@ pico_enable_stdio_usb(Oraculo 1)
 include(lib/FreeRTOS-Kernel/portable/ThirdParty/GCC/RP2040/FreeRTOS_Kernel_import.cmake)
 
 include_directories(${CMAKE_CURRENT_LIST_DIR}/include)
-include_directories(${CMAKE_CURRENT_LIST_DIR}/lib/BLE)
 
 # Add the standard library to the build
 target_link_libraries(Oraculo
@@ -78,6 +78,7 @@ target_include_directories(Oraculo PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/.. # For our common btstack config
     lib/BLE/
     lib/Mqtt/
+    lib/NTP
 )
 
 # Add any user requested libraries
