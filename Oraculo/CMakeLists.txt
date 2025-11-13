@@ -42,6 +42,7 @@ main.c
 lib/BLE/BLE.c
 lib/Mqtt/Mqtt.c
 lib/NTP/NTP.c
+lib/Wifi/Wifi.c
 )
 
 
@@ -79,6 +80,7 @@ target_include_directories(Oraculo PRIVATE
     lib/BLE/
     lib/Mqtt/
     lib/NTP
+    lib/Wifi/
 )
 
 # Add any user requested libraries
