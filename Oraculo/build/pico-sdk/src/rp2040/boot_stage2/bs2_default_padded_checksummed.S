@@ -1,4 +1,4 @@
-// Padded and checksummed version of: /home/andre/Documents/Git/SBESC_2025/Oraculo_da_glicose/Oraculo/build/pico-sdk/src/rp2040/boot_stage2/bs2_default.bin
+// Padded and checksummed version of: /home/andre/Documents/Git/SBESC_2025/Oraculo/build/pico-sdk/src/rp2040/boot_stage2/bs2_default.bin
 
 .cpu cortex-m0plus
 .thumb

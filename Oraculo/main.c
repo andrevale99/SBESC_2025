@@ -4,81 +4,82 @@
 #include "task.h"
 #include "queue.h"
 
-#include "btstack.h"
 #include "pico/cyw43_arch.h"
 #include "pico/stdlib.h"
 
-#include "lwip/dns.h"
-#include "lwip/apps/mqtt.h"
-#include "lwip/apps/mqtt_priv.h" // needed to set hostname
-#include "lwip/dns.h"
-#include "lwip/altcp_tls.h"
-#include "pico/unique_id.h"
-#include "hardware/irq.h"
-
-#include "BLE.h"
+#include "Wifi.h"
 #include "Mqtt.h"
 #include "NTP.h"
 
-QueueHandle_t handleQueue_to_Mqtt = NULL;
-
-void vTaskNTP(void *pvArgs)
-{
-    NTP_T *state = ntp_init();
-    if (!state)
-        return;
-
-    hard_assert(async_context_add_at_time_worker_in_ms(cyw43_arch_async_context(),  &state->request_worker, 0)); // make the first request
-    while(true) {
-
-        cyw43_arch_poll();
- 
-        cyw43_arch_wait_for_work_until(at_the_end_of_time);
-
-        vTaskDelay(pdMS_TO_TICKS(2000));
-    }
-    free(state);
-}
-
-static void vTaskMqtt(void *pvArgs)
-{
-    uint16_t temp = 0;
-    MQTT_CLIENT_DATA_T state = *(MQTT_CLIENT_DATA_T *)pvArgs;
-    while (1)
-    {
-        if (xQueueReceive(handleQueue_to_Mqtt, &temp, pdMS_TO_TICKS(20)) == pdTRUE)
-            printf("TEMP: %d\n", temp);
-        
-        if (!state.connect_done || mqtt_client_is_connected(state.mqtt_client_inst))
-        {
-            cyw43_arch_poll();
-            // cyw43_arch_wait_for_work_until(make_timeout_time_ms(10000));
-        }
-
-        vTaskDelay(pdMS_TO_TICKS(1000));
-    }
-}
+MQTT_CLIENT_DATA_T state;
 
 int main()
 {
-    static MQTT_CLIENT_DATA_T state;
-    handleQueue_to_Mqtt = xQueueCreate(2, sizeof(uint16_t));
 
     stdio_init_all();
 
-    // initialize CYW43 driver architecture (will enable BT if/because CYW43_ENABLE_BLUETOOTH == 1)
-    if (cyw43_arch_init())
+    switch (Wifi_station_init("LASEM", "besourosuco"))
     {
-        printf("failed to initialise cyw43_arch\n");
-        return -1;
+    case WIFI_SUCCESS:
+        printf("[WIFI] CONECTADO AO WIFI\n");
+        break;
+
+    case WIFI_ARCH_INIT_ERROR:
+    case WIFI_CONNECTION_FAILED:
+        printf("[WIFI] ERRO DJABO\n");
+        break;
+
+    default:
+        break;
     }
 
-    BLE_Init(&handleQueue_to_Mqtt);
-    Mqtt_setup(&state);
+    // static MQTT_CLIENT_DATA_T state;
 
-    xTaskCreate(vTaskMqtt, "MQTT Task", 2048, (void *)&state, 1, NULL);
-    xTaskCreate(vTaskNTP, "NTP Task", 2048, NULL, 1, NULL);
+    // Use board unique id
+    char unique_id_buf[5];
+    pico_get_unique_board_id_string(unique_id_buf, sizeof(unique_id_buf));
+    for (int i = 0; i < sizeof(unique_id_buf) - 1; i++)
+    {
+        unique_id_buf[i] = tolower(unique_id_buf[i]);
+    }
 
-    vTaskStartScheduler();
+    // Generate a unique name, e.g. pico1234
+    char client_id_buf[sizeof(MQTT_DEVICE_NAME) + sizeof(unique_id_buf) - 1];
+    memcpy(&client_id_buf[0], MQTT_DEVICE_NAME, sizeof(MQTT_DEVICE_NAME) - 1);
+    memcpy(&client_id_buf[sizeof(MQTT_DEVICE_NAME) - 1], unique_id_buf, sizeof(unique_id_buf) - 1);
+    client_id_buf[sizeof(client_id_buf) - 1] = 0;
+    printf("Device name %s\n", client_id_buf);
 
+    state.mqtt_client_info.client_id = client_id_buf;
+    state.mqtt_client_info.keep_alive = MQTT_KEEP_ALIVE_S; // Keep alive in sec
+
+    state.mqtt_client_info.client_user = NULL;
+    state.mqtt_client_info.client_pass = NULL;
+
+    static char will_topic[MQTT_TOPIC_LEN];
+    strncpy(will_topic, full_topic(&state, MQTT_WILL_TOPIC), sizeof(will_topic));
+    state.mqtt_client_info.will_topic = will_topic;
+    state.mqtt_client_info.will_msg = MQTT_WILL_MSG;
+    state.mqtt_client_info.will_qos = MQTT_WILL_QOS;
+    state.mqtt_client_info.will_retain = true;
+
+    // We are not in a callback so locking is needed when calling lwip
+    // Make a DNS request for the MQTT server IP address
+    cyw43_arch_lwip_begin();
+    int err = dns_gethostbyname("gph.imd.ufrn.br", &state.mqtt_server_address, dns_found, &state);
+    cyw43_arch_lwip_end();
+
+    if (err == ERR_OK)
+    {
+        // We have the address, just start the client
+        start_client(&state);
+    }
+    else if (err != ERR_INPROGRESS)
+    { // ERR_INPROGRESS means expect a callback
+        panic("dns request failed");
+    }
+
+    while (true)
+    {
+    }
 }
