@@ -1,142 +1,8 @@
-#ifndef MQTT_H
-#define MQTT_H
+#include "Mqtt.h"
 
-#include <string.h>
-#include <stdio.h>
-
-#include "pico/stdlib.h"
-
-#include "lwip/dns.h"
-#include "lwip/apps/mqtt.h"
-#include "lwip/apps/mqtt_priv.h" // needed to set hostname
-#include "lwip/dns.h"
-#include "lwip/altcp_tls.h"
-#include "pico/unique_id.h"
-#include "hardware/adc.h"
-
-#include "pico/unique_id.h"
-#include "hardware/irq.h"
-
-#include "Ble.h"
-
-// #define WIFI_SSID "brisa-2532295" // Substitua pelo nome da sua rede Wi-Fi
-// #define WIFI_PASSWORD "zlgy1ssc"
-#define WIFI_SSID "LARS-301-2.4GHz" // Substitua pelo nome da sua rede Wi-Fi
-#define WIFI_PASSWORD "LARS@ROBOTICA"
-#define MQTT_SERVER "test.mosquitto.org"
-
-#define TEMPERATURE_UNITS 'C' // Set to 'F' for Fahrenheit
-
-// qos passed to mqtt_subscribe
-// At most once (QoS 0)
-// At least once (QoS 1)
-// Exactly once (QoS 2)
-#define MQTT_SUBSCRIBE_QOS 1
-#define MQTT_PUBLISH_QOS 1
-#define MQTT_PUBLISH_RETAIN 0
-#define MQTT_TOPIC_LEN 100
-#define MQTT_DEVICE_NAME "picoSBESC"
-
-// topic used for last will and testament
-#define MQTT_WILL_TOPIC "/ORACULO"
-#define MQTT_WILL_MSG "0"
-#define MQTT_WILL_QOS 1
-
-// keep alive in seconds
-#define MQTT_KEEP_ALIVE_S 60
-
-extern float glicose[50];
-extern uint8_t idxGlicose;
-
-uint16_t glicoseSensor[50] = {
-178.99999999999997, 
-183.0, 
-188.0, 
-193.0, 
-200.0, 
-208.0, 
-183.0, 
-188.0, 
-193.0, 
-200.0, 
-208.0, 
-215.0, 
-188.0, 
-193.0, 
-200.0, 
-208.0, 
-215.0, 
-219.0, 
-193.0, 
-200.0, 
-208.0, 
-215.0, 
-219.0, 
-234.0, 
-200.0, 
-208.0, 
-215.0, 
-219.0, 
-234.0, 
-247.0, 
-208.0, 
-215.0, 
-219.0, 
-234.0, 
-247.0, 
-257.0, 
-215.0, 
-219.0, 
-234.0, 
-247.0, 
-257.0, 
-270.0, 
-219.0, 
-234.0, 
-247.0, 
-257.0, 
-270.0, 
-283.0, 
-234.0, 
-247.0, 
-};
-
-typedef struct
-{
-    mqtt_client_t *mqtt_client_inst;
-    struct mqtt_connect_client_info_t mqtt_client_info;
-    char data[MQTT_OUTPUT_RINGBUF_SIZE];
-    char topic[MQTT_TOPIC_LEN];
-    uint32_t len;
-    ip_addr_t mqtt_server_address;
-    bool connect_done;
-    int subscribe_count;
-    bool stop_client;
-} MQTT_CLIENT_DATA_T;
-
-/* References for this implementation:
- * raspberry-pi-pico-c-sdk.pdf, Section '4.1.1. hardware_adc'
- * pico-examples/adc/adc_console/adc_console.c */
-static float read_onboard_temperature(const char unit)
-{
-
-    /* 12-bit conversion, assume max value == ADC_VREF == 3.3 V */
-    const float conversionFactor = 3.3f / (1 << 12);
-
-    float adc = (float)adc_read() * conversionFactor;
-    float tempC = 27.0f - (adc - 0.706f) / 0.001721f;
-
-    if (unit == 'C' || unit != 'F')
-    {
-        return tempC;
-    }
-    else if (unit == 'F')
-    {
-        return tempC * 9 / 5 + 32;
-    }
-
-    return -1.0f;
-}
+//=================================================
+//  STATIC FUNCTIONS
+//=================================================
 
 /// @brief  Callback for publish requests
 /// @param arg argumentos
@@ -145,17 +11,6 @@ static void pub_request_cb(__unused void *arg, err_t err)
 {
     if (err != 0)
         printf("pub_request_cb failed %d", err);
-}
-
-static const char *full_topic(MQTT_CLIENT_DATA_T *state, const char *name)
-{
-#if MQTT_UNIQUE_TOPIC
-    static char full_topic[MQTT_TOPIC_LEN];
-    snprintf(full_topic, sizeof(full_topic), "/%s%s", state->mqtt_client_info.client_id, name);
-    return full_topic;
-#else
-    return name;
-#endif
 }
 
 static void publish_temperature(MQTT_CLIENT_DATA_T *state)
@@ -176,9 +31,9 @@ static void publish_temperature(MQTT_CLIENT_DATA_T *state)
     mqtt_publish(state->mqtt_client_inst, temperature_key, temp_str, strlen(temp_str),
                  MQTT_PUBLISH_QOS, MQTT_PUBLISH_RETAIN, pub_request_cb, state);
     temperature_key = full_topic(state, "/SBESC2025/predicted");
-    snprintf(temp_str, sizeof(temp_str), "%u", glicoseSensor[idxGlicose - 1]);
-    mqtt_publish(state->mqtt_client_inst, temperature_key, temp_str, strlen(temp_str),
-                 MQTT_PUBLISH_QOS, MQTT_PUBLISH_RETAIN, pub_request_cb, state);
+    // snprintf(temp_str, sizeof(temp_str), "%u", glicoseSensor[idxGlicose - 1]);
+    // mqtt_publish(state->mqtt_client_inst, temperature_key, temp_str, strlen(temp_str),
+    //              MQTT_PUBLISH_QOS, MQTT_PUBLISH_RETAIN, pub_request_cb, state);
     // }
 }
 
@@ -354,5 +209,3 @@ void dns_found(const char *hostname, const ip_addr_t *ipaddr, void *arg)
     else
         printf("dns request failed");
 }
-
-#endif

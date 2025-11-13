@@ -21,29 +21,21 @@
 #include "pico/unique_id.h"
 #include "hardware/irq.h"
 
-// lib/pico-tflmicro/src/tensorflow/lite/micro
-// #include "lib/pico-tflmicro/src/tensorflow/lite/micro/micro_interpreter.h"
-// #include "lib/pico-tflmicro/src/tensorflow/lite/micro/micro_log.h"
-// #include "lib/pico-tflmicro/src/tensorflow/lite/micro/micro_mutable_op_resolver.h"
-// #include "lib/pico-tflmicro/src/tensorflow/lite/micro/system_setup.h"
-// #include "lib/pico-tflmicro/src/tensorflow/lite/schema/schema_generated.h"
-
 #include "Ble.h"
 #include "Mqtt.h"
+#include "Ntp.h"
 
-void VtaskBLE(void *pvArgs)
-{
-    while (1)
-    {
-        vTaskDelay(pdMS_TO_TICKS(1000));
-    }
-}
+QueueHandle_t handleQueue_to_Mqtt = NULL;
 
 void vTaskMqtt(void *pvArgs)
 {
+    uint16_t temp = 0;
     MQTT_CLIENT_DATA_T state = *(MQTT_CLIENT_DATA_T *)pvArgs;
     while (1)
     {
+        if (xQueueReceive(handleQueue_to_Mqtt, &temp, pdMS_TO_TICKS(20)) == pdTRUE)
+            printf("TEMP: %d\n", temp);
+        
         if (!state.connect_done || mqtt_client_is_connected(state.mqtt_client_inst))
         {
             cyw43_arch_poll();
@@ -54,16 +46,32 @@ void vTaskMqtt(void *pvArgs)
     }
 }
 
+void vTaskNTP(void *pvArgs)
+{
+    NTP_T *state = ntp_init();
+    if (!state)
+        return;
+
+    hard_assert(async_context_add_at_time_worker_in_ms(cyw43_arch_async_context(),  &state->request_worker, 0)); // make the first request
+    while(true) {
+
+        cyw43_arch_poll();
+ 
+        cyw43_arch_wait_for_work_until(at_the_end_of_time);
+
+        vTaskDelay(pdMS_TO_TICKS(2000));
+    }
+    free(state);
+}
+
 //======================================
 //  MAIN
 //======================================
 int main()
 {
-    stdio_init_all();
+    handleQueue_to_Mqtt = xQueueCreate(2, sizeof(uint16_t));
 
-    // adc_init();
-    // adc_set_temp_sensor_enabled(true);
-    // adc_select_input(4);
+    stdio_init_all();
 
     // initialize CYW43 driver architecture (will enable BT if/because CYW43_ENABLE_BLUETOOTH == 1)
     if (cyw43_arch_init())
@@ -72,7 +80,7 @@ int main()
         return -1;
     }
 
-    BLE_Init();
+    BLE_Init(&handleQueue_to_Mqtt);
 
     //======================================
     //  MQTT SETUP
@@ -153,28 +161,10 @@ int main()
     //======================================
     //  TASKS
     //======================================
-    xTaskCreate(VtaskBLE, "BLE Task", 128, NULL, 1, NULL);
     xTaskCreate(vTaskMqtt, "MQTT Task", 2048, (void *)&state, 1, NULL);
+    xTaskCreate(vTaskNTP, "NTP Task", 2048, NULL, 1, NULL);
 
     vTaskStartScheduler();
 
-    /*
-        // btstack_run_loop_execute is only required when using the 'polling' method (e.g. using pico_cyw43_arch_poll library).
-        // This example uses the 'threadsafe background` method, where BT work is handled in a low priority IRQ, so it
-        // is fine to call bt_stack_run_loop_execute() but equally you can continue executing user code.
-
-    #if 0 // this is only necessary when using polling (which we aren't, but we're showing it is still safe to call in this case)
-        btstack_run_loop_execute();
-    #else
-        // this core is free to do it's own stuff except when using 'polling' method (in which case you should use
-        // btstacK_run_loop_ methods to add work to the run loop.
-
-        // this is a forever loop in place of where user code would go.
-        while (true)
-        {
-            sleep_ms(1000);
-        }
-    #endif
-    */
     return 0;
 }

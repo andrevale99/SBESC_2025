@@ -8,6 +8,10 @@
 #include "pico/cyw43_arch.h"
 #include "pico/stdlib.h"
 
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+
 #if 0
 #define DEBUG_LOG(...) printf(__VA_ARGS__)
 #else
@@ -18,60 +22,13 @@
 #define LED_SLOW_FLASH_DELAY_MS 1000
 
 uint8_t idxGlicose = 0;
-float glicose[50] ={
-178.00429, 
-178.1727, 
-178.20442, 
-177.87894, 
-177.43831, 
-177.02347, 
-182.32053, 
-182.41089, 
-182.36876, 
-182.00247, 
-181.47914, 
-180.9893, 
-186.19305, 
-186.79953, 
-187.32245, 
-187.1744, 
-186.92876, 
-186.76811, 
-185.13045, 
-185.50774, 
-185.75873, 
-185.4897, 
-185.12038, 
-184.79626, 
-189.957, 
-190.2568, 
-190.40033, 
-190.0819, 
-189.63736, 
-189.20508, 
-197.99359, 
-198.52716, 
-198.90565, 
-198.67128, 
-198.31177, 
-197.96112, 
-204.88814, 
-205.61592, 
-206.17766, 
-206.01062, 
-205.72148, 
-205.43007, 
-209.9464, 
-210.84637, 
-211.56642, 
-211.46321, 
-211.24394, 
-211.0087, 
-212.01364, 
-212.66064, 
+float glicose[50] ={178.00429, 178.1727, 178.20442, 177.87894, 177.43831, 177.02347, 182.32053, 182.41089,  182.36876, 
+182.00247, 181.47914, 180.9893, 186.19305, 186.79953, 187.32245, 187.1744, 186.92876, 
+186.76811, 185.13045, 185.50774, 185.75873, 185.4897, 185.12038, 184.79626, 189.957, 
+190.2568, 190.40033, 190.0819, 189.63736, 189.20508, 197.99359, 198.52716, 198.90565, 198.67128, 
+198.31177, 197.96112, 204.88814, 205.61592, 206.17766, 206.01062, 205.72148, 
+205.43007, 209.9464, 210.84637, 211.56642, 211.46321, 211.24394, 211.0087, 212.01364, 212.66064, 
 };
-
-
 
 typedef enum
 {
@@ -95,6 +52,13 @@ static gatt_client_characteristic_t server_characteristic;
 static bool listener_registered;
 static gatt_client_notification_t notification_listener;
 static btstack_timer_source_t heartbeat;
+
+static QueueHandle_t QueueBluetooth = NULL;
+uint16_t temp = 0;
+
+//================================================
+//  STATIC FUNCTIONS
+//================================================
 
 static void client_start(void)
 {
@@ -216,19 +180,22 @@ static void handle_gatt_client_event(uint8_t packet_type, uint16_t channel, uint
             uint16_t value_length = gatt_event_notification_get_value_length(packet);
             const uint8_t *value = gatt_event_notification_get_value(packet);
             DEBUG_LOG("Indication value len %d\n", value_length);
+            // uint16_t temp = little_endian_read_16(value, 0);
+            
+            temp++;
+            xQueueSend(QueueBluetooth, &temp, pdMS_TO_TICKS(10));
             if (value_length == 2)
             {
                 // uint16_t temp = little_endian_read_16(value, 0);
                 // glicose[idxGlicose++] = little_endian_read_16(value, 0);
-                idxGlicose++;
-                if (idxGlicose >= 50)
-                    idxGlicose = 0;
-                printf("Glicose: %u\n", glicose[idxGlicose - 1]);
+                // idxGlicose++;
+                // if (idxGlicose >= 50)
+                //     idxGlicose = 0;
+                // printf("Glicose: %u\n", glicose[idxGlicose - 1]);
             }
             else
-            {
                 printf("Unexpected length %d\n", value_length);
-            }
+            
             break;
         }
         default:
@@ -338,8 +305,14 @@ static void heartbeat_handler(struct btstack_timer_source *ts)
     btstack_run_loop_add_timer(ts);
 }
 
-int BLE_Init(void)
+//================================================
+//  PUBLIC FUNCTIONS
+//================================================
+
+int BLE_Init(QueueHandle_t *queue_to_mqtt)
 {
+    QueueBluetooth = *queue_to_mqtt;
+
     l2cap_init();
     sm_init();
     sm_set_io_capabilities(IO_CAPABILITY_NO_INPUT_NO_OUTPUT);

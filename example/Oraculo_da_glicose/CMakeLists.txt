@@ -28,31 +28,28 @@ set(PICO_BOARD pico_w CACHE STRING "Board type")
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
 
-project(picow_ble_temp_reader C CXX ASM)
+project(ORACULO C CXX ASM)
 
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
-
-
-
 # Standalone example that connects to picow_ble_temp_sensor and reads the temperature
 # Flahes once quickly each second when it's running but not connected to another device
 # Flashes twice quickly each second when connected to another device and reading it's temperature
-add_executable(picow_ble_temp_reader
-    main.c
-    # teste.c
-    )
+add_executable(ORACULO)
 
-set_target_properties(
-  picow_ble_temp_reader
-  PROPERTIES
-  COMPILE_FLAGS -fno-rtti
-  COMPILE_FLAGS -fno-exceptions
-  COMPILE_FLAGS -fno-threadsafe-statics
-  COMPILE_FLAGS -nostdlib
+target_sources(ORACULO PUBLIC
+main.c
+lib/Mqtt/Mqtt.c
 )
+
+pico_set_program_name(ORACULO "ORACULO")
+pico_set_program_version(ORACULO "0.1")
+
+# Modify the below lines to enable/disable output over UART/USB
+pico_enable_stdio_uart(ORACULO 1)
+pico_enable_stdio_usb(ORACULO 1)
 
 # Pull in FreeRTOS
 include(FreeRTOS-Kernel/portable/ThirdParty/GCC/RP2040/FreeRTOS_Kernel_import.cmake)
@@ -60,42 +57,30 @@ include(FreeRTOS-Kernel/portable/ThirdParty/GCC/RP2040/FreeRTOS_Kernel_import.cm
 include_directories(${CMAKE_CURRENT_LIST_DIR}/include)
 include_directories(${CMAKE_CURRENT_LIST_DIR}/lib/Ble)
 include_directories(${CMAKE_CURRENT_LIST_DIR}/lib/Mqtt)
+include_directories(${CMAKE_CURRENT_LIST_DIR}/lib/Ntp)
 
-include_directories(${CMAKE_CURRENT_LIST_DIR}/lib/pico-tflmicro)
-include_directories(${CMAKE_CURRENT_LIST_DIR}/lib/pico-tflmicro/src/tensorflow/)
-include_directories(${CMAKE_CURRENT_LIST_DIR}/lib/pico-tflmicro/src/tensorflow/lite/micro)
-include_directories(${CMAKE_CURRENT_LIST_DIR}/lib/pico-tflmicro/src/tensorflow/lite/micro/c)
-include_directories(${CMAKE_CURRENT_LIST_DIR}/lib/pico-tflmicro/src/tensorflow/lite/micro/core)
-include_directories(${CMAKE_CURRENT_LIST_DIR}/lib/pico-tflmicro/src/tensorflow/lite/micro/core/c)
-
-
-# Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_uart(picow_ble_temp_reader 1)
-pico_enable_stdio_usb(picow_ble_temp_reader 1)
-
-target_link_libraries(picow_ble_temp_reader
+target_link_libraries(ORACULO
     FreeRTOS-Kernel 
     FreeRTOS-Kernel-Heap4
     pico_stdlib
     pico_btstack_ble
     pico_btstack_cyw43
-    # pico_cyw43_arch_none
     pico_cyw43_arch_lwip_threadsafe_background
     pico_lwip_mqtt
     pico_mbedtls
     pico_lwip_mbedtls
     pico_lwip_http
     hardware_adc
-    # pico-tflmicro
     )
 
-target_include_directories(picow_ble_temp_reader PRIVATE
+target_include_directories(ORACULO PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}
     ${CMAKE_CURRENT_LIST_DIR}/.. # For our common btstack config
+    lib/Mqtt/
     )
 
-target_compile_definitions(picow_ble_temp_reader PRIVATE
+target_compile_definitions(ORACULO PRIVATE
     RUNNING_AS_CLIENT=1
 )
 
-pico_add_extra_outputs(picow_ble_temp_reader)
+pico_add_extra_outputs(ORACULO)
