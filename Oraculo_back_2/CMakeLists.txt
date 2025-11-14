@@ -39,10 +39,10 @@ add_executable(Oraculo)
 
 target_sources(Oraculo PUBLIC
 main.c
-# components/BLE/BLE.c
-# lib/Mqtt/Mqtt.c
-components/NTP/NTP.c
-components/Wifi/Wifi.c
+lib/BLE/BLE.c
+lib/Mqtt/Mqtt.c
+lib/NTP/NTP.c
+lib/Wifi/Wifi.c
 )
 
 
@@ -54,30 +54,33 @@ pico_enable_stdio_uart(Oraculo 1)
 pico_enable_stdio_usb(Oraculo 1)
 
 # Pull in FreeRTOS
-# include(components/FreeRTOS-Kernel/portable/ThirdParty/GCC/RP2040/FreeRTOS_Kernel_import.cmake)
+include(lib/FreeRTOS-Kernel/portable/ThirdParty/GCC/RP2040/FreeRTOS_Kernel_import.cmake)
 
 include_directories(${CMAKE_CURRENT_LIST_DIR}/include)
 
 # Add the standard library to the build
 target_link_libraries(Oraculo
-    # FreeRTOS-Kernel 
-    # FreeRTOS-Kernel-Heap4
+    FreeRTOS-Kernel 
+    FreeRTOS-Kernel-Heap4
     pico_stdlib
-    # pico_btstack_ble
-    # pico_btstack_cyw43
+    pico_btstack_ble
+    pico_btstack_cyw43
     pico_cyw43_arch_lwip_threadsafe_background
     pico_lwip_mqtt
     pico_mbedtls
     pico_lwip_mbedtls
     pico_lwip_http
+    hardware_adc
         )
 
 # Add the standard include files to the build
 target_include_directories(Oraculo PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}
     ${CMAKE_CURRENT_LIST_DIR}/.. # For our common btstack config
-    components/NTP
-    components/Wifi/
+    lib/BLE/
+    lib/Mqtt/
+    lib/NTP
+    lib/Wifi/
 )
 
 # Add any user requested libraries
