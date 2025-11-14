@@ -11,13 +11,15 @@
 #include "lwip/apps/mqtt.h"
 #include "lwip/apps/mqtt_priv.h" // needed to set hostname
 
-// #define WIFI_SSID "brisa-2532295" // Substitua pelo nome da sua rede Wi-Fi
-// #define WIFI_PASSWORD "zlgy1ssc"
-// #define WIFI_SSID "LARS-301-2.4GHz" // Substitua pelo nome da sua rede Wi-Fi
-// #define WIFI_PASSWORD "LARS@ROBOTICA"
-#define WIFI_SSID "LASEM" // Substitua pelo nome da sua rede Wi-Fi
-#define WIFI_PASSWORD "besourosuco"
 #define MQTT_SERVER "test.mosquitto.org"
+
+#ifndef WIFI_SSID
+#define WIFI_SSID "WIFI_SSID"
+#endif
+
+#ifndef WIFI_PASSWORD
+#define WIFI_PASSWORD "123"
+#endif
 
 // qos passed to mqtt_subscribe
 // At most once (QoS 0)
