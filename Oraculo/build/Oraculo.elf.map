@@ -183,6 +183,8 @@ Discarded input sections
  .text          0x00000000        0x0 CMakeFiles/Oraculo.dir/components/NTP/NTP.c.o
  .data          0x00000000        0x0 CMakeFiles/Oraculo.dir/components/NTP/NTP.c.o
  .bss           0x00000000        0x0 CMakeFiles/Oraculo.dir/components/NTP/NTP.c.o
+ .text.ntp_set_utc_offset
+                0x00000000        0xc CMakeFiles/Oraculo.dir/components/NTP/NTP.c.o
  .text          0x00000000        0x0 CMakeFiles/Oraculo.dir/components/Wifi/Wifi.c.o
  .data          0x00000000        0x0 CMakeFiles/Oraculo.dir/components/Wifi/Wifi.c.o
  .bss           0x00000000        0x0 CMakeFiles/Oraculo.dir/components/Wifi/Wifi.c.o
@@ -11510,1000 +11512,1000 @@ LOAD linker stubs
  .comment       0x00000045       0x46 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.o
  .comment       0x00000045       0x46 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.o
 
-.debug_info     0x00000000    0x7e261
- .debug_info    0x00000000      0x7b2 CMakeFiles/Oraculo.dir/main.c.o
- .debug_info    0x000007b2     0x18aa CMakeFiles/Oraculo.dir/components/NTP/NTP.c.o
- .debug_info    0x0000205c      0x16b CMakeFiles/Oraculo.dir/components/Wifi/Wifi.c.o
- .debug_info    0x000021c7     0x2421 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_gpio/gpio.c.o
- .debug_info    0x000045e8      0x129 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2040/pico_platform/platform.c.o
- .debug_info    0x00004711      0x1bf CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_platform_panic/panic.c.o
- .debug_info    0x000048d0      0x9a1 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/hardware_claim/claim.c.o
- .debug_info    0x00005271      0x45c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync/sync.c.o
- .debug_info    0x000056cd      0x245 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.o
- .debug_info    0x00005912     0x2233 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_irq/irq.c.o
- .debug_info    0x00007b45     0x14f0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/sem.c.o
- .debug_info    0x00009035      0x15f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/lock_core.c.o
- .debug_info    0x00009194     0x2815 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/mutex.c.o
- .debug_info    0x0000b9a9      0x308 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/critical_section.c.o
- .debug_info    0x0000bcb1     0x5065 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_time/time.c.o
- .debug_info    0x00010d16     0x2b37 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_timer/timer.c.o
- .debug_info    0x0001384d     0x1983 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_uart/uart.c.o
- .debug_info    0x000151d0     0x2a05 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_clocks/clocks.c.o
- .debug_info    0x00017bd5      0x4e5 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pll/pll.c.o
- .debug_info    0x000180ba      0x8e0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_watchdog/watchdog.c.o
- .debug_info    0x0001899a      0x248 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_ticks/ticks.c.o
- .debug_info    0x00018be2      0x678 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_bootrom/bootrom.c.o
- .debug_info    0x0001925a      0x1d0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_xosc/xosc.c.o
- .debug_info    0x0001942a      0x21a CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime/runtime.c.o
- .debug_info    0x00019644      0x7ea CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init.c.o
- .debug_info    0x00019e2e      0x781 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.o
- .debug_info    0x0001a5af       0x23 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.o
- .debug_info    0x0001a5d2       0x23 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_divider/divider_hardware.S.o
- .debug_info    0x0001a5f5       0x23 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_aeabi_rp2040.S.o
- .debug_info    0x0001a618      0x2c4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_init_rom_rp2040.c.o
- .debug_info    0x0001a8dc       0x24 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.o
- .debug_info    0x0001a900       0x24 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.o
- .debug_info    0x0001a924       0x23 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_float/float_aeabi_rp2040.S.o
- .debug_info    0x0001a947      0x2b0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_float/float_init_rom_rp2040.c.o
- .debug_info    0x0001abf7      0x3e4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_malloc/malloc.c.o
- .debug_info    0x0001afdb       0x23 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.o
- .debug_info    0x0001affe      0x2e2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o
- .debug_info    0x0001b2e0     0x22f2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_printf/printf.c.o
- .debug_info    0x0001d5d2       0x23 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_crt0/crt0.S.o
- .debug_info    0x0001d5f5      0xbbe CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_clib_interface/newlib_interface.c.o
- .debug_info    0x0001e1b3     0x1dba CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio/stdio.c.o
- .debug_info    0x0001ff6d     0x150c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_uart/stdio_uart.c.o
- .debug_info    0x00021479      0xa93 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/reset_interface.c.o
- .debug_info    0x00021f0c     0x1f2a CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb.c.o
- .debug_info    0x00023e36      0x6aa CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o
- .debug_info    0x000244e0      0x201 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_unique_id/unique_id.c.o
- .debug_info    0x000246e1     0x177f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_flash/flash.c.o
- .debug_info    0x00025e60     0x2b1c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o
- .debug_info    0x0002897c     0x117c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o
- .debug_info    0x00029af8     0x49cc CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd.c.o
- .debug_info    0x0002e4c4      0xb66 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd_control.c.o
- .debug_info    0x0002f02a     0x1fd2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/cdc/cdc_device.c.o
- .debug_info    0x00030ffc     0x1737 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/vendor/vendor_device.c.o
- .debug_info    0x00032733     0x1eb0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/tusb.c.o
- .debug_info    0x000345e3     0x283d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/common/tusb_fifo.c.o
- .debug_info    0x00036e20      0xc0d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_lwip/lwip_nosys.c.o
- .debug_info    0x00037a2d      0xa06 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_base.c.o
- .debug_info    0x00038433     0x1729 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_rand/rand.c.o
- .debug_info    0x00039b5c      0x12e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/init.c.o
- .debug_info    0x00039c8a      0x659 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/def.c.o
- .debug_info    0x0003a2e3     0x1b3d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/dns.c.o
- .debug_info    0x0003be20      0x8ca CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/inet_chksum.c.o
- .debug_info    0x0003c6ea      0x52a CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ip.c.o
- .debug_info    0x0003cc14      0xa37 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/mem.c.o
- .debug_info    0x0003d64b      0x8e5 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/memp.c.o
- .debug_info    0x0003df30     0x16c2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/netif.c.o
- .debug_info    0x0003f5f2     0x3448 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/pbuf.c.o
- .debug_info    0x00042a3a     0x1543 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/raw.c.o
- .debug_info    0x00043f7d      0x203 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/stats.c.o
- .debug_info    0x00044180     0x3b2e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp.c.o
- .debug_info    0x00047cae     0x2555 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_in.c.o
- .debug_info    0x0004a203     0x3640 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_out.c.o
- .debug_info    0x0004d843     0x1364 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/timeouts.c.o
- .debug_info    0x0004eba7     0x1733 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/udp.c.o
- .debug_info    0x000502da     0x3cc7 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/dhcp.c.o
- .debug_info    0x00053fa1     0x19b5 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/etharp.c.o
- .debug_info    0x00055956      0xf96 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/icmp.c.o
- .debug_info    0x000568ec     0x15b6 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_frag.c.o
- .debug_info    0x00057ea2     0x133b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4.c.o
- .debug_info    0x000591dd      0x8c8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_addr.c.o
- .debug_info    0x00059aa5      0x9e9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/netif/ethernet.c.o
- .debug_info    0x0005a48e     0x22a7 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.o
- .debug_info    0x0005c735      0xaf4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.o
- .debug_info    0x0005d229     0x74c0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.o
- .debug_info    0x000646e9     0xc4cb CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ll.c.o
- .debug_info    0x00070bb4      0xfe6 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_lwip.c.o
- .debug_info    0x00071b9a     0x526f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ctrl.c.o
- .debug_info    0x00076e09     0x305c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pio/pio.c.o
- .debug_info    0x00079e65      0xa26 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_dma/dma.c.o
- .debug_info    0x0007a88b     0x1fd0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.o
- .debug_info    0x0007c85b     0x1a06 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.o
+.debug_info     0x00000000    0x7e2e4
+ .debug_info    0x00000000      0x7e4 CMakeFiles/Oraculo.dir/main.c.o
+ .debug_info    0x000007e4     0x18fb CMakeFiles/Oraculo.dir/components/NTP/NTP.c.o
+ .debug_info    0x000020df      0x16b CMakeFiles/Oraculo.dir/components/Wifi/Wifi.c.o
+ .debug_info    0x0000224a     0x2421 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_gpio/gpio.c.o
+ .debug_info    0x0000466b      0x129 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2040/pico_platform/platform.c.o
+ .debug_info    0x00004794      0x1bf CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_platform_panic/panic.c.o
+ .debug_info    0x00004953      0x9a1 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/hardware_claim/claim.c.o
+ .debug_info    0x000052f4      0x45c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync/sync.c.o
+ .debug_info    0x00005750      0x245 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.o
+ .debug_info    0x00005995     0x2233 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_irq/irq.c.o
+ .debug_info    0x00007bc8     0x14f0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/sem.c.o
+ .debug_info    0x000090b8      0x15f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/lock_core.c.o
+ .debug_info    0x00009217     0x2815 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/mutex.c.o
+ .debug_info    0x0000ba2c      0x308 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/critical_section.c.o
+ .debug_info    0x0000bd34     0x5065 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_time/time.c.o
+ .debug_info    0x00010d99     0x2b37 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_timer/timer.c.o
+ .debug_info    0x000138d0     0x1983 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_uart/uart.c.o
+ .debug_info    0x00015253     0x2a05 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_clocks/clocks.c.o
+ .debug_info    0x00017c58      0x4e5 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pll/pll.c.o
+ .debug_info    0x0001813d      0x8e0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_watchdog/watchdog.c.o
+ .debug_info    0x00018a1d      0x248 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_ticks/ticks.c.o
+ .debug_info    0x00018c65      0x678 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_bootrom/bootrom.c.o
+ .debug_info    0x000192dd      0x1d0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_xosc/xosc.c.o
+ .debug_info    0x000194ad      0x21a CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime/runtime.c.o
+ .debug_info    0x000196c7      0x7ea CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init.c.o
+ .debug_info    0x00019eb1      0x781 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.o
+ .debug_info    0x0001a632       0x23 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.o
+ .debug_info    0x0001a655       0x23 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_divider/divider_hardware.S.o
+ .debug_info    0x0001a678       0x23 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_aeabi_rp2040.S.o
+ .debug_info    0x0001a69b      0x2c4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_init_rom_rp2040.c.o
+ .debug_info    0x0001a95f       0x24 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.o
+ .debug_info    0x0001a983       0x24 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.o
+ .debug_info    0x0001a9a7       0x23 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_float/float_aeabi_rp2040.S.o
+ .debug_info    0x0001a9ca      0x2b0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_float/float_init_rom_rp2040.c.o
+ .debug_info    0x0001ac7a      0x3e4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_malloc/malloc.c.o
+ .debug_info    0x0001b05e       0x23 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.o
+ .debug_info    0x0001b081      0x2e2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o
+ .debug_info    0x0001b363     0x22f2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_printf/printf.c.o
+ .debug_info    0x0001d655       0x23 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_crt0/crt0.S.o
+ .debug_info    0x0001d678      0xbbe CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_clib_interface/newlib_interface.c.o
+ .debug_info    0x0001e236     0x1dba CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio/stdio.c.o
+ .debug_info    0x0001fff0     0x150c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_uart/stdio_uart.c.o
+ .debug_info    0x000214fc      0xa93 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/reset_interface.c.o
+ .debug_info    0x00021f8f     0x1f2a CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb.c.o
+ .debug_info    0x00023eb9      0x6aa CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o
+ .debug_info    0x00024563      0x201 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_unique_id/unique_id.c.o
+ .debug_info    0x00024764     0x177f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_flash/flash.c.o
+ .debug_info    0x00025ee3     0x2b1c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o
+ .debug_info    0x000289ff     0x117c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o
+ .debug_info    0x00029b7b     0x49cc CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd.c.o
+ .debug_info    0x0002e547      0xb66 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd_control.c.o
+ .debug_info    0x0002f0ad     0x1fd2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/cdc/cdc_device.c.o
+ .debug_info    0x0003107f     0x1737 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/vendor/vendor_device.c.o
+ .debug_info    0x000327b6     0x1eb0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/tusb.c.o
+ .debug_info    0x00034666     0x283d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/common/tusb_fifo.c.o
+ .debug_info    0x00036ea3      0xc0d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_lwip/lwip_nosys.c.o
+ .debug_info    0x00037ab0      0xa06 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_base.c.o
+ .debug_info    0x000384b6     0x1729 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_rand/rand.c.o
+ .debug_info    0x00039bdf      0x12e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/init.c.o
+ .debug_info    0x00039d0d      0x659 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/def.c.o
+ .debug_info    0x0003a366     0x1b3d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/dns.c.o
+ .debug_info    0x0003bea3      0x8ca CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/inet_chksum.c.o
+ .debug_info    0x0003c76d      0x52a CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ip.c.o
+ .debug_info    0x0003cc97      0xa37 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/mem.c.o
+ .debug_info    0x0003d6ce      0x8e5 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/memp.c.o
+ .debug_info    0x0003dfb3     0x16c2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/netif.c.o
+ .debug_info    0x0003f675     0x3448 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/pbuf.c.o
+ .debug_info    0x00042abd     0x1543 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/raw.c.o
+ .debug_info    0x00044000      0x203 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/stats.c.o
+ .debug_info    0x00044203     0x3b2e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp.c.o
+ .debug_info    0x00047d31     0x2555 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_in.c.o
+ .debug_info    0x0004a286     0x3640 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_out.c.o
+ .debug_info    0x0004d8c6     0x1364 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/timeouts.c.o
+ .debug_info    0x0004ec2a     0x1733 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/udp.c.o
+ .debug_info    0x0005035d     0x3cc7 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/dhcp.c.o
+ .debug_info    0x00054024     0x19b5 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/etharp.c.o
+ .debug_info    0x000559d9      0xf96 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/icmp.c.o
+ .debug_info    0x0005696f     0x15b6 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_frag.c.o
+ .debug_info    0x00057f25     0x133b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4.c.o
+ .debug_info    0x00059260      0x8c8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_addr.c.o
+ .debug_info    0x00059b28      0x9e9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/netif/ethernet.c.o
+ .debug_info    0x0005a511     0x22a7 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.o
+ .debug_info    0x0005c7b8      0xaf4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.o
+ .debug_info    0x0005d2ac     0x74c0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.o
+ .debug_info    0x0006476c     0xc4cb CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ll.c.o
+ .debug_info    0x00070c37      0xfe6 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_lwip.c.o
+ .debug_info    0x00071c1d     0x526f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ctrl.c.o
+ .debug_info    0x00076e8c     0x305c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pio/pio.c.o
+ .debug_info    0x00079ee8      0xa26 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_dma/dma.c.o
+ .debug_info    0x0007a90e     0x1fd0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.o
+ .debug_info    0x0007c8de     0x1a06 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.o
 
-.debug_abbrev   0x00000000    0x1273c
- .debug_abbrev  0x00000000      0x17c CMakeFiles/Oraculo.dir/main.c.o
- .debug_abbrev  0x0000017c      0x3d9 CMakeFiles/Oraculo.dir/components/NTP/NTP.c.o
- .debug_abbrev  0x00000555       0xdb CMakeFiles/Oraculo.dir/components/Wifi/Wifi.c.o
- .debug_abbrev  0x00000630      0x4f9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_gpio/gpio.c.o
- .debug_abbrev  0x00000b29       0x77 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2040/pico_platform/platform.c.o
- .debug_abbrev  0x00000ba0      0x12b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_platform_panic/panic.c.o
- .debug_abbrev  0x00000ccb      0x328 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/hardware_claim/claim.c.o
- .debug_abbrev  0x00000ff3      0x20f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync/sync.c.o
- .debug_abbrev  0x00001202      0x1bb CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.o
- .debug_abbrev  0x000013bd      0x614 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_irq/irq.c.o
- .debug_abbrev  0x000019d1      0x375 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/sem.c.o
- .debug_abbrev  0x00001d46       0xee CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/lock_core.c.o
- .debug_abbrev  0x00001e34      0x48c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/mutex.c.o
- .debug_abbrev  0x000022c0      0x1d5 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/critical_section.c.o
- .debug_abbrev  0x00002495      0x659 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_time/time.c.o
- .debug_abbrev  0x00002aee      0x4f2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_timer/timer.c.o
- .debug_abbrev  0x00002fe0      0x365 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_uart/uart.c.o
- .debug_abbrev  0x00003345      0x512 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_clocks/clocks.c.o
- .debug_abbrev  0x00003857      0x1d2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pll/pll.c.o
- .debug_abbrev  0x00003a29      0x2c9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_watchdog/watchdog.c.o
- .debug_abbrev  0x00003cf2      0x145 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_ticks/ticks.c.o
- .debug_abbrev  0x00003e37      0x1bc CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_bootrom/bootrom.c.o
- .debug_abbrev  0x00003ff3      0x11d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_xosc/xosc.c.o
- .debug_abbrev  0x00004110      0x182 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime/runtime.c.o
- .debug_abbrev  0x00004292      0x26b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init.c.o
- .debug_abbrev  0x000044fd      0x2af CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.o
- .debug_abbrev  0x000047ac       0x12 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.o
- .debug_abbrev  0x000047be       0x12 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_divider/divider_hardware.S.o
- .debug_abbrev  0x000047d0       0x12 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_aeabi_rp2040.S.o
- .debug_abbrev  0x000047e2      0x1bb CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_init_rom_rp2040.c.o
- .debug_abbrev  0x0000499d       0x14 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.o
- .debug_abbrev  0x000049b1       0x14 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.o
- .debug_abbrev  0x000049c5       0x12 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_float/float_aeabi_rp2040.S.o
- .debug_abbrev  0x000049d7      0x19e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_float/float_init_rom_rp2040.c.o
- .debug_abbrev  0x00004b75      0x1ad CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_malloc/malloc.c.o
- .debug_abbrev  0x00004d22       0x12 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.o
- .debug_abbrev  0x00004d34       0xb8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o
- .debug_abbrev  0x00004dec      0x50c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_printf/printf.c.o
- .debug_abbrev  0x000052f8       0x12 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_crt0/crt0.S.o
- .debug_abbrev  0x0000530a      0x352 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_clib_interface/newlib_interface.c.o
- .debug_abbrev  0x0000565c      0x5d9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio/stdio.c.o
- .debug_abbrev  0x00005c35      0x498 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_uart/stdio_uart.c.o
- .debug_abbrev  0x000060cd      0x3aa CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/reset_interface.c.o
- .debug_abbrev  0x00006477      0x5bd CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb.c.o
- .debug_abbrev  0x00006a34      0x16c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o
- .debug_abbrev  0x00006ba0      0x153 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_unique_id/unique_id.c.o
- .debug_abbrev  0x00006cf3      0x412 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_flash/flash.c.o
- .debug_abbrev  0x00007105      0x5d9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o
- .debug_abbrev  0x000076de      0x480 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o
- .debug_abbrev  0x00007b5e      0x7f2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd.c.o
- .debug_abbrev  0x00008350      0x38d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd_control.c.o
- .debug_abbrev  0x000086dd      0x560 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/cdc/cdc_device.c.o
- .debug_abbrev  0x00008c3d      0x48c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/vendor/vendor_device.c.o
- .debug_abbrev  0x000090c9      0x534 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/tusb.c.o
- .debug_abbrev  0x000095fd      0x443 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/common/tusb_fifo.c.o
- .debug_abbrev  0x00009a40      0x30f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_lwip/lwip_nosys.c.o
- .debug_abbrev  0x00009d4f      0x27f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_base.c.o
- .debug_abbrev  0x00009fce      0x4f6 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_rand/rand.c.o
- .debug_abbrev  0x0000a4c4       0x93 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/init.c.o
- .debug_abbrev  0x0000a557      0x22d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/def.c.o
- .debug_abbrev  0x0000a784      0x498 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/dns.c.o
- .debug_abbrev  0x0000ac1c      0x263 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/inet_chksum.c.o
- .debug_abbrev  0x0000ae7f      0x13f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ip.c.o
- .debug_abbrev  0x0000afbe      0x2c6 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/mem.c.o
- .debug_abbrev  0x0000b284      0x32b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/memp.c.o
- .debug_abbrev  0x0000b5af      0x4bf CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/netif.c.o
- .debug_abbrev  0x0000ba6e      0x4cf CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/pbuf.c.o
- .debug_abbrev  0x0000bf3d      0x447 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/raw.c.o
- .debug_abbrev  0x0000c384       0xd4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/stats.c.o
- .debug_abbrev  0x0000c458      0x621 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp.c.o
- .debug_abbrev  0x0000ca79      0x49f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_in.c.o
- .debug_abbrev  0x0000cf18      0x4e1 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_out.c.o
- .debug_abbrev  0x0000d3f9      0x4a9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/timeouts.c.o
- .debug_abbrev  0x0000d8a2      0x4b9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/udp.c.o
- .debug_abbrev  0x0000dd5b      0x527 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/dhcp.c.o
- .debug_abbrev  0x0000e282      0x433 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/etharp.c.o
- .debug_abbrev  0x0000e6b5      0x316 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/icmp.c.o
- .debug_abbrev  0x0000e9cb      0x438 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_frag.c.o
- .debug_abbrev  0x0000ee03      0x398 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4.c.o
- .debug_abbrev  0x0000f19b      0x317 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_addr.c.o
- .debug_abbrev  0x0000f4b2      0x2e6 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/netif/ethernet.c.o
- .debug_abbrev  0x0000f798      0x55b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.o
- .debug_abbrev  0x0000fcf3      0x27c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.o
- .debug_abbrev  0x0000ff6f      0x672 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.o
- .debug_abbrev  0x000105e1      0x5f2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ll.c.o
- .debug_abbrev  0x00010bd3      0x380 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_lwip.c.o
- .debug_abbrev  0x00010f53      0x5d9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ctrl.c.o
- .debug_abbrev  0x0001152c      0x54e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pio/pio.c.o
- .debug_abbrev  0x00011a7a      0x2fb CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_dma/dma.c.o
- .debug_abbrev  0x00011d75      0x549 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.o
- .debug_abbrev  0x000122be      0x47e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.o
+.debug_abbrev   0x00000000    0x12766
+ .debug_abbrev  0x00000000      0x19a CMakeFiles/Oraculo.dir/main.c.o
+ .debug_abbrev  0x0000019a      0x3e5 CMakeFiles/Oraculo.dir/components/NTP/NTP.c.o
+ .debug_abbrev  0x0000057f       0xdb CMakeFiles/Oraculo.dir/components/Wifi/Wifi.c.o
+ .debug_abbrev  0x0000065a      0x4f9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_gpio/gpio.c.o
+ .debug_abbrev  0x00000b53       0x77 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2040/pico_platform/platform.c.o
+ .debug_abbrev  0x00000bca      0x12b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_platform_panic/panic.c.o
+ .debug_abbrev  0x00000cf5      0x328 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/hardware_claim/claim.c.o
+ .debug_abbrev  0x0000101d      0x20f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync/sync.c.o
+ .debug_abbrev  0x0000122c      0x1bb CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.o
+ .debug_abbrev  0x000013e7      0x614 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_irq/irq.c.o
+ .debug_abbrev  0x000019fb      0x375 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/sem.c.o
+ .debug_abbrev  0x00001d70       0xee CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/lock_core.c.o
+ .debug_abbrev  0x00001e5e      0x48c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/mutex.c.o
+ .debug_abbrev  0x000022ea      0x1d5 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/critical_section.c.o
+ .debug_abbrev  0x000024bf      0x659 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_time/time.c.o
+ .debug_abbrev  0x00002b18      0x4f2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_timer/timer.c.o
+ .debug_abbrev  0x0000300a      0x365 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_uart/uart.c.o
+ .debug_abbrev  0x0000336f      0x512 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_clocks/clocks.c.o
+ .debug_abbrev  0x00003881      0x1d2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pll/pll.c.o
+ .debug_abbrev  0x00003a53      0x2c9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_watchdog/watchdog.c.o
+ .debug_abbrev  0x00003d1c      0x145 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_ticks/ticks.c.o
+ .debug_abbrev  0x00003e61      0x1bc CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_bootrom/bootrom.c.o
+ .debug_abbrev  0x0000401d      0x11d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_xosc/xosc.c.o
+ .debug_abbrev  0x0000413a      0x182 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime/runtime.c.o
+ .debug_abbrev  0x000042bc      0x26b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init.c.o
+ .debug_abbrev  0x00004527      0x2af CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.o
+ .debug_abbrev  0x000047d6       0x12 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.o
+ .debug_abbrev  0x000047e8       0x12 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_divider/divider_hardware.S.o
+ .debug_abbrev  0x000047fa       0x12 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_aeabi_rp2040.S.o
+ .debug_abbrev  0x0000480c      0x1bb CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_init_rom_rp2040.c.o
+ .debug_abbrev  0x000049c7       0x14 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.o
+ .debug_abbrev  0x000049db       0x14 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.o
+ .debug_abbrev  0x000049ef       0x12 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_float/float_aeabi_rp2040.S.o
+ .debug_abbrev  0x00004a01      0x19e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_float/float_init_rom_rp2040.c.o
+ .debug_abbrev  0x00004b9f      0x1ad CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_malloc/malloc.c.o
+ .debug_abbrev  0x00004d4c       0x12 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.o
+ .debug_abbrev  0x00004d5e       0xb8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o
+ .debug_abbrev  0x00004e16      0x50c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_printf/printf.c.o
+ .debug_abbrev  0x00005322       0x12 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_crt0/crt0.S.o
+ .debug_abbrev  0x00005334      0x352 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_clib_interface/newlib_interface.c.o
+ .debug_abbrev  0x00005686      0x5d9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio/stdio.c.o
+ .debug_abbrev  0x00005c5f      0x498 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_uart/stdio_uart.c.o
+ .debug_abbrev  0x000060f7      0x3aa CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/reset_interface.c.o
+ .debug_abbrev  0x000064a1      0x5bd CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb.c.o
+ .debug_abbrev  0x00006a5e      0x16c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o
+ .debug_abbrev  0x00006bca      0x153 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_unique_id/unique_id.c.o
+ .debug_abbrev  0x00006d1d      0x412 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_flash/flash.c.o
+ .debug_abbrev  0x0000712f      0x5d9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o
+ .debug_abbrev  0x00007708      0x480 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o
+ .debug_abbrev  0x00007b88      0x7f2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd.c.o
+ .debug_abbrev  0x0000837a      0x38d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd_control.c.o
+ .debug_abbrev  0x00008707      0x560 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/cdc/cdc_device.c.o
+ .debug_abbrev  0x00008c67      0x48c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/vendor/vendor_device.c.o
+ .debug_abbrev  0x000090f3      0x534 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/tusb.c.o
+ .debug_abbrev  0x00009627      0x443 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/common/tusb_fifo.c.o
+ .debug_abbrev  0x00009a6a      0x30f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_lwip/lwip_nosys.c.o
+ .debug_abbrev  0x00009d79      0x27f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_base.c.o
+ .debug_abbrev  0x00009ff8      0x4f6 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_rand/rand.c.o
+ .debug_abbrev  0x0000a4ee       0x93 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/init.c.o
+ .debug_abbrev  0x0000a581      0x22d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/def.c.o
+ .debug_abbrev  0x0000a7ae      0x498 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/dns.c.o
+ .debug_abbrev  0x0000ac46      0x263 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/inet_chksum.c.o
+ .debug_abbrev  0x0000aea9      0x13f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ip.c.o
+ .debug_abbrev  0x0000afe8      0x2c6 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/mem.c.o
+ .debug_abbrev  0x0000b2ae      0x32b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/memp.c.o
+ .debug_abbrev  0x0000b5d9      0x4bf CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/netif.c.o
+ .debug_abbrev  0x0000ba98      0x4cf CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/pbuf.c.o
+ .debug_abbrev  0x0000bf67      0x447 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/raw.c.o
+ .debug_abbrev  0x0000c3ae       0xd4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/stats.c.o
+ .debug_abbrev  0x0000c482      0x621 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp.c.o
+ .debug_abbrev  0x0000caa3      0x49f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_in.c.o
+ .debug_abbrev  0x0000cf42      0x4e1 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_out.c.o
+ .debug_abbrev  0x0000d423      0x4a9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/timeouts.c.o
+ .debug_abbrev  0x0000d8cc      0x4b9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/udp.c.o
+ .debug_abbrev  0x0000dd85      0x527 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/dhcp.c.o
+ .debug_abbrev  0x0000e2ac      0x433 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/etharp.c.o
+ .debug_abbrev  0x0000e6df      0x316 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/icmp.c.o
+ .debug_abbrev  0x0000e9f5      0x438 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_frag.c.o
+ .debug_abbrev  0x0000ee2d      0x398 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4.c.o
+ .debug_abbrev  0x0000f1c5      0x317 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_addr.c.o
+ .debug_abbrev  0x0000f4dc      0x2e6 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/netif/ethernet.c.o
+ .debug_abbrev  0x0000f7c2      0x55b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.o
+ .debug_abbrev  0x0000fd1d      0x27c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.o
+ .debug_abbrev  0x0000ff99      0x672 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.o
+ .debug_abbrev  0x0001060b      0x5f2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ll.c.o
+ .debug_abbrev  0x00010bfd      0x380 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_lwip.c.o
+ .debug_abbrev  0x00010f7d      0x5d9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ctrl.c.o
+ .debug_abbrev  0x00011556      0x54e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pio/pio.c.o
+ .debug_abbrev  0x00011aa4      0x2fb CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_dma/dma.c.o
+ .debug_abbrev  0x00011d9f      0x549 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.o
+ .debug_abbrev  0x000122e8      0x47e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.o
 
 .debug_loclists
-                0x00000000    0x45f6f
+                0x00000000    0x45f7a
  .debug_loclists
                 0x00000000       0x17 CMakeFiles/Oraculo.dir/main.c.o
  .debug_loclists
-                0x00000017      0x658 CMakeFiles/Oraculo.dir/components/NTP/NTP.c.o
+                0x00000017      0x663 CMakeFiles/Oraculo.dir/components/NTP/NTP.c.o
  .debug_loclists
-                0x0000066f       0x62 CMakeFiles/Oraculo.dir/components/Wifi/Wifi.c.o
+                0x0000067a       0x62 CMakeFiles/Oraculo.dir/components/Wifi/Wifi.c.o
  .debug_loclists
-                0x000006d1     0x1a7f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_gpio/gpio.c.o
+                0x000006dc     0x1a7f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_gpio/gpio.c.o
  .debug_loclists
-                0x00002150       0x53 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2040/pico_platform/platform.c.o
+                0x0000215b       0x53 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2040/pico_platform/platform.c.o
  .debug_loclists
-                0x000021a3      0x349 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/hardware_claim/claim.c.o
+                0x000021ae      0x349 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/hardware_claim/claim.c.o
  .debug_loclists
-                0x000024ec      0x108 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync/sync.c.o
+                0x000024f7      0x108 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync/sync.c.o
  .debug_loclists
-                0x000025f4       0x7d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.o
+                0x000025ff       0x7d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.o
  .debug_loclists
-                0x00002671     0x11ed CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_irq/irq.c.o
+                0x0000267c     0x11ed CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_irq/irq.c.o
  .debug_loclists
-                0x0000385e      0x58c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/sem.c.o
+                0x00003869      0x58c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/sem.c.o
  .debug_loclists
-                0x00003dea       0x41 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/lock_core.c.o
+                0x00003df5       0x41 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/lock_core.c.o
  .debug_loclists
-                0x00003e2b      0xaec CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/mutex.c.o
+                0x00003e36      0xaec CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/mutex.c.o
  .debug_loclists
-                0x00004917       0xb6 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/critical_section.c.o
+                0x00004922       0xb6 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/critical_section.c.o
  .debug_loclists
-                0x000049cd     0x27af CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_time/time.c.o
+                0x000049d8     0x27af CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_time/time.c.o
  .debug_loclists
-                0x0000717c     0x19f1 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_timer/timer.c.o
+                0x00007187     0x19f1 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_timer/timer.c.o
  .debug_loclists
-                0x00008b6d      0xc90 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_uart/uart.c.o
+                0x00008b78      0xc90 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_uart/uart.c.o
  .debug_loclists
-                0x000097fd     0x2b7c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_clocks/clocks.c.o
+                0x00009808     0x2b7c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_clocks/clocks.c.o
  .debug_loclists
-                0x0000c379      0x1e0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pll/pll.c.o
+                0x0000c384      0x1e0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pll/pll.c.o
  .debug_loclists
-                0x0000c559      0x532 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_watchdog/watchdog.c.o
+                0x0000c564      0x532 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_watchdog/watchdog.c.o
  .debug_loclists
-                0x0000ca8b       0x47 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_ticks/ticks.c.o
+                0x0000ca96       0x47 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_ticks/ticks.c.o
  .debug_loclists
-                0x0000cad2      0x351 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_bootrom/bootrom.c.o
+                0x0000cadd      0x351 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_bootrom/bootrom.c.o
  .debug_loclists
-                0x0000ce23       0x48 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_xosc/xosc.c.o
+                0x0000ce2e       0x48 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_xosc/xosc.c.o
  .debug_loclists
-                0x0000ce6b       0x7e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime/runtime.c.o
+                0x0000ce76       0x7e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime/runtime.c.o
  .debug_loclists
-                0x0000cee9      0x139 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init.c.o
+                0x0000cef4      0x139 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init.c.o
  .debug_loclists
-                0x0000d022       0x74 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.o
+                0x0000d02d       0x74 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.o
  .debug_loclists
-                0x0000d096       0x35 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_init_rom_rp2040.c.o
+                0x0000d0a1       0x35 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_init_rom_rp2040.c.o
  .debug_loclists
-                0x0000d0cb       0x4e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_float/float_init_rom_rp2040.c.o
+                0x0000d0d6       0x4e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_float/float_init_rom_rp2040.c.o
  .debug_loclists
-                0x0000d119      0x206 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_malloc/malloc.c.o
+                0x0000d124      0x206 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_malloc/malloc.c.o
  .debug_loclists
-                0x0000d31f     0x355f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_printf/printf.c.o
+                0x0000d32a     0x355f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_printf/printf.c.o
  .debug_loclists
-                0x0001087e      0x44e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_clib_interface/newlib_interface.c.o
+                0x00010889      0x44e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_clib_interface/newlib_interface.c.o
  .debug_loclists
-                0x00010ccc      0xf58 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio/stdio.c.o
+                0x00010cd7      0xf58 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio/stdio.c.o
  .debug_loclists
-                0x00011c24      0x75b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_uart/stdio_uart.c.o
+                0x00011c2f      0x75b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_uart/stdio_uart.c.o
  .debug_loclists
-                0x0001237f      0x266 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/reset_interface.c.o
+                0x0001238a      0x266 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/reset_interface.c.o
  .debug_loclists
-                0x000125e5      0x7cb CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb.c.o
+                0x000125f0      0x7cb CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb.c.o
  .debug_loclists
-                0x00012db0       0xed CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o
+                0x00012dbb       0xed CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o
  .debug_loclists
-                0x00012e9d      0x3d5 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_unique_id/unique_id.c.o
+                0x00012ea8      0x3d5 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_unique_id/unique_id.c.o
  .debug_loclists
-                0x00013272      0xb24 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_flash/flash.c.o
+                0x0001327d      0xb24 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_flash/flash.c.o
  .debug_loclists
-                0x00013d96     0x1bde CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o
+                0x00013da1     0x1bde CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o
  .debug_loclists
-                0x00015974      0x719 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o
+                0x0001597f      0x719 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o
  .debug_loclists
-                0x0001608d     0x21ed CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd.c.o
+                0x00016098     0x21ed CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd.c.o
  .debug_loclists
-                0x0001827a      0x45e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd_control.c.o
+                0x00018285      0x45e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd_control.c.o
  .debug_loclists
-                0x000186d8      0xdc9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/cdc/cdc_device.c.o
+                0x000186e3      0xdc9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/cdc/cdc_device.c.o
  .debug_loclists
-                0x000194a1      0x7e5 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/vendor/vendor_device.c.o
+                0x000194ac      0x7e5 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/vendor/vendor_device.c.o
  .debug_loclists
-                0x00019c86      0xf80 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/tusb.c.o
+                0x00019c91      0xf80 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/tusb.c.o
  .debug_loclists
-                0x0001ac06     0x1fdb CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/common/tusb_fifo.c.o
+                0x0001ac11     0x1fdb CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/common/tusb_fifo.c.o
  .debug_loclists
-                0x0001cbe1      0x28f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_lwip/lwip_nosys.c.o
+                0x0001cbec      0x28f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_lwip/lwip_nosys.c.o
  .debug_loclists
-                0x0001ce70      0x4be CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_base.c.o
+                0x0001ce7b      0x4be CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_base.c.o
  .debug_loclists
-                0x0001d32e      0x992 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_rand/rand.c.o
+                0x0001d339      0x992 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_rand/rand.c.o
  .debug_loclists
-                0x0001dcc0      0x845 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/def.c.o
+                0x0001dccb      0x845 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/def.c.o
  .debug_loclists
-                0x0001e505     0x15fe CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/dns.c.o
+                0x0001e510     0x15fe CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/dns.c.o
  .debug_loclists
-                0x0001fb03      0x936 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/inet_chksum.c.o
+                0x0001fb0e      0x936 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/inet_chksum.c.o
  .debug_loclists
-                0x00020439      0x83e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/mem.c.o
+                0x00020444      0x83e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/mem.c.o
  .debug_loclists
-                0x00020c77      0x403 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/memp.c.o
+                0x00020c82      0x403 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/memp.c.o
  .debug_loclists
-                0x0002107a      0xbf4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/netif.c.o
+                0x00021085      0xbf4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/netif.c.o
  .debug_loclists
-                0x00021c6e     0x2bd2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/pbuf.c.o
+                0x00021c79     0x2bd2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/pbuf.c.o
  .debug_loclists
-                0x00024840      0xda3 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/raw.c.o
+                0x0002484b      0xda3 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/raw.c.o
  .debug_loclists
-                0x000255e3     0x26f0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp.c.o
+                0x000255ee     0x26f0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp.c.o
  .debug_loclists
-                0x00027cd3     0x1227 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_in.c.o
+                0x00027cde     0x1227 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_in.c.o
  .debug_loclists
-                0x00028efa     0x2dbb CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_out.c.o
+                0x00028f05     0x2dbb CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_out.c.o
  .debug_loclists
-                0x0002bcb5      0x64f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/timeouts.c.o
+                0x0002bcc0      0x64f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/timeouts.c.o
  .debug_loclists
-                0x0002c304      0xfe7 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/udp.c.o
+                0x0002c30f      0xfe7 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/udp.c.o
  .debug_loclists
-                0x0002d2eb     0x2a35 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/dhcp.c.o
+                0x0002d2f6     0x2a35 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/dhcp.c.o
  .debug_loclists
-                0x0002fd20     0x15cf CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/etharp.c.o
+                0x0002fd2b     0x15cf CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/etharp.c.o
  .debug_loclists
-                0x000312ef      0x3d8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/icmp.c.o
+                0x000312fa      0x3d8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/icmp.c.o
  .debug_loclists
-                0x000316c7      0xfad CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_frag.c.o
+                0x000316d2      0xfad CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_frag.c.o
  .debug_loclists
-                0x00032674      0xbea CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4.c.o
+                0x0003267f      0xbea CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4.c.o
  .debug_loclists
-                0x0003325e      0x702 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_addr.c.o
+                0x00033269      0x702 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_addr.c.o
  .debug_loclists
-                0x00033960      0x17d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/netif/ethernet.c.o
+                0x0003396b      0x17d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/netif/ethernet.c.o
  .debug_loclists
-                0x00033add      0xfe0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.o
+                0x00033ae8      0xfe0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.o
  .debug_loclists
-                0x00034abd       0xb5 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.o
+                0x00034ac8       0xb5 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.o
  .debug_loclists
-                0x00034b72     0x3546 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.o
+                0x00034b7d     0x3546 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.o
  .debug_loclists
-                0x000380b8     0x7efa CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ll.c.o
+                0x000380c3     0x7efa CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ll.c.o
  .debug_loclists
-                0x0003ffb2      0x54b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_lwip.c.o
+                0x0003ffbd      0x54b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_lwip.c.o
  .debug_loclists
-                0x000404fd     0x223b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ctrl.c.o
+                0x00040508     0x223b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ctrl.c.o
  .debug_loclists
-                0x00042738     0x20c3 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pio/pio.c.o
+                0x00042743     0x20c3 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pio/pio.c.o
  .debug_loclists
-                0x000447fb      0x315 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_dma/dma.c.o
+                0x00044806      0x315 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_dma/dma.c.o
  .debug_loclists
-                0x00044b10      0x9d3 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.o
+                0x00044b1b      0x9d3 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.o
  .debug_loclists
-                0x000454e3      0xa8c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.o
+                0x000454ee      0xa8c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.o
 
-.debug_aranges  0x00000000     0x28a8
+.debug_aranges  0x00000000     0x28b0
  .debug_aranges
                 0x00000000       0x20 CMakeFiles/Oraculo.dir/main.c.o
  .debug_aranges
-                0x00000020       0x48 CMakeFiles/Oraculo.dir/components/NTP/NTP.c.o
+                0x00000020       0x50 CMakeFiles/Oraculo.dir/components/NTP/NTP.c.o
  .debug_aranges
-                0x00000068       0x20 CMakeFiles/Oraculo.dir/components/Wifi/Wifi.c.o
+                0x00000070       0x20 CMakeFiles/Oraculo.dir/components/Wifi/Wifi.c.o
  .debug_aranges
-                0x00000088      0x118 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_gpio/gpio.c.o
+                0x00000090      0x118 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_gpio/gpio.c.o
  .debug_aranges
-                0x000001a0       0x20 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2040/pico_platform/platform.c.o
+                0x000001a8       0x20 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2040/pico_platform/platform.c.o
  .debug_aranges
-                0x000001c0       0x28 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_platform_panic/panic.c.o
+                0x000001c8       0x28 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_platform_panic/panic.c.o
  .debug_aranges
-                0x000001e8       0x48 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/hardware_claim/claim.c.o
+                0x000001f0       0x48 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/hardware_claim/claim.c.o
  .debug_aranges
-                0x00000230       0x48 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync/sync.c.o
+                0x00000238       0x48 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync/sync.c.o
  .debug_aranges
-                0x00000278       0x28 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.o
+                0x00000280       0x28 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.o
  .debug_aranges
-                0x000002a0       0xb8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_irq/irq.c.o
+                0x000002a8       0xb8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_irq/irq.c.o
  .debug_aranges
-                0x00000358       0x60 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/sem.c.o
+                0x00000360       0x60 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/sem.c.o
  .debug_aranges
-                0x000003b8       0x20 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/lock_core.c.o
+                0x000003c0       0x20 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/lock_core.c.o
  .debug_aranges
-                0x000003d8       0x98 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/mutex.c.o
+                0x000003e0       0x98 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/mutex.c.o
  .debug_aranges
-                0x00000470       0x30 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/critical_section.c.o
+                0x00000478       0x30 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/critical_section.c.o
  .debug_aranges
-                0x000004a0       0xe0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_time/time.c.o
+                0x000004a8       0xe0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_time/time.c.o
  .debug_aranges
-                0x00000580       0xf0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_timer/timer.c.o
+                0x00000588       0xf0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_timer/timer.c.o
  .debug_aranges
-                0x00000670       0x58 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_uart/uart.c.o
+                0x00000678       0x58 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_uart/uart.c.o
  .debug_aranges
-                0x000006c8       0x90 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_clocks/clocks.c.o
+                0x000006d0       0x90 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_clocks/clocks.c.o
  .debug_aranges
-                0x00000758       0x28 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pll/pll.c.o
+                0x00000760       0x28 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pll/pll.c.o
  .debug_aranges
-                0x00000780       0x68 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_watchdog/watchdog.c.o
+                0x00000788       0x68 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_watchdog/watchdog.c.o
  .debug_aranges
-                0x000007e8       0x30 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_ticks/ticks.c.o
+                0x000007f0       0x30 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_ticks/ticks.c.o
  .debug_aranges
-                0x00000818       0x40 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_bootrom/bootrom.c.o
+                0x00000820       0x40 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_bootrom/bootrom.c.o
  .debug_aranges
-                0x00000858       0x30 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_xosc/xosc.c.o
+                0x00000860       0x30 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_xosc/xosc.c.o
  .debug_aranges
-                0x00000888       0x38 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime/runtime.c.o
+                0x00000890       0x38 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime/runtime.c.o
  .debug_aranges
-                0x000008c0       0x48 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init.c.o
+                0x000008c8       0x48 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init.c.o
  .debug_aranges
-                0x00000908       0x20 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.o
+                0x00000910       0x20 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.o
  .debug_aranges
-                0x00000928       0x60 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.o
+                0x00000930       0x60 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.o
  .debug_aranges
-                0x00000988       0x40 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_divider/divider_hardware.S.o
+                0x00000990       0x40 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_divider/divider_hardware.S.o
  .debug_aranges
-                0x000009c8      0x150 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_aeabi_rp2040.S.o
+                0x000009d0      0x150 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_aeabi_rp2040.S.o
  .debug_aranges
-                0x00000b18       0x28 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_init_rom_rp2040.c.o
+                0x00000b20       0x28 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_init_rom_rp2040.c.o
  .debug_aranges
-                0x00000b40       0x20 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.o
+                0x00000b48       0x20 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.o
  .debug_aranges
-                0x00000b60       0x20 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.o
+                0x00000b68       0x20 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.o
  .debug_aranges
-                0x00000b80      0x138 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_float/float_aeabi_rp2040.S.o
+                0x00000b88      0x138 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_float/float_aeabi_rp2040.S.o
  .debug_aranges
-                0x00000cb8       0x28 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_float/float_init_rom_rp2040.c.o
+                0x00000cc0       0x28 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_float/float_init_rom_rp2040.c.o
  .debug_aranges
-                0x00000ce0       0x38 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_malloc/malloc.c.o
+                0x00000ce8       0x38 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_malloc/malloc.c.o
  .debug_aranges
-                0x00000d18       0x38 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.o
+                0x00000d20       0x38 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.o
  .debug_aranges
-                0x00000d50       0x18 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o
+                0x00000d58       0x18 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o
  .debug_aranges
-                0x00000d68       0x90 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_printf/printf.c.o
+                0x00000d70       0x90 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_printf/printf.c.o
  .debug_aranges
-                0x00000df8       0x28 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_crt0/crt0.S.o
+                0x00000e00       0x28 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_crt0/crt0.S.o
  .debug_aranges
-                0x00000e20       0xa8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_clib_interface/newlib_interface.c.o
+                0x00000e28       0xa8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_clib_interface/newlib_interface.c.o
  .debug_aranges
-                0x00000ec8       0xc8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio/stdio.c.o
+                0x00000ed0       0xc8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio/stdio.c.o
  .debug_aranges
-                0x00000f90       0x80 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_uart/stdio_uart.c.o
+                0x00000f98       0x80 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_uart/stdio_uart.c.o
  .debug_aranges
-                0x00001010       0x60 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/reset_interface.c.o
+                0x00001018       0x60 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/reset_interface.c.o
  .debug_aranges
-                0x00001070       0x70 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb.c.o
+                0x00001078       0x70 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb.c.o
  .debug_aranges
-                0x000010e0       0x30 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o
+                0x000010e8       0x30 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o
  .debug_aranges
-                0x00001110       0x30 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_unique_id/unique_id.c.o
+                0x00001118       0x30 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_unique_id/unique_id.c.o
  .debug_aranges
-                0x00001140       0x78 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_flash/flash.c.o
+                0x00001148       0x78 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_flash/flash.c.o
  .debug_aranges
-                0x000011b8       0xc0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o
+                0x000011c0       0xc0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o
  .debug_aranges
-                0x00001278       0x70 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o
+                0x00001280       0x70 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o
  .debug_aranges
-                0x000012e8      0x188 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd.c.o
+                0x000012f0      0x188 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd.c.o
  .debug_aranges
-                0x00001470       0x50 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd_control.c.o
+                0x00001478       0x50 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd_control.c.o
  .debug_aranges
-                0x000014c0       0xc0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/cdc/cdc_device.c.o
+                0x000014c8       0xc0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/cdc/cdc_device.c.o
  .debug_aranges
-                0x00001580       0x80 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/vendor/vendor_device.c.o
+                0x00001588       0x80 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/vendor/vendor_device.c.o
  .debug_aranges
-                0x00001600       0xb8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/tusb.c.o
+                0x00001608       0xb8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/tusb.c.o
  .debug_aranges
-                0x000016b8       0xb0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/common/tusb_fifo.c.o
+                0x000016c0       0xb0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/common/tusb_fifo.c.o
  .debug_aranges
-                0x00001768       0x58 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_lwip/lwip_nosys.c.o
+                0x00001770       0x58 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_lwip/lwip_nosys.c.o
  .debug_aranges
-                0x000017c0       0x58 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_base.c.o
+                0x000017c8       0x58 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_base.c.o
  .debug_aranges
-                0x00001818       0x40 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_rand/rand.c.o
+                0x00001820       0x40 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_rand/rand.c.o
  .debug_aranges
-                0x00001858       0x20 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/init.c.o
+                0x00001860       0x20 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/init.c.o
  .debug_aranges
-                0x00001878       0x58 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/def.c.o
+                0x00001880       0x58 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/def.c.o
  .debug_aranges
-                0x000018d0       0x68 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/dns.c.o
+                0x000018d8       0x68 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/dns.c.o
  .debug_aranges
-                0x00001938       0x50 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/inet_chksum.c.o
+                0x00001940       0x50 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/inet_chksum.c.o
  .debug_aranges
-                0x00001988       0x18 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ip.c.o
+                0x00001990       0x18 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ip.c.o
  .debug_aranges
-                0x000019a0       0x40 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/mem.c.o
+                0x000019a8       0x40 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/mem.c.o
  .debug_aranges
-                0x000019e0       0x48 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/memp.c.o
+                0x000019e8       0x48 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/memp.c.o
  .debug_aranges
-                0x00001a28       0xc8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/netif.c.o
+                0x00001a30       0xc8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/netif.c.o
  .debug_aranges
-                0x00001af0      0x118 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/pbuf.c.o
+                0x00001af8      0x118 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/pbuf.c.o
  .debug_aranges
-                0x00001c08       0x80 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/raw.c.o
+                0x00001c10       0x80 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/raw.c.o
  .debug_aranges
-                0x00001c88       0x20 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/stats.c.o
+                0x00001c90       0x20 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/stats.c.o
  .debug_aranges
-                0x00001ca8      0x178 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp.c.o
+                0x00001cb0      0x178 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp.c.o
  .debug_aranges
-                0x00001e20       0x48 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_in.c.o
+                0x00001e28       0x48 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_in.c.o
  .debug_aranges
-                0x00001e68       0xa0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_out.c.o
+                0x00001e70       0xa0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_out.c.o
  .debug_aranges
-                0x00001f08       0x60 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/timeouts.c.o
+                0x00001f10       0x60 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/timeouts.c.o
  .debug_aranges
-                0x00001f68       0x90 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/udp.c.o
+                0x00001f70       0x90 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/udp.c.o
  .debug_aranges
-                0x00001ff8       0xc0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/dhcp.c.o
+                0x00002000       0xc0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/dhcp.c.o
  .debug_aranges
-                0x000020b8       0x70 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/etharp.c.o
+                0x000020c0       0x70 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/etharp.c.o
  .debug_aranges
-                0x00002128       0x30 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/icmp.c.o
+                0x00002130       0x30 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/icmp.c.o
  .debug_aranges
-                0x00002158       0x40 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_frag.c.o
+                0x00002160       0x40 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_frag.c.o
  .debug_aranges
-                0x00002198       0x40 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4.c.o
+                0x000021a0       0x40 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4.c.o
  .debug_aranges
-                0x000021d8       0x48 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_addr.c.o
+                0x000021e0       0x48 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_addr.c.o
  .debug_aranges
-                0x00002220       0x28 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/netif/ethernet.c.o
+                0x00002228       0x28 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/netif/ethernet.c.o
  .debug_aranges
-                0x00002248       0xb0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.o
+                0x00002250       0xb0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.o
  .debug_aranges
-                0x000022f8       0x30 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.o
+                0x00002300       0x30 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.o
  .debug_aranges
-                0x00002328       0x98 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.o
+                0x00002330       0x98 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.o
  .debug_aranges
-                0x000023c0      0x138 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ll.c.o
+                0x000023c8      0x138 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ll.c.o
  .debug_aranges
-                0x000024f8       0x58 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_lwip.c.o
+                0x00002500       0x58 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_lwip.c.o
  .debug_aranges
-                0x00002550       0xd0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ctrl.c.o
+                0x00002558       0xd0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ctrl.c.o
  .debug_aranges
-                0x00002620       0xd8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pio/pio.c.o
+                0x00002628       0xd8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pio/pio.c.o
  .debug_aranges
-                0x000026f8       0x70 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_dma/dma.c.o
+                0x00002700       0x70 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_dma/dma.c.o
  .debug_aranges
-                0x00002768       0xa0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.o
+                0x00002770       0xa0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.o
  .debug_aranges
-                0x00002808       0xa0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.o
+                0x00002810       0xa0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.o
 
 .debug_rnglists
-                0x00000000     0x96b2
+                0x00000000     0x96c4
  .debug_rnglists
                 0x00000000       0x13 CMakeFiles/Oraculo.dir/main.c.o
  .debug_rnglists
-                0x00000013       0x70 CMakeFiles/Oraculo.dir/components/NTP/NTP.c.o
+                0x00000013       0x82 CMakeFiles/Oraculo.dir/components/NTP/NTP.c.o
  .debug_rnglists
-                0x00000083       0x13 CMakeFiles/Oraculo.dir/components/Wifi/Wifi.c.o
+                0x00000095       0x13 CMakeFiles/Oraculo.dir/components/Wifi/Wifi.c.o
  .debug_rnglists
-                0x00000096      0x5ca CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_gpio/gpio.c.o
+                0x000000a8      0x5ca CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_gpio/gpio.c.o
  .debug_rnglists
-                0x00000660       0x13 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2040/pico_platform/platform.c.o
+                0x00000672       0x13 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2040/pico_platform/platform.c.o
  .debug_rnglists
-                0x00000673       0x19 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_platform_panic/panic.c.o
+                0x00000685       0x19 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_platform_panic/panic.c.o
  .debug_rnglists
-                0x0000068c       0xb6 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/hardware_claim/claim.c.o
+                0x0000069e       0xb6 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/hardware_claim/claim.c.o
  .debug_rnglists
-                0x00000742       0x58 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync/sync.c.o
+                0x00000754       0x58 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync/sync.c.o
  .debug_rnglists
-                0x0000079a       0x3d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.o
+                0x000007ac       0x3d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.o
  .debug_rnglists
-                0x000007d7      0x37d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_irq/irq.c.o
+                0x000007e9      0x37d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_irq/irq.c.o
  .debug_rnglists
-                0x00000b54      0x14b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/sem.c.o
+                0x00000b66      0x14b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/sem.c.o
  .debug_rnglists
-                0x00000c9f       0x1f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/lock_core.c.o
+                0x00000cb1       0x1f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/lock_core.c.o
  .debug_rnglists
-                0x00000cbe      0x325 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/mutex.c.o
+                0x00000cd0      0x325 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/mutex.c.o
  .debug_rnglists
-                0x00000fe3       0x2b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/critical_section.c.o
+                0x00000ff5       0x2b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/critical_section.c.o
  .debug_rnglists
-                0x0000100e      0x7dc CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_time/time.c.o
+                0x00001020      0x7dc CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_time/time.c.o
  .debug_rnglists
-                0x000017ea      0x2c6 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_timer/timer.c.o
+                0x000017fc      0x2c6 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_timer/timer.c.o
  .debug_rnglists
-                0x00001ab0      0x259 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_uart/uart.c.o
+                0x00001ac2      0x259 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_uart/uart.c.o
  .debug_rnglists
-                0x00001d09      0x5be CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_clocks/clocks.c.o
+                0x00001d1b      0x5be CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_clocks/clocks.c.o
  .debug_rnglists
-                0x000022c7       0x5c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pll/pll.c.o
+                0x000022d9       0x5c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pll/pll.c.o
  .debug_rnglists
-                0x00002323       0xe5 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_watchdog/watchdog.c.o
+                0x00002335       0xe5 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_watchdog/watchdog.c.o
  .debug_rnglists
-                0x00002408       0x2b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_ticks/ticks.c.o
+                0x0000241a       0x2b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_ticks/ticks.c.o
  .debug_rnglists
-                0x00002433      0x112 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_bootrom/bootrom.c.o
+                0x00002445      0x112 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_bootrom/bootrom.c.o
  .debug_rnglists
-                0x00002545       0x1f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_xosc/xosc.c.o
+                0x00002557       0x1f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_xosc/xosc.c.o
  .debug_rnglists
-                0x00002564       0x3d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime/runtime.c.o
+                0x00002576       0x3d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime/runtime.c.o
  .debug_rnglists
-                0x000025a1       0x4a CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init.c.o
+                0x000025b3       0x4a CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init.c.o
  .debug_rnglists
-                0x000025eb       0x20 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.o
+                0x000025fd       0x20 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.o
  .debug_rnglists
-                0x0000260b       0x43 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.o
+                0x0000261d       0x43 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.o
  .debug_rnglists
-                0x0000264e       0x2c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_divider/divider_hardware.S.o
+                0x00002660       0x2c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_divider/divider_hardware.S.o
  .debug_rnglists
-                0x0000267a       0xf8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_aeabi_rp2040.S.o
+                0x0000268c       0xf8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_aeabi_rp2040.S.o
  .debug_rnglists
-                0x00002772       0x1a CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_init_rom_rp2040.c.o
+                0x00002784       0x1a CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_init_rom_rp2040.c.o
  .debug_rnglists
-                0x0000278c       0xe5 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_float/float_aeabi_rp2040.S.o
+                0x0000279e       0xe5 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_float/float_aeabi_rp2040.S.o
  .debug_rnglists
-                0x00002871       0x19 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_float/float_init_rom_rp2040.c.o
+                0x00002883       0x19 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_float/float_init_rom_rp2040.c.o
  .debug_rnglists
-                0x0000288a       0x49 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_malloc/malloc.c.o
+                0x0000289c       0x49 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_malloc/malloc.c.o
  .debug_rnglists
-                0x000028d3       0x25 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.o
+                0x000028e5       0x25 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.o
  .debug_rnglists
-                0x000028f8      0x2a2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_printf/printf.c.o
+                0x0000290a      0x2a2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_printf/printf.c.o
  .debug_rnglists
-                0x00002b9a       0x1b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_crt0/crt0.S.o
+                0x00002bac       0x1b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_crt0/crt0.S.o
  .debug_rnglists
-                0x00002bb5       0x85 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_clib_interface/newlib_interface.c.o
+                0x00002bc7       0x85 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_clib_interface/newlib_interface.c.o
  .debug_rnglists
-                0x00002c3a      0x2bb CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio/stdio.c.o
+                0x00002c4c      0x2bb CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio/stdio.c.o
  .debug_rnglists
-                0x00002ef5      0x1ce CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_uart/stdio_uart.c.o
+                0x00002f07      0x1ce CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_uart/stdio_uart.c.o
  .debug_rnglists
-                0x000030c3       0x43 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/reset_interface.c.o
+                0x000030d5       0x43 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/reset_interface.c.o
  .debug_rnglists
-                0x00003106      0x14f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb.c.o
+                0x00003118      0x14f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb.c.o
  .debug_rnglists
-                0x00003255       0x2b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o
+                0x00003267       0x2b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o
  .debug_rnglists
-                0x00003280       0x70 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_unique_id/unique_id.c.o
+                0x00003292       0x70 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_unique_id/unique_id.c.o
  .debug_rnglists
-                0x000032f0      0x368 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_flash/flash.c.o
+                0x00003302      0x368 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_flash/flash.c.o
  .debug_rnglists
-                0x00003658      0x425 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o
+                0x0000366a      0x425 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o
  .debug_rnglists
-                0x00003a7d       0xe8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o
+                0x00003a8f       0xe8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o
  .debug_rnglists
-                0x00003b65      0x601 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd.c.o
+                0x00003b77      0x601 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd.c.o
  .debug_rnglists
-                0x00004166       0x8e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd_control.c.o
+                0x00004178       0x8e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd_control.c.o
  .debug_rnglists
-                0x000041f4      0x1ee CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/cdc/cdc_device.c.o
+                0x00004206      0x1ee CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/cdc/cdc_device.c.o
  .debug_rnglists
-                0x000043e2      0x11e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/vendor/vendor_device.c.o
+                0x000043f4      0x11e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/vendor/vendor_device.c.o
  .debug_rnglists
-                0x00004500      0x210 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/tusb.c.o
+                0x00004512      0x210 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/tusb.c.o
  .debug_rnglists
-                0x00004710      0x3d3 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/common/tusb_fifo.c.o
+                0x00004722      0x3d3 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/common/tusb_fifo.c.o
  .debug_rnglists
-                0x00004ae3       0xa0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_lwip/lwip_nosys.c.o
+                0x00004af5       0xa0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_lwip/lwip_nosys.c.o
  .debug_rnglists
-                0x00004b83      0x140 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_base.c.o
+                0x00004b95      0x140 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_base.c.o
  .debug_rnglists
-                0x00004cc3      0x22f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_rand/rand.c.o
+                0x00004cd5      0x22f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_rand/rand.c.o
  .debug_rnglists
-                0x00004ef2       0x13 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/init.c.o
+                0x00004f04       0x13 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/init.c.o
  .debug_rnglists
-                0x00004f05       0x8e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/def.c.o
+                0x00004f17       0x8e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/def.c.o
  .debug_rnglists
-                0x00004f93      0x1b2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/dns.c.o
+                0x00004fa5      0x1b2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/dns.c.o
  .debug_rnglists
-                0x00005145       0x58 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/inet_chksum.c.o
+                0x00005157       0x58 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/inet_chksum.c.o
  .debug_rnglists
-                0x0000519d       0xdb CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/mem.c.o
+                0x000051af       0xdb CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/mem.c.o
  .debug_rnglists
-                0x00005278       0x7f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/memp.c.o
+                0x0000528a       0x7f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/memp.c.o
  .debug_rnglists
-                0x000052f7      0x1ca CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/netif.c.o
+                0x00005309      0x1ca CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/netif.c.o
  .debug_rnglists
-                0x000054c1      0x364 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/pbuf.c.o
+                0x000054d3      0x364 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/pbuf.c.o
  .debug_rnglists
-                0x00005825      0x125 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/raw.c.o
+                0x00005837      0x125 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/raw.c.o
  .debug_rnglists
-                0x0000594a       0x13 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/stats.c.o
+                0x0000595c       0x13 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/stats.c.o
  .debug_rnglists
-                0x0000595d      0x5a9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp.c.o
+                0x0000596f      0x5a9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp.c.o
  .debug_rnglists
-                0x00005f06      0x2d4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_in.c.o
+                0x00005f18      0x2d4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_in.c.o
  .debug_rnglists
-                0x000061da      0x33c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_out.c.o
+                0x000061ec      0x33c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_out.c.o
  .debug_rnglists
-                0x00006516       0xd0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/timeouts.c.o
+                0x00006528       0xd0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/timeouts.c.o
  .debug_rnglists
-                0x000065e6       0xc4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/udp.c.o
+                0x000065f8       0xc4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/udp.c.o
  .debug_rnglists
-                0x000066aa      0x599 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/dhcp.c.o
+                0x000066bc      0x599 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/dhcp.c.o
  .debug_rnglists
-                0x00006c43      0x1e4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/etharp.c.o
+                0x00006c55      0x1e4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/etharp.c.o
  .debug_rnglists
-                0x00006e27       0x6d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/icmp.c.o
+                0x00006e39       0x6d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/icmp.c.o
  .debug_rnglists
-                0x00006e94       0xb4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_frag.c.o
+                0x00006ea6       0xb4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_frag.c.o
  .debug_rnglists
-                0x00006f48       0xef CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4.c.o
+                0x00006f5a       0xef CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4.c.o
  .debug_rnglists
-                0x00007037       0x4e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_addr.c.o
+                0x00007049       0x4e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_addr.c.o
  .debug_rnglists
-                0x00007085       0x1a CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/netif/ethernet.c.o
+                0x00007097       0x1a CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/netif/ethernet.c.o
  .debug_rnglists
-                0x0000709f      0x222 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.o
+                0x000070b1      0x222 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.o
  .debug_rnglists
-                0x000072c1       0x1f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.o
+                0x000072d3       0x1f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.o
  .debug_rnglists
-                0x000072e0      0x985 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.o
+                0x000072f2      0x985 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.o
  .debug_rnglists
-                0x00007c65      0xcbe CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ll.c.o
+                0x00007c77      0xcbe CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ll.c.o
  .debug_rnglists
-                0x00008923       0x53 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_lwip.c.o
+                0x00008935       0x53 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_lwip.c.o
  .debug_rnglists
-                0x00008976      0x41b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ctrl.c.o
+                0x00008988      0x41b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ctrl.c.o
  .debug_rnglists
-                0x00008d91      0x4d9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pio/pio.c.o
+                0x00008da3      0x4d9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pio/pio.c.o
  .debug_rnglists
-                0x0000926a       0xca CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_dma/dma.c.o
+                0x0000927c       0xca CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_dma/dma.c.o
  .debug_rnglists
-                0x00009334      0x1c0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.o
+                0x00009346      0x1c0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.o
  .debug_rnglists
-                0x000094f4      0x1be CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.o
+                0x00009506      0x1be CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.o
 
-.debug_line     0x00000000    0x52217
+.debug_line     0x00000000    0x52248
  .debug_line    0x00000000      0x3fe CMakeFiles/Oraculo.dir/main.c.o
- .debug_line    0x000003fe      0x905 CMakeFiles/Oraculo.dir/components/NTP/NTP.c.o
- .debug_line    0x00000d03      0x1a3 CMakeFiles/Oraculo.dir/components/Wifi/Wifi.c.o
- .debug_line    0x00000ea6     0x1c5a CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_gpio/gpio.c.o
- .debug_line    0x00002b00      0x250 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2040/pico_platform/platform.c.o
- .debug_line    0x00002d50      0x278 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_platform_panic/panic.c.o
- .debug_line    0x00002fc8      0x8e8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/hardware_claim/claim.c.o
- .debug_line    0x000038b0      0x4c0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync/sync.c.o
- .debug_line    0x00003d70      0x3a5 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.o
- .debug_line    0x00004115     0x17b8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_irq/irq.c.o
- .debug_line    0x000058cd      0xe73 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/sem.c.o
- .debug_line    0x00006740      0x2d0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/lock_core.c.o
- .debug_line    0x00006a10     0x1b85 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/mutex.c.o
- .debug_line    0x00008595      0x401 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/critical_section.c.o
- .debug_line    0x00008996     0x3574 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_time/time.c.o
- .debug_line    0x0000bf0a     0x1d57 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_timer/timer.c.o
- .debug_line    0x0000dc61      0xf96 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_uart/uart.c.o
- .debug_line    0x0000ebf7     0x2143 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_clocks/clocks.c.o
- .debug_line    0x00010d3a      0x4f9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pll/pll.c.o
- .debug_line    0x00011233      0x7c6 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_watchdog/watchdog.c.o
- .debug_line    0x000119f9      0x32f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_ticks/ticks.c.o
- .debug_line    0x00011d28      0x454 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_bootrom/bootrom.c.o
- .debug_line    0x0001217c      0x34a CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_xosc/xosc.c.o
- .debug_line    0x000124c6      0x307 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime/runtime.c.o
- .debug_line    0x000127cd      0x6cf CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init.c.o
- .debug_line    0x00012e9c      0x557 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.o
- .debug_line    0x000133f3      0x108 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.o
- .debug_line    0x000134fb      0x2a9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_divider/divider_hardware.S.o
- .debug_line    0x000137a4      0x44d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_aeabi_rp2040.S.o
- .debug_line    0x00013bf1      0x4f2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_init_rom_rp2040.c.o
- .debug_line    0x000140e3       0x5d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.o
- .debug_line    0x00014140       0x61 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.o
- .debug_line    0x000141a1      0x3c6 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_float/float_aeabi_rp2040.S.o
- .debug_line    0x00014567      0x3ae CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_float/float_init_rom_rp2040.c.o
- .debug_line    0x00014915      0x298 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_malloc/malloc.c.o
- .debug_line    0x00014bad       0x94 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.o
- .debug_line    0x00014c41      0x1e6 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o
- .debug_line    0x00014e27     0x1d03 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_printf/printf.c.o
- .debug_line    0x00016b2a       0xa2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_crt0/crt0.S.o
- .debug_line    0x00016bcc      0x8c5 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_clib_interface/newlib_interface.c.o
- .debug_line    0x00017491     0x1517 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio/stdio.c.o
- .debug_line    0x000189a8      0xe00 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_uart/stdio_uart.c.o
- .debug_line    0x000197a8      0x501 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/reset_interface.c.o
- .debug_line    0x00019ca9     0x120b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb.c.o
- .debug_line    0x0001aeb4      0x3a9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o
- .debug_line    0x0001b25d      0x652 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_unique_id/unique_id.c.o
- .debug_line    0x0001b8af      0xe9a CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_flash/flash.c.o
- .debug_line    0x0001c749     0x1ed1 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o
- .debug_line    0x0001e61a      0xcfc CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o
- .debug_line    0x0001f316     0x288e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd.c.o
- .debug_line    0x00021ba4      0x6da CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd_control.c.o
- .debug_line    0x0002227e     0x10a1 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/cdc/cdc_device.c.o
- .debug_line    0x0002331f      0xab2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/vendor/vendor_device.c.o
- .debug_line    0x00023dd1     0x1219 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/tusb.c.o
- .debug_line    0x00024fea     0x1a4f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/common/tusb_fifo.c.o
- .debug_line    0x00026a39      0x6af CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_lwip/lwip_nosys.c.o
- .debug_line    0x000270e8      0x868 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_base.c.o
- .debug_line    0x00027950     0x10a9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_rand/rand.c.o
- .debug_line    0x000289f9      0x1e6 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/init.c.o
- .debug_line    0x00028bdf      0x651 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/def.c.o
- .debug_line    0x00029230     0x1ade CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/dns.c.o
- .debug_line    0x0002ad0e      0x751 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/inet_chksum.c.o
- .debug_line    0x0002b45f      0x1db CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ip.c.o
- .debug_line    0x0002b63a      0xaab CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/mem.c.o
- .debug_line    0x0002c0e5      0x614 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/memp.c.o
- .debug_line    0x0002c6f9     0x1225 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/netif.c.o
- .debug_line    0x0002d91e     0x2061 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/pbuf.c.o
- .debug_line    0x0002f97f      0xcb9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/raw.c.o
- .debug_line    0x00030638      0x172 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/stats.c.o
- .debug_line    0x000307aa     0x302b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp.c.o
- .debug_line    0x000337d5     0x2358 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_in.c.o
- .debug_line    0x00035b2d     0x24a8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_out.c.o
- .debug_line    0x00037fd5      0xafd CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/timeouts.c.o
- .debug_line    0x00038ad2     0x11ea CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/udp.c.o
- .debug_line    0x00039cbc     0x2f38 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/dhcp.c.o
- .debug_line    0x0003cbf4     0x182e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/etharp.c.o
- .debug_line    0x0003e422      0x78d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/icmp.c.o
- .debug_line    0x0003ebaf     0x106f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_frag.c.o
- .debug_line    0x0003fc1e      0xe32 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4.c.o
- .debug_line    0x00040a50      0x8db CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_addr.c.o
- .debug_line    0x0004132b      0x4fc CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/netif/ethernet.c.o
- .debug_line    0x00041827      0xef4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.o
- .debug_line    0x0004271b      0x6af CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.o
- .debug_line    0x00042dca     0x3ab8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.o
- .debug_line    0x00046882     0x4e3f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ll.c.o
- .debug_line    0x0004b6c1      0x5ce CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_lwip.c.o
- .debug_line    0x0004bc8f     0x240e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ctrl.c.o
- .debug_line    0x0004e09d     0x1d7b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pio/pio.c.o
- .debug_line    0x0004fe18      0x737 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_dma/dma.c.o
- .debug_line    0x0005054f      0xe62 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.o
- .debug_line    0x000513b1      0xe66 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.o
+ .debug_line    0x000003fe      0x936 CMakeFiles/Oraculo.dir/components/NTP/NTP.c.o
+ .debug_line    0x00000d34      0x1a3 CMakeFiles/Oraculo.dir/components/Wifi/Wifi.c.o
+ .debug_line    0x00000ed7     0x1c5a CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_gpio/gpio.c.o
+ .debug_line    0x00002b31      0x250 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2040/pico_platform/platform.c.o
+ .debug_line    0x00002d81      0x278 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_platform_panic/panic.c.o
+ .debug_line    0x00002ff9      0x8e8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/hardware_claim/claim.c.o
+ .debug_line    0x000038e1      0x4c0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync/sync.c.o
+ .debug_line    0x00003da1      0x3a5 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.o
+ .debug_line    0x00004146     0x17b8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_irq/irq.c.o
+ .debug_line    0x000058fe      0xe73 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/sem.c.o
+ .debug_line    0x00006771      0x2d0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/lock_core.c.o
+ .debug_line    0x00006a41     0x1b85 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/mutex.c.o
+ .debug_line    0x000085c6      0x401 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/critical_section.c.o
+ .debug_line    0x000089c7     0x3574 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_time/time.c.o
+ .debug_line    0x0000bf3b     0x1d57 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_timer/timer.c.o
+ .debug_line    0x0000dc92      0xf96 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_uart/uart.c.o
+ .debug_line    0x0000ec28     0x2143 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_clocks/clocks.c.o
+ .debug_line    0x00010d6b      0x4f9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pll/pll.c.o
+ .debug_line    0x00011264      0x7c6 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_watchdog/watchdog.c.o
+ .debug_line    0x00011a2a      0x32f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_ticks/ticks.c.o
+ .debug_line    0x00011d59      0x454 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_bootrom/bootrom.c.o
+ .debug_line    0x000121ad      0x34a CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_xosc/xosc.c.o
+ .debug_line    0x000124f7      0x307 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime/runtime.c.o
+ .debug_line    0x000127fe      0x6cf CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init.c.o
+ .debug_line    0x00012ecd      0x557 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.o
+ .debug_line    0x00013424      0x108 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.o
+ .debug_line    0x0001352c      0x2a9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_divider/divider_hardware.S.o
+ .debug_line    0x000137d5      0x44d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_aeabi_rp2040.S.o
+ .debug_line    0x00013c22      0x4f2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_init_rom_rp2040.c.o
+ .debug_line    0x00014114       0x5d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.o
+ .debug_line    0x00014171       0x61 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.o
+ .debug_line    0x000141d2      0x3c6 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_float/float_aeabi_rp2040.S.o
+ .debug_line    0x00014598      0x3ae CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_float/float_init_rom_rp2040.c.o
+ .debug_line    0x00014946      0x298 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_malloc/malloc.c.o
+ .debug_line    0x00014bde       0x94 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.o
+ .debug_line    0x00014c72      0x1e6 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o
+ .debug_line    0x00014e58     0x1d03 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_printf/printf.c.o
+ .debug_line    0x00016b5b       0xa2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_crt0/crt0.S.o
+ .debug_line    0x00016bfd      0x8c5 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_clib_interface/newlib_interface.c.o
+ .debug_line    0x000174c2     0x1517 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio/stdio.c.o
+ .debug_line    0x000189d9      0xe00 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_uart/stdio_uart.c.o
+ .debug_line    0x000197d9      0x501 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/reset_interface.c.o
+ .debug_line    0x00019cda     0x120b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb.c.o
+ .debug_line    0x0001aee5      0x3a9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o
+ .debug_line    0x0001b28e      0x652 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_unique_id/unique_id.c.o
+ .debug_line    0x0001b8e0      0xe9a CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_flash/flash.c.o
+ .debug_line    0x0001c77a     0x1ed1 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o
+ .debug_line    0x0001e64b      0xcfc CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o
+ .debug_line    0x0001f347     0x288e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd.c.o
+ .debug_line    0x00021bd5      0x6da CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd_control.c.o
+ .debug_line    0x000222af     0x10a1 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/cdc/cdc_device.c.o
+ .debug_line    0x00023350      0xab2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/vendor/vendor_device.c.o
+ .debug_line    0x00023e02     0x1219 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/tusb.c.o
+ .debug_line    0x0002501b     0x1a4f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/common/tusb_fifo.c.o
+ .debug_line    0x00026a6a      0x6af CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_lwip/lwip_nosys.c.o
+ .debug_line    0x00027119      0x868 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_base.c.o
+ .debug_line    0x00027981     0x10a9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_rand/rand.c.o
+ .debug_line    0x00028a2a      0x1e6 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/init.c.o
+ .debug_line    0x00028c10      0x651 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/def.c.o
+ .debug_line    0x00029261     0x1ade CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/dns.c.o
+ .debug_line    0x0002ad3f      0x751 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/inet_chksum.c.o
+ .debug_line    0x0002b490      0x1db CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ip.c.o
+ .debug_line    0x0002b66b      0xaab CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/mem.c.o
+ .debug_line    0x0002c116      0x614 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/memp.c.o
+ .debug_line    0x0002c72a     0x1225 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/netif.c.o
+ .debug_line    0x0002d94f     0x2061 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/pbuf.c.o
+ .debug_line    0x0002f9b0      0xcb9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/raw.c.o
+ .debug_line    0x00030669      0x172 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/stats.c.o
+ .debug_line    0x000307db     0x302b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp.c.o
+ .debug_line    0x00033806     0x2358 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_in.c.o
+ .debug_line    0x00035b5e     0x24a8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_out.c.o
+ .debug_line    0x00038006      0xafd CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/timeouts.c.o
+ .debug_line    0x00038b03     0x11ea CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/udp.c.o
+ .debug_line    0x00039ced     0x2f38 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/dhcp.c.o
+ .debug_line    0x0003cc25     0x182e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/etharp.c.o
+ .debug_line    0x0003e453      0x78d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/icmp.c.o
+ .debug_line    0x0003ebe0     0x106f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_frag.c.o
+ .debug_line    0x0003fc4f      0xe32 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4.c.o
+ .debug_line    0x00040a81      0x8db CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_addr.c.o
+ .debug_line    0x0004135c      0x4fc CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/netif/ethernet.c.o
+ .debug_line    0x00041858      0xef4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.o
+ .debug_line    0x0004274c      0x6af CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.o
+ .debug_line    0x00042dfb     0x3ab8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.o
+ .debug_line    0x000468b3     0x4e3f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ll.c.o
+ .debug_line    0x0004b6f2      0x5ce CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_lwip.c.o
+ .debug_line    0x0004bcc0     0x240e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ctrl.c.o
+ .debug_line    0x0004e0ce     0x1d7b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pio/pio.c.o
+ .debug_line    0x0004fe49      0x737 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_dma/dma.c.o
+ .debug_line    0x00050580      0xe62 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.o
+ .debug_line    0x000513e2      0xe66 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.o
 
-.debug_str      0x00000000    0x1056e
- .debug_str     0x00000000    0x1056e CMakeFiles/Oraculo.dir/main.c.o
-                                0x583 (size before relaxing)
- .debug_str     0x0001056e      0xee7 CMakeFiles/Oraculo.dir/components/NTP/NTP.c.o
- .debug_str     0x0001056e      0x22f CMakeFiles/Oraculo.dir/components/Wifi/Wifi.c.o
- .debug_str     0x0001056e      0xccb CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_gpio/gpio.c.o
- .debug_str     0x0001056e      0x1fc CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2040/pico_platform/platform.c.o
- .debug_str     0x0001056e      0x203 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_platform_panic/panic.c.o
- .debug_str     0x0001056e      0x386 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/hardware_claim/claim.c.o
- .debug_str     0x0001056e      0x32f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync/sync.c.o
- .debug_str     0x0001056e      0x242 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.o
- .debug_str     0x0001056e      0xabe CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_irq/irq.c.o
- .debug_str     0x0001056e      0x513 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/sem.c.o
- .debug_str     0x0001056e      0x20e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/lock_core.c.o
- .debug_str     0x0001056e      0x7e9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/mutex.c.o
- .debug_str     0x0001056e      0x2ce CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/critical_section.c.o
- .debug_str     0x0001056e     0x11e5 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_time/time.c.o
- .debug_str     0x0001056e      0xa31 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_timer/timer.c.o
- .debug_str     0x0001056e      0xc40 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_uart/uart.c.o
- .debug_str     0x0001056e      0xa14 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_clocks/clocks.c.o
- .debug_str     0x0001056e      0x461 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pll/pll.c.o
- .debug_str     0x0001056e      0x3c5 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_watchdog/watchdog.c.o
- .debug_str     0x0001056e      0x290 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_ticks/ticks.c.o
- .debug_str     0x0001056e      0x355 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_bootrom/bootrom.c.o
- .debug_str     0x0001056e      0x245 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_xosc/xosc.c.o
- .debug_str     0x0001056e      0x295 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime/runtime.c.o
- .debug_str     0x0001056e      0x7c8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init.c.o
- .debug_str     0x0001056e      0x49d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.o
- .debug_str     0x0001056e       0x8d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.o
- .debug_str     0x0001056e       0x90 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_divider/divider_hardware.S.o
- .debug_str     0x0001056e       0x92 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_aeabi_rp2040.S.o
- .debug_str     0x0001056e      0x2dd CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_init_rom_rp2040.c.o
- .debug_str     0x0001056e       0x98 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.o
- .debug_str     0x0001056e       0x96 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.o
- .debug_str     0x0001056e       0x90 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_float/float_aeabi_rp2040.S.o
- .debug_str     0x0001056e      0x2a2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_float/float_init_rom_rp2040.c.o
- .debug_str     0x0001056e      0x23b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_malloc/malloc.c.o
- .debug_str     0x0001056e       0x8d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.o
- .debug_str     0x0001056e      0x43e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o
- .debug_str     0x0001056e      0x4e7 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_printf/printf.c.o
- .debug_str     0x0001056e       0x81 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_crt0/crt0.S.o
- .debug_str     0x0001056e      0x77e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_clib_interface/newlib_interface.c.o
- .debug_str     0x0001056e      0xddc CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio/stdio.c.o
- .debug_str     0x0001056e      0xf1f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_uart/stdio_uart.c.o
- .debug_str     0x0001056e      0xe45 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/reset_interface.c.o
- .debug_str     0x0001056e      0xf51 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb.c.o
- .debug_str     0x0001056e      0xfe7 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o
- .debug_str     0x0001056e      0x274 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_unique_id/unique_id.c.o
- .debug_str     0x0001056e      0x7ad CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_flash/flash.c.o
- .debug_str     0x0001056e     0x1237 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o
- .debug_str     0x0001056e      0xa3b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o
- .debug_str     0x0001056e     0x1b7b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd.c.o
- .debug_str     0x0001056e      0x6df CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd_control.c.o
- .debug_str     0x0001056e     0x176e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/cdc/cdc_device.c.o
- .debug_str     0x0001056e      0xe44 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/vendor/vendor_device.c.o
- .debug_str     0x0001056e      0xe20 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/tusb.c.o
- .debug_str     0x0001056e      0x62c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/common/tusb_fifo.c.o
- .debug_str     0x0001056e      0x8ab CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_lwip/lwip_nosys.c.o
- .debug_str     0x0001056e      0x600 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_base.c.o
- .debug_str     0x0001056e      0xc4c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_rand/rand.c.o
- .debug_str     0x0001056e      0x1f6 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/init.c.o
- .debug_str     0x0001056e      0x2b4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/def.c.o
- .debug_str     0x0001056e      0x9c1 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/dns.c.o
- .debug_str     0x0001056e      0x35e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/inet_chksum.c.o
- .debug_str     0x0001056e      0x4e1 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ip.c.o
- .debug_str     0x0001056e      0x449 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/mem.c.o
- .debug_str     0x0001056e      0x5d1 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/memp.c.o
- .debug_str     0x0001056e      0x7e4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/netif.c.o
- .debug_str     0x0001056e      0xc77 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/pbuf.c.o
- .debug_str     0x0001056e      0x8ae CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/raw.c.o
- .debug_str     0x0001056e      0x2b0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/stats.c.o
- .debug_str     0x0001056e      0xf22 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp.c.o
- .debug_str     0x0001056e      0xdb8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_in.c.o
- .debug_str     0x0001056e      0xcf9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_out.c.o
- .debug_str     0x0001056e      0x8f2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/timeouts.c.o
- .debug_str     0x0001056e      0xa35 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/udp.c.o
- .debug_str     0x0001056e     0x10bb CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/dhcp.c.o
- .debug_str     0x0001056e      0xad5 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/etharp.c.o
- .debug_str     0x0001056e      0x792 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/icmp.c.o
- .debug_str     0x0001056e      0x918 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_frag.c.o
- .debug_str     0x0001056e      0x9db CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4.c.o
- .debug_str     0x0001056e      0x4fd CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_addr.c.o
- .debug_str     0x0001056e      0x73a CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/netif/ethernet.c.o
- .debug_str     0x0001056e     0x119e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.o
- .debug_str     0x0001056e      0xc1a CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.o
- .debug_str     0x0001056e     0x2035 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.o
- .debug_str     0x0001056e     0x14e1 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ll.c.o
- .debug_str     0x0001056e      0x8c6 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_lwip.c.o
- .debug_str     0x0001056e     0x14d2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ctrl.c.o
- .debug_str     0x0001056e     0x10df CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pio/pio.c.o
- .debug_str     0x0001056e      0x5e2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_dma/dma.c.o
- .debug_str     0x0001056e     0x1127 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.o
- .debug_str     0x0001056e      0xf4d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.o
+.debug_str      0x00000000    0x105a4
+ .debug_str     0x00000000    0x105a4 CMakeFiles/Oraculo.dir/main.c.o
+                                0x5a6 (size before relaxing)
+ .debug_str     0x000105a4      0xefa CMakeFiles/Oraculo.dir/components/NTP/NTP.c.o
+ .debug_str     0x000105a4      0x22f CMakeFiles/Oraculo.dir/components/Wifi/Wifi.c.o
+ .debug_str     0x000105a4      0xccb CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_gpio/gpio.c.o
+ .debug_str     0x000105a4      0x1fc CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2040/pico_platform/platform.c.o
+ .debug_str     0x000105a4      0x203 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_platform_panic/panic.c.o
+ .debug_str     0x000105a4      0x386 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/hardware_claim/claim.c.o
+ .debug_str     0x000105a4      0x32f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync/sync.c.o
+ .debug_str     0x000105a4      0x242 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.o
+ .debug_str     0x000105a4      0xabe CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_irq/irq.c.o
+ .debug_str     0x000105a4      0x513 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/sem.c.o
+ .debug_str     0x000105a4      0x20e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/lock_core.c.o
+ .debug_str     0x000105a4      0x7e9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/mutex.c.o
+ .debug_str     0x000105a4      0x2ce CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/critical_section.c.o
+ .debug_str     0x000105a4     0x11e5 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_time/time.c.o
+ .debug_str     0x000105a4      0xa31 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_timer/timer.c.o
+ .debug_str     0x000105a4      0xc40 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_uart/uart.c.o
+ .debug_str     0x000105a4      0xa14 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_clocks/clocks.c.o
+ .debug_str     0x000105a4      0x461 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pll/pll.c.o
+ .debug_str     0x000105a4      0x3c5 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_watchdog/watchdog.c.o
+ .debug_str     0x000105a4      0x290 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_ticks/ticks.c.o
+ .debug_str     0x000105a4      0x355 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_bootrom/bootrom.c.o
+ .debug_str     0x000105a4      0x245 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_xosc/xosc.c.o
+ .debug_str     0x000105a4      0x295 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime/runtime.c.o
+ .debug_str     0x000105a4      0x7c8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init.c.o
+ .debug_str     0x000105a4      0x49d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.o
+ .debug_str     0x000105a4       0x8d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.o
+ .debug_str     0x000105a4       0x90 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_divider/divider_hardware.S.o
+ .debug_str     0x000105a4       0x92 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_aeabi_rp2040.S.o
+ .debug_str     0x000105a4      0x2dd CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_init_rom_rp2040.c.o
+ .debug_str     0x000105a4       0x98 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.o
+ .debug_str     0x000105a4       0x96 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.o
+ .debug_str     0x000105a4       0x90 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_float/float_aeabi_rp2040.S.o
+ .debug_str     0x000105a4      0x2a2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_float/float_init_rom_rp2040.c.o
+ .debug_str     0x000105a4      0x23b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_malloc/malloc.c.o
+ .debug_str     0x000105a4       0x8d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.o
+ .debug_str     0x000105a4      0x43e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o
+ .debug_str     0x000105a4      0x4e7 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_printf/printf.c.o
+ .debug_str     0x000105a4       0x81 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_crt0/crt0.S.o
+ .debug_str     0x000105a4      0x77e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_clib_interface/newlib_interface.c.o
+ .debug_str     0x000105a4      0xddc CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio/stdio.c.o
+ .debug_str     0x000105a4      0xf1f CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_uart/stdio_uart.c.o
+ .debug_str     0x000105a4      0xe45 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/reset_interface.c.o
+ .debug_str     0x000105a4      0xf51 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb.c.o
+ .debug_str     0x000105a4      0xfe7 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o
+ .debug_str     0x000105a4      0x274 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_unique_id/unique_id.c.o
+ .debug_str     0x000105a4      0x7ad CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_flash/flash.c.o
+ .debug_str     0x000105a4     0x1237 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o
+ .debug_str     0x000105a4      0xa3b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o
+ .debug_str     0x000105a4     0x1b7b CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd.c.o
+ .debug_str     0x000105a4      0x6df CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd_control.c.o
+ .debug_str     0x000105a4     0x176e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/cdc/cdc_device.c.o
+ .debug_str     0x000105a4      0xe44 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/vendor/vendor_device.c.o
+ .debug_str     0x000105a4      0xe20 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/tusb.c.o
+ .debug_str     0x000105a4      0x62c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/common/tusb_fifo.c.o
+ .debug_str     0x000105a4      0x8ab CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_lwip/lwip_nosys.c.o
+ .debug_str     0x000105a4      0x600 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_base.c.o
+ .debug_str     0x000105a4      0xc4c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_rand/rand.c.o
+ .debug_str     0x000105a4      0x1f6 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/init.c.o
+ .debug_str     0x000105a4      0x2b4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/def.c.o
+ .debug_str     0x000105a4      0x9c1 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/dns.c.o
+ .debug_str     0x000105a4      0x35e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/inet_chksum.c.o
+ .debug_str     0x000105a4      0x4e1 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ip.c.o
+ .debug_str     0x000105a4      0x449 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/mem.c.o
+ .debug_str     0x000105a4      0x5d1 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/memp.c.o
+ .debug_str     0x000105a4      0x7e4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/netif.c.o
+ .debug_str     0x000105a4      0xc77 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/pbuf.c.o
+ .debug_str     0x000105a4      0x8ae CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/raw.c.o
+ .debug_str     0x000105a4      0x2b0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/stats.c.o
+ .debug_str     0x000105a4      0xf22 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp.c.o
+ .debug_str     0x000105a4      0xdb8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_in.c.o
+ .debug_str     0x000105a4      0xcf9 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_out.c.o
+ .debug_str     0x000105a4      0x8f2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/timeouts.c.o
+ .debug_str     0x000105a4      0xa35 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/udp.c.o
+ .debug_str     0x000105a4     0x10bb CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/dhcp.c.o
+ .debug_str     0x000105a4      0xad5 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/etharp.c.o
+ .debug_str     0x000105a4      0x792 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/icmp.c.o
+ .debug_str     0x000105a4      0x918 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_frag.c.o
+ .debug_str     0x000105a4      0x9db CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4.c.o
+ .debug_str     0x000105a4      0x4fd CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_addr.c.o
+ .debug_str     0x000105a4      0x73a CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/netif/ethernet.c.o
+ .debug_str     0x000105a4     0x119e CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.o
+ .debug_str     0x000105a4      0xc1a CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.o
+ .debug_str     0x000105a4     0x2035 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.o
+ .debug_str     0x000105a4     0x14e1 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ll.c.o
+ .debug_str     0x000105a4      0x8c6 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_lwip.c.o
+ .debug_str     0x000105a4     0x14d2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ctrl.c.o
+ .debug_str     0x000105a4     0x10df CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pio/pio.c.o
+ .debug_str     0x000105a4      0x5e2 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_dma/dma.c.o
+ .debug_str     0x000105a4     0x1127 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.o
+ .debug_str     0x000105a4      0xf4d CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.o
 
-.debug_frame    0x00000000     0x704c
+.debug_frame    0x00000000     0x705c
  .debug_frame   0x00000000       0x28 CMakeFiles/Oraculo.dir/main.c.o
- .debug_frame   0x00000028       0xc0 CMakeFiles/Oraculo.dir/components/NTP/NTP.c.o
- .debug_frame   0x000000e8       0x2c CMakeFiles/Oraculo.dir/components/Wifi/Wifi.c.o
- .debug_frame   0x00000114      0x320 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_gpio/gpio.c.o
- .debug_frame   0x00000434       0x20 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2040/pico_platform/platform.c.o
- .debug_frame   0x00000454       0x44 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_platform_panic/panic.c.o
- .debug_frame   0x00000498       0xa0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/hardware_claim/claim.c.o
- .debug_frame   0x00000538       0xa8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync/sync.c.o
- .debug_frame   0x000005e0       0x30 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.o
- .debug_frame   0x00000610      0x1cc CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_irq/irq.c.o
- .debug_frame   0x000007dc      0x100 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/sem.c.o
- .debug_frame   0x000008dc       0x20 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/lock_core.c.o
- .debug_frame   0x000008fc      0x1e8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/mutex.c.o
- .debug_frame   0x00000ae4       0x50 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/critical_section.c.o
- .debug_frame   0x00000b34      0x2ec CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_time/time.c.o
- .debug_frame   0x00000e20      0x2c4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_timer/timer.c.o
- .debug_frame   0x000010e4       0xec CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_uart/uart.c.o
- .debug_frame   0x000011d0      0x1f4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_clocks/clocks.c.o
- .debug_frame   0x000013c4       0x40 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pll/pll.c.o
- .debug_frame   0x00001404       0xd8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_watchdog/watchdog.c.o
- .debug_frame   0x000014dc       0x40 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_ticks/ticks.c.o
- .debug_frame   0x0000151c       0xa0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_bootrom/bootrom.c.o
- .debug_frame   0x000015bc       0x40 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_xosc/xosc.c.o
- .debug_frame   0x000015fc       0x70 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime/runtime.c.o
- .debug_frame   0x0000166c       0x88 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init.c.o
- .debug_frame   0x000016f4       0x2c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.o
- .debug_frame   0x00001720       0x44 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_init_rom_rp2040.c.o
- .debug_frame   0x00001764       0x40 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_float/float_init_rom_rp2040.c.o
- .debug_frame   0x000017a4       0x74 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_malloc/malloc.c.o
- .debug_frame   0x00001818      0x1f0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_printf/printf.c.o
- .debug_frame   0x00001a08      0x184 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_clib_interface/newlib_interface.c.o
- .debug_frame   0x00001b8c      0x2a8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio/stdio.c.o
- .debug_frame   0x00001e34      0x158 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_uart/stdio_uart.c.o
- .debug_frame   0x00001f8c       0xbc CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/reset_interface.c.o
- .debug_frame   0x00002048      0x130 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb.c.o
- .debug_frame   0x00002178       0x48 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o
- .debug_frame   0x000021c0       0x5c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_unique_id/unique_id.c.o
- .debug_frame   0x0000221c      0x15c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_flash/flash.c.o
- .debug_frame   0x00002378      0x220 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o
- .debug_frame   0x00002598      0x124 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o
- .debug_frame   0x000026bc      0x414 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd.c.o
- .debug_frame   0x00002ad0       0xc0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd_control.c.o
- .debug_frame   0x00002b90      0x234 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/cdc/cdc_device.c.o
- .debug_frame   0x00002dc4      0x168 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/vendor/vendor_device.c.o
- .debug_frame   0x00002f2c      0x238 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/tusb.c.o
- .debug_frame   0x00003164      0x220 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/common/tusb_fifo.c.o
- .debug_frame   0x00003384       0xc4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_lwip/lwip_nosys.c.o
- .debug_frame   0x00003448       0xe0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_base.c.o
- .debug_frame   0x00003528       0xac CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_rand/rand.c.o
- .debug_frame   0x000035d4       0x28 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/init.c.o
- .debug_frame   0x000035fc      0x100 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/def.c.o
- .debug_frame   0x000036fc      0x154 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/dns.c.o
- .debug_frame   0x00003850      0x100 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/inet_chksum.c.o
- .debug_frame   0x00003950       0xb8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/mem.c.o
- .debug_frame   0x00003a08       0xb8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/memp.c.o
- .debug_frame   0x00003ac0      0x224 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/netif.c.o
- .debug_frame   0x00003ce4      0x398 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/pbuf.c.o
- .debug_frame   0x0000407c      0x16c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/raw.c.o
- .debug_frame   0x000041e8       0x20 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/stats.c.o
- .debug_frame   0x00004208      0x4b8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp.c.o
- .debug_frame   0x000046c0       0xf0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_in.c.o
- .debug_frame   0x000047b0      0x2a4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_out.c.o
- .debug_frame   0x00004a54      0x114 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/timeouts.c.o
- .debug_frame   0x00004b68      0x1ac CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/udp.c.o
- .debug_frame   0x00004d14      0x2e0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/dhcp.c.o
- .debug_frame   0x00004ff4      0x1ac CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/etharp.c.o
- .debug_frame   0x000051a0       0x8c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/icmp.c.o
- .debug_frame   0x0000522c       0xd8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_frag.c.o
- .debug_frame   0x00005304       0xe0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4.c.o
- .debug_frame   0x000053e4       0xdc CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_addr.c.o
- .debug_frame   0x000054c0       0x54 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/netif/ethernet.c.o
- .debug_frame   0x00005514      0x250 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.o
- .debug_frame   0x00005764       0x60 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.o
- .debug_frame   0x000057c4      0x234 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.o
- .debug_frame   0x000059f8      0x510 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ll.c.o
- .debug_frame   0x00005f08       0xf0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_lwip.c.o
- .debug_frame   0x00005ff8      0x314 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ctrl.c.o
- .debug_frame   0x0000630c      0x344 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pio/pio.c.o
- .debug_frame   0x00006650      0x134 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_dma/dma.c.o
- .debug_frame   0x00006784      0x1c4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.o
- .debug_frame   0x00006948      0x1d8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.o
- .debug_frame   0x00006b20       0x28 /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-calloc.o)
- .debug_frame   0x00006b48       0x2c /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-callocr.o)
- .debug_frame   0x00006b74       0x40 /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-malloc.o)
- .debug_frame   0x00006bb4       0x3c /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-mallocr.o)
- .debug_frame   0x00006bf0       0x40 /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-mlock.o)
- .debug_frame   0x00006c30       0x20 /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-ctype_.o)
- .debug_frame   0x00006c50       0x2c /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-memcmp.o)
- .debug_frame   0x00006c7c       0x34 /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-memmove.o)
- .debug_frame   0x00006cb0       0x2c /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-strncmp.o)
- .debug_frame   0x00006cdc       0x28 /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-gmtime.o)
- .debug_frame   0x00006d04       0x3c /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-gmtime_r.o)
- .debug_frame   0x00006d40       0x2c /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-sbrkr.o)
- .debug_frame   0x00006d6c       0x20 /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-errno.o)
- .debug_frame   0x00006d8c       0xb0 /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-lock.o)
- .debug_frame   0x00006e3c       0x28 /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-sysconf.o)
- .debug_frame   0x00006e64       0x28 /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-strlen-stub.o)
- .debug_frame   0x00006e8c       0x5c /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-freer.o)
- .debug_frame   0x00006ee8      0x138 /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-findfp.o)
- .debug_frame   0x00007020       0x2c /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-reent.o)
+ .debug_frame   0x00000028       0xd0 CMakeFiles/Oraculo.dir/components/NTP/NTP.c.o
+ .debug_frame   0x000000f8       0x2c CMakeFiles/Oraculo.dir/components/Wifi/Wifi.c.o
+ .debug_frame   0x00000124      0x320 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_gpio/gpio.c.o
+ .debug_frame   0x00000444       0x20 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2040/pico_platform/platform.c.o
+ .debug_frame   0x00000464       0x44 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_platform_panic/panic.c.o
+ .debug_frame   0x000004a8       0xa0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/hardware_claim/claim.c.o
+ .debug_frame   0x00000548       0xa8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync/sync.c.o
+ .debug_frame   0x000005f0       0x30 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.o
+ .debug_frame   0x00000620      0x1cc CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_irq/irq.c.o
+ .debug_frame   0x000007ec      0x100 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/sem.c.o
+ .debug_frame   0x000008ec       0x20 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/lock_core.c.o
+ .debug_frame   0x0000090c      0x1e8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/mutex.c.o
+ .debug_frame   0x00000af4       0x50 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_sync/critical_section.c.o
+ .debug_frame   0x00000b44      0x2ec CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/common/pico_time/time.c.o
+ .debug_frame   0x00000e30      0x2c4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_timer/timer.c.o
+ .debug_frame   0x000010f4       0xec CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_uart/uart.c.o
+ .debug_frame   0x000011e0      0x1f4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_clocks/clocks.c.o
+ .debug_frame   0x000013d4       0x40 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pll/pll.c.o
+ .debug_frame   0x00001414       0xd8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_watchdog/watchdog.c.o
+ .debug_frame   0x000014ec       0x40 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_ticks/ticks.c.o
+ .debug_frame   0x0000152c       0xa0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_bootrom/bootrom.c.o
+ .debug_frame   0x000015cc       0x40 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_xosc/xosc.c.o
+ .debug_frame   0x0000160c       0x70 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime/runtime.c.o
+ .debug_frame   0x0000167c       0x88 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init.c.o
+ .debug_frame   0x00001704       0x2c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.o
+ .debug_frame   0x00001730       0x44 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_double/double_init_rom_rp2040.c.o
+ .debug_frame   0x00001774       0x40 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_float/float_init_rom_rp2040.c.o
+ .debug_frame   0x000017b4       0x74 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_malloc/malloc.c.o
+ .debug_frame   0x00001828      0x1f0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_printf/printf.c.o
+ .debug_frame   0x00001a18      0x184 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_clib_interface/newlib_interface.c.o
+ .debug_frame   0x00001b9c      0x2a8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio/stdio.c.o
+ .debug_frame   0x00001e44      0x158 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_uart/stdio_uart.c.o
+ .debug_frame   0x00001f9c       0xbc CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/reset_interface.c.o
+ .debug_frame   0x00002058      0x130 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb.c.o
+ .debug_frame   0x00002188       0x48 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o
+ .debug_frame   0x000021d0       0x5c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_unique_id/unique_id.c.o
+ .debug_frame   0x0000222c      0x15c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_flash/flash.c.o
+ .debug_frame   0x00002388      0x220 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o
+ .debug_frame   0x000025a8      0x124 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o
+ .debug_frame   0x000026cc      0x414 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd.c.o
+ .debug_frame   0x00002ae0       0xc0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/device/usbd_control.c.o
+ .debug_frame   0x00002ba0      0x234 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/cdc/cdc_device.c.o
+ .debug_frame   0x00002dd4      0x168 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/class/vendor/vendor_device.c.o
+ .debug_frame   0x00002f3c      0x238 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/tusb.c.o
+ .debug_frame   0x00003174      0x220 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/tinyusb/src/common/tusb_fifo.c.o
+ .debug_frame   0x00003394       0xc4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_lwip/lwip_nosys.c.o
+ .debug_frame   0x00003458       0xe0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_base.c.o
+ .debug_frame   0x00003538       0xac CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_rand/rand.c.o
+ .debug_frame   0x000035e4       0x28 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/init.c.o
+ .debug_frame   0x0000360c      0x100 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/def.c.o
+ .debug_frame   0x0000370c      0x154 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/dns.c.o
+ .debug_frame   0x00003860      0x100 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/inet_chksum.c.o
+ .debug_frame   0x00003960       0xb8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/mem.c.o
+ .debug_frame   0x00003a18       0xb8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/memp.c.o
+ .debug_frame   0x00003ad0      0x224 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/netif.c.o
+ .debug_frame   0x00003cf4      0x398 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/pbuf.c.o
+ .debug_frame   0x0000408c      0x16c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/raw.c.o
+ .debug_frame   0x000041f8       0x20 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/stats.c.o
+ .debug_frame   0x00004218      0x4b8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp.c.o
+ .debug_frame   0x000046d0       0xf0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_in.c.o
+ .debug_frame   0x000047c0      0x2a4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/tcp_out.c.o
+ .debug_frame   0x00004a64      0x114 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/timeouts.c.o
+ .debug_frame   0x00004b78      0x1ac CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/udp.c.o
+ .debug_frame   0x00004d24      0x2e0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/dhcp.c.o
+ .debug_frame   0x00005004      0x1ac CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/etharp.c.o
+ .debug_frame   0x000051b0       0x8c CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/icmp.c.o
+ .debug_frame   0x0000523c       0xd8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_frag.c.o
+ .debug_frame   0x00005314       0xe0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4.c.o
+ .debug_frame   0x000053f4       0xdc CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/core/ipv4/ip4_addr.c.o
+ .debug_frame   0x000054d0       0x54 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/lwip/src/netif/ethernet.c.o
+ .debug_frame   0x00005524      0x250 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.o
+ .debug_frame   0x00005774       0x60 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.o
+ .debug_frame   0x000057d4      0x234 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.o
+ .debug_frame   0x00005a08      0x510 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ll.c.o
+ .debug_frame   0x00005f18       0xf0 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_lwip.c.o
+ .debug_frame   0x00006008      0x314 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/lib/cyw43-driver/src/cyw43_ctrl.c.o
+ .debug_frame   0x0000631c      0x344 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_pio/pio.c.o
+ .debug_frame   0x00006660      0x134 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/hardware_dma/dma.c.o
+ .debug_frame   0x00006794      0x1c4 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.o
+ .debug_frame   0x00006958      0x1d8 CMakeFiles/Oraculo.dir/home/andre/.pico-sdk/sdk/2.2.0/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.o
+ .debug_frame   0x00006b30       0x28 /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-calloc.o)
+ .debug_frame   0x00006b58       0x2c /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-callocr.o)
+ .debug_frame   0x00006b84       0x40 /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-malloc.o)
+ .debug_frame   0x00006bc4       0x3c /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-mallocr.o)
+ .debug_frame   0x00006c00       0x40 /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-mlock.o)
+ .debug_frame   0x00006c40       0x20 /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-ctype_.o)
+ .debug_frame   0x00006c60       0x2c /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-memcmp.o)
+ .debug_frame   0x00006c8c       0x34 /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-memmove.o)
+ .debug_frame   0x00006cc0       0x2c /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-strncmp.o)
+ .debug_frame   0x00006cec       0x28 /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-gmtime.o)
+ .debug_frame   0x00006d14       0x3c /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-gmtime_r.o)
+ .debug_frame   0x00006d50       0x2c /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-sbrkr.o)
+ .debug_frame   0x00006d7c       0x20 /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-errno.o)
+ .debug_frame   0x00006d9c       0xb0 /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-lock.o)
+ .debug_frame   0x00006e4c       0x28 /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-sysconf.o)
+ .debug_frame   0x00006e74       0x28 /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-strlen-stub.o)
+ .debug_frame   0x00006e9c       0x5c /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-freer.o)
+ .debug_frame   0x00006ef8      0x138 /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-findfp.o)
+ .debug_frame   0x00007030       0x2c /home/andre/.pico-sdk/toolchain/14_2_Rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(libc_a-reent.o)
 
 .debug_line_str
                 0x00000000      0x32d

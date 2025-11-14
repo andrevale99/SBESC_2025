@@ -98,7 +98,7 @@ ntp_t *ntp_init(const char ntp_url_[], const int UTC_offset_seconds)
 {
     memcpy(ntp_url, ntp_url_, LEN_URL);
 
-    UTC_offset = UTC_offset_seconds;
+    ntp_set_utc_offset(UTC_offset_seconds);
 
     ntp_t *state = (ntp_t *)calloc(1, sizeof(ntp_t));
     if (!state)
@@ -140,4 +140,9 @@ void ntp_request(ntp_t *state)
     udp_sendto(state->ntp_pcb, p, &state->ntp_server_address, NTP_PORT);
     pbuf_free(p);
     cyw43_arch_lwip_end();
+}
+
+void ntp_set_utc_offset(const int UTC_offset_seconds)
+{
+    UTC_offset = UTC_offset_seconds;
 }

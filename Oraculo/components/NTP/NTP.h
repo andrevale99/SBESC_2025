@@ -26,6 +26,14 @@ typedef struct ntp_t_
     struct tm *utc;
 } ntp_t;
 
+enum UTC_OFFSET
+{
+    UTC_2 = (3600 * -2),
+    UTC_3 = (3600 * -3),
+    UTC_4 = (3600 * -4),
+    UTC_5 = (3600 * -5),
+};
+
 /// @brief Inicializacao do objeto ntp_t
 /// @param[in] ntp_url_ URL do servidor NTP
 /// @param[in] UTC_offset_seconds Offset do fuso horario da regiao
@@ -35,4 +43,6 @@ ntp_t *ntp_init(const char ntp_url_[], const int UTC_offset_seconds);
 /// @brief Funcao para realizar a chamada para o servidor NTP
 /// @param[in] ntp Estrutura de dados ntp_t
 void ntp_request(ntp_t *ntp);
+
+void ntp_set_utc_offset(const int UTC_offset_seconds);
 #endif
