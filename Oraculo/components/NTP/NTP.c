@@ -1,5 +1,9 @@
 #include "NTP.h"
 
+#define LEN_URL 20
+static char ntp_url[LEN_URL];
+static int UTC_offset = 0;
+
 //=========================================
 //  STATIC
 //=========================================
@@ -50,7 +54,7 @@ static void ntp_recv(void *arg, struct udp_pcb *pcb, struct pbuf *p, const ip_ad
         uint8_t seconds_buf[4] = {0};
         pbuf_copy_partial(p, seconds_buf, sizeof(seconds_buf), 40);
         uint32_t seconds_since_1900 = seconds_buf[0] << 24 | seconds_buf[1] << 16 | seconds_buf[2] << 8 | seconds_buf[3];
-        uint32_t seconds_since_1970 = seconds_since_1900 - NTP_DELTA;
+        uint32_t seconds_since_1970 = seconds_since_1900 - NTP_DELTA + UTC_offset;
         time_t epoch = seconds_since_1970;
         ntp_result(state, 0, &epoch);
     }
@@ -67,7 +71,7 @@ static void request_worker_fn(__unused async_context_t *context, async_at_time_w
 {
     ntp_t *state = (ntp_t *)worker->user_data;
     hard_assert(async_context_add_at_time_worker_in_ms(cyw43_arch_async_context(), &state->resend_worker, NTP_RESEND_TIME_MS)); // in case UDP request is lost
-    int err = dns_gethostbyname(NTP_SERVER, &state->ntp_server_address, ntp_dns_found, state);
+    int err = dns_gethostbyname(ntp_url, &state->ntp_server_address, ntp_dns_found, state);
     if (err == ERR_OK)
     {
         ntp_request(state); // Cached DNS result, make NTP request
@@ -90,8 +94,12 @@ static void resend_worker_fn(__unused async_context_t *context, async_at_time_wo
 //=========================================
 //  PUBLIC
 //=========================================
-ntp_t *ntp_init(void)
+ntp_t *ntp_init(const char ntp_url_[], const int UTC_offset_seconds)
 {
+    memcpy(ntp_url, ntp_url_, LEN_URL);
+
+    UTC_offset = UTC_offset_seconds;
+
     ntp_t *state = (ntp_t *)calloc(1, sizeof(ntp_t));
     if (!state)
     {

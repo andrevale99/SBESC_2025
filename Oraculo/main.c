@@ -26,7 +26,7 @@ int main()
         break;
     }
 
-    ntp_t *xNTPData = ntp_init();
+    ntp_t *xNTPData = ntp_init("a.st1.ntp.br", -10800);
 
     while (true)
     {
