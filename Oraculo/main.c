@@ -26,7 +26,7 @@ int main()
         break;
     }
 
-    ntp_t *xNTPData = ntp_init("a.st1.ntp.br", UTC_3);
+    ntp_t *xNTPData = ntp_init("a.st1.ntp.br", UTC_MINUS_3);
 
     while (true)
     {

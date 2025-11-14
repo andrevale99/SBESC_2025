@@ -628,3 +628,14 @@
 559	1171	1763121671967953782	/home/andre/Documents/Git/SBESC_2025/Oraculo/build/Oraculo.hex	4f318f6f1a1eba3
 559	1171	1763121671967953782	/home/andre/Documents/Git/SBESC_2025/Oraculo/build/Oraculo.bin	4f318f6f1a1eba3
 559	1171	1763121671967953782	/home/andre/Documents/Git/SBESC_2025/Oraculo/build/Oraculo.uf2	4f318f6f1a1eba3
+63	567	1763121980750770928	CMakeFiles/Oraculo.dir/main.c.o	5160893bd01e8acf
+65	624	1763121980752770965	CMakeFiles/Oraculo.dir/components/NTP/NTP.c.o	3f42fca8881ced00
+624	1091	1763121981777790117	Oraculo.elf	4f318f6f1a1eba3
+624	1091	1763121981777790117	Oraculo.dis	4f318f6f1a1eba3
+624	1091	1763121981777790117	Oraculo.hex	4f318f6f1a1eba3
+624	1091	1763121981777790117	Oraculo.bin	4f318f6f1a1eba3
+624	1091	1763121981777790117	Oraculo.uf2	4f318f6f1a1eba3
+624	1091	1763121981777790117	/home/andre/Documents/Git/SBESC_2025/Oraculo/build/Oraculo.dis	4f318f6f1a1eba3
+624	1091	1763121981777790117	/home/andre/Documents/Git/SBESC_2025/Oraculo/build/Oraculo.hex	4f318f6f1a1eba3
+624	1091	1763121981777790117	/home/andre/Documents/Git/SBESC_2025/Oraculo/build/Oraculo.bin	4f318f6f1a1eba3
+624	1091	1763121981777790117	/home/andre/Documents/Git/SBESC_2025/Oraculo/build/Oraculo.uf2	4f318f6f1a1eba3

@@ -28,10 +28,31 @@ typedef struct ntp_t_
 
 enum UTC_OFFSET
 {
-    UTC_2 = (3600 * -2),
-    UTC_3 = (3600 * -3),
-    UTC_4 = (3600 * -4),
-    UTC_5 = (3600 * -5),
+    UTC_PLUS_12 = (3600 * 12),
+    UTC_PLUS_11 = (3600 * 11),
+    UTC_PLUS_10 = (3600 * 10),
+    UTC_PLUS_9 = (3600 * 9),
+    UTC_PLUS_8 = (3600 * 8),
+    UTC_PLUS_7 = (3600 * 7),
+    UTC_PLUS_6 = (3600 * 6),
+    UTC_PLUS_5 = (3600 * 5),
+    UTC_PLUS_4 = (3600 * 4),
+    UTC_PLUS_3 = (3600 * 3),
+    UTC_PLUS_2 = (3600 * 2),
+    UTC_PLUS_1 = (3600 * 1),
+    UTC_0 = (3600 * 0),
+    UTC_MINUS_1 = (3600 * -1),
+    UTC_MINUS_2 = (3600 * -2),
+    UTC_MINUS_3 = (3600 * -3),
+    UTC_MINUS_4 = (3600 * -4),
+    UTC_MINUS_5 = (3600 * -5),
+    UTC_MINUS_6 = (3600 * -6),
+    UTC_MINUS_7 = (3600 * -7),
+    UTC_MINUS_8 = (3600 * -8),
+    UTC_MINUS_9 = (3600 * -9),
+    UTC_MINUS_10 = (3600 * -10),
+    UTC_MINUS_11 = (3600 * -11),
+    UTC_MINUS_12 = (3600 * -12),
 };
 
 /// @brief Inicializacao do objeto ntp_t
@@ -44,5 +65,7 @@ ntp_t *ntp_init(const char ntp_url_[], const int UTC_offset_seconds);
 /// @param[in] ntp Estrutura de dados ntp_t
 void ntp_request(ntp_t *ntp);
 
+/// @brief Funcao para configurar o UTC do sistema
+/// @param[in] UTC_offset_seconds Novo UTC da regiao
 void ntp_set_utc_offset(const int UTC_offset_seconds);
 #endif

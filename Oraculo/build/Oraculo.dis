@@ -35,23 +35,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
  15 .comment      00000045  00000000  00000000  00054858  2**0
                   CONTENTS, READONLY
- 16 .debug_info   0007e2e4  00000000  00000000  0005489d  2**0
+ 16 .debug_info   0007e37d  00000000  00000000  0005489d  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_abbrev 00012766  00000000  00000000  000d2b81  2**0
+ 17 .debug_abbrev 00012778  00000000  00000000  000d2c1a  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_loclists 00045f7a  00000000  00000000  000e52e7  2**0
+ 18 .debug_loclists 00045f7a  00000000  00000000  000e5392  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_aranges 000028b0  00000000  00000000  0012b268  2**3
+ 19 .debug_aranges 000028b0  00000000  00000000  0012b310  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_rnglists 000096c4  00000000  00000000  0012db18  2**0
+ 20 .debug_rnglists 000096c4  00000000  00000000  0012dbc0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line   00052248  00000000  00000000  001371dc  2**0
+ 21 .debug_line   00052248  00000000  00000000  00137284  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .debug_str    000105a4  00000000  00000000  00189424  2**0
+ 22 .debug_str    000106ac  00000000  00000000  001894cc  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 23 .debug_frame  0000705c  00000000  00000000  001999c8  2**2
+ 23 .debug_frame  0000705c  00000000  00000000  00199b78  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 24 .debug_line_str 0000032d  00000000  00000000  001a0a24  2**0
+ 24 .debug_line_str 0000032d  00000000  00000000  001a0bd4  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 /home/andre/Documents/Git/SBESC_2025/Oraculo/build/Oraculo.elf:     file format elf32-littlearm
