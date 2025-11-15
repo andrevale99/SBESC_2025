@@ -200,3 +200,5 @@
 /home/andre/Documents/Git/SBESC_2025/Oraculo/build/pico-sdk/src/rp2_common/pico_stdlib/CMakeFiles/rebuild_cache.dir
 /home/andre/Documents/Git/SBESC_2025/Oraculo/build/pico-sdk/docs/CMakeFiles/edit_cache.dir
 /home/andre/Documents/Git/SBESC_2025/Oraculo/build/pico-sdk/docs/CMakeFiles/rebuild_cache.dir
+/home/andre/Documents/Git/SBESC_2025/Oraculo/build/FREERTOS_KERNEL/CMakeFiles/edit_cache.dir
+/home/andre/Documents/Git/SBESC_2025/Oraculo/build/FREERTOS_KERNEL/CMakeFiles/rebuild_cache.dir

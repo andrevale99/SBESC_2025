@@ -1,8 +1,15 @@
+/**
+ * @note MUDAR de uma variavel bool (bFlag) para um evento de bits,
+ * ou algo parecido para verificar se houve comunicacao com o servidor
+ * NTP
+ */
+
 #include "NTP.h"
 
-#define LEN_URL 20
+#define LEN_URL 45
 static char ntp_url[LEN_URL];
 static int UTC_offset = 0;
+static bool bFlag = false;
 
 //=========================================
 //  STATIC
@@ -14,9 +21,10 @@ static void ntp_result(ntp_t *state, int status, time_t *result)
     if (status == 0 && result)
     {
         state->utc = gmtime(result);
+        bFlag = true;
         // struct tm *utc = gmtime(result);
-        printf("got ntp response: %02d/%02d/%04d %02d:%02d:%02d\n", state->utc->tm_mday, state->utc->tm_mon + 1, state->utc->tm_year + 1900,
-               state->utc->tm_hour, state->utc->tm_min, state->utc->tm_sec);
+        // printf("got ntp response: %02d/%02d/%04d %02d:%02d:%02d\n", state->utc->tm_mday, state->utc->tm_mon + 1, state->utc->tm_year + 1900,
+        //        state->utc->tm_hour, state->utc->tm_min, state->utc->tm_sec);
     }
     // async_context_remove_at_time_worker(cyw43_arch_async_context(), &state->resend_worker);
     // hard_assert(async_context_add_at_time_worker_in_ms(cyw43_arch_async_context(),  &state->request_worker, NTP_TEST_TIME_MS)); // repeat the request in future
@@ -87,7 +95,8 @@ static void request_worker_fn(__unused async_context_t *context, async_at_time_w
 static void resend_worker_fn(__unused async_context_t *context, async_at_time_worker_t *worker)
 {
     ntp_t *state = (ntp_t *)worker->user_data;
-    printf("ntp request failed\n");
+    // printf("ntp request failed\n");
+    // PICO_LOGW
     ntp_result(state, -1, NULL);
 }
 
@@ -103,13 +112,15 @@ ntp_t *ntp_init(const char ntp_url_[], const int UTC_offset_seconds)
     ntp_t *state = (ntp_t *)calloc(1, sizeof(ntp_t));
     if (!state)
     {
-        printf("failed to allocate state\n");
+        // printf("failed to allocate state\n");
+        // PICO_LOGE
         return NULL;
     }
     state->ntp_pcb = udp_new_ip_type(IPADDR_TYPE_ANY);
     if (!state->ntp_pcb)
     {
-        printf("failed to create pcb\n");
+        // printf("failed to create pcb\n");
+        // PICO_LOGE
         free(state);
         return NULL;
     }
@@ -125,9 +136,15 @@ ntp_t *ntp_init(const char ntp_url_[], const int UTC_offset_seconds)
     return state;
 }
 
+void ntp_deinit(ntp_t *ntp)
+{
+    free(ntp);
+}
+
 // Make an NTP request
 void ntp_request(ntp_t *state)
 {
+    bFlag = false;
     // cyw43_arch_lwip_begin/end should be used around calls into lwIP to ensure correct locking.
     // You can omit them if you are in a callback from lwIP. Note that when using pico_cyw_arch_poll
     // these calls are a no-op and can be omitted, but it is a good practice to use them in
@@ -142,7 +159,16 @@ void ntp_request(ntp_t *state)
     cyw43_arch_lwip_end();
 }
 
+bool ntP_ntp_response(void)
+{
+    return bFlag;
+}
+
 void ntp_set_utc_offset(const int UTC_offset_seconds)
 {
     UTC_offset = UTC_offset_seconds;
 }
+
+//=============================================
+//  TASKS
+//=============================================

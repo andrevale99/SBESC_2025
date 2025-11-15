@@ -1,10 +1,32 @@
 #include <stdio.h>
 
+#include "FreeRTOS.h"
+#include "task.h"
+
 #include "pico/cyw43_arch.h"
 #include "pico/stdlib.h"
 
 #include "Wifi.h"
 #include "NTP.h"
+
+void vTaskNTP(void *pvArgs)
+{
+    // a.st1.ntp.br
+    ntp_t *xNTPData = ntp_init("200.160.7.186", UTC_MINUS_3);
+
+    ntp_request(xNTPData);
+
+    while (1)
+    {
+        if (ntP_ntp_response())
+            printf("got ntp response: %02d/%02d/%04d %02d:%02d:%02d\n", xNTPData->utc->tm_mday, xNTPData->utc->tm_mon + 1, xNTPData->utc->tm_year + 1900,
+                   xNTPData->utc->tm_hour, xNTPData->utc->tm_min, xNTPData->utc->tm_sec);
+
+        vTaskDelay(pdMS_TO_TICKS(500));
+    }
+
+    ntp_deinit(xNTPData);
+}
 
 int main()
 {
@@ -26,11 +48,7 @@ int main()
         break;
     }
 
-    ntp_t *xNTPData = ntp_init("a.st1.ntp.br", UTC_MINUS_3);
+    xTaskCreate(vTaskNTP, "NTP_Task", 256, NULL, 1, NULL);
 
-    while (true)
-    {
-        ntp_request(xNTPData);
-        sleep_ms(5000);
-    }
+    vTaskStartScheduler();
 }

@@ -24,6 +24,8 @@ typedef struct ntp_t_
     async_at_time_worker_t resend_worker;
 
     struct tm *utc;
+
+    int8_t resultNTP;
 } ntp_t;
 
 enum UTC_OFFSET
@@ -61,11 +63,22 @@ enum UTC_OFFSET
 /// @return Objeto ntp_t 
 ntp_t *ntp_init(const char ntp_url_[], const int UTC_offset_seconds);
 
+/// @brief Desaloca o estrutura
+/// @param ntp Estrutura
+void ntp_deinit(ntp_t *ntp);
+
 /// @brief Funcao para realizar a chamada para o servidor NTP
 /// @param[in] ntp Estrutura de dados ntp_t
 void ntp_request(ntp_t *ntp);
 
+/// @brief Funcao para verificar se houve resposta do
+/// do servidor NTP
+/// @param  
+/// @return true se houve, false caso contrário
+bool ntP_ntp_response(void);
+
 /// @brief Funcao para configurar o UTC do sistema
 /// @param[in] UTC_offset_seconds Novo UTC da regiao
 void ntp_set_utc_offset(const int UTC_offset_seconds);
+
 #endif
