@@ -1,5 +1,7 @@
-#include "BLE.h"
+#include "ble.h"
 
+volatile bool bRecvBLE = false;
+volatile uint16_t u16BLEData = 0;
 
 //================================================
 //  STATIC FUNCTIONS
@@ -7,7 +9,7 @@
 
 static void client_start(void)
 {
-    DEBUG_LOG("Start scanning!\n");
+    // DEBUG_LOG("Start scanning!\n");
 
     state = TC_W4_SCAN_RESULT;
     gap_set_scan_parameters(0, 0x0030, 0x0030);
@@ -57,20 +59,20 @@ static void handle_gatt_client_event(uint8_t packet_type, uint16_t channel, uint
         {
         case GATT_EVENT_SERVICE_QUERY_RESULT:
             // store service (we expect only one)
-            DEBUG_LOG("Storing service\n");
+            // DEBUG_LOG("Storing service\n");
             gatt_event_service_query_result_get_service(packet, &server_service);
             break;
         case GATT_EVENT_QUERY_COMPLETE:
             att_status = gatt_event_query_complete_get_att_status(packet);
             if (att_status != ATT_ERROR_SUCCESS)
             {
-                printf("SERVICE_QUERY_RESULT, ATT Error 0x%02x.\n", att_status);
+                // printf("SERVICE_QUERY_RESULT, ATT Error 0x%02x.\n", att_status);
                 gap_disconnect(connection_handle);
                 break;
             }
             // service query complete, look for characteristic
             state = TC_W4_CHARACTERISTIC_RESULT;
-            DEBUG_LOG("Search for env sensing characteristic.\n");
+            // DEBUG_LOG("Search for env sensing characteristic.\n");
             gatt_client_discover_characteristics_for_service_by_uuid16(handle_gatt_client_event, connection_handle, &server_service, ORG_BLUETOOTH_CHARACTERISTIC_TEMPERATURE);
             break;
         default:
@@ -81,14 +83,14 @@ static void handle_gatt_client_event(uint8_t packet_type, uint16_t channel, uint
         switch (hci_event_packet_get_type(packet))
         {
         case GATT_EVENT_CHARACTERISTIC_QUERY_RESULT:
-            DEBUG_LOG("Storing characteristic\n");
+            // DEBUG_LOG("Storing characteristic\n");
             gatt_event_characteristic_query_result_get_characteristic(packet, &server_characteristic);
             break;
         case GATT_EVENT_QUERY_COMPLETE:
             att_status = gatt_event_query_complete_get_att_status(packet);
             if (att_status != ATT_ERROR_SUCCESS)
             {
-                printf("CHARACTERISTIC_QUERY_RESULT, ATT Error 0x%02x.\n", att_status);
+                // printf("CHARACTERISTIC_QUERY_RESULT, ATT Error 0x%02x.\n", att_status);
                 gap_disconnect(connection_handle);
                 break;
             }
@@ -96,7 +98,7 @@ static void handle_gatt_client_event(uint8_t packet_type, uint16_t channel, uint
             listener_registered = true;
             gatt_client_listen_for_characteristic_value_updates(&notification_listener, handle_gatt_client_event, connection_handle, &server_characteristic);
             // enable notifications
-            DEBUG_LOG("Enable notify on characteristic.\n");
+            // DEBUG_LOG("Enable notify on characteristic.\n");
             state = TC_W4_ENABLE_NOTIFICATIONS_COMPLETE;
             gatt_client_write_client_characteristic_configuration(handle_gatt_client_event, connection_handle,
                                                                   &server_characteristic, GATT_CLIENT_CHARACTERISTICS_CONFIGURATION_NOTIFICATION);
@@ -109,7 +111,7 @@ static void handle_gatt_client_event(uint8_t packet_type, uint16_t channel, uint
         switch (hci_event_packet_get_type(packet))
         {
         case GATT_EVENT_QUERY_COMPLETE:
-            DEBUG_LOG("Notifications enabled, ATT status 0x%02x\n", gatt_event_query_complete_get_att_status(packet));
+            // DEBUG_LOG("Notifications enabled, ATT status 0x%02x\n", gatt_event_query_complete_get_att_status(packet));
             if (gatt_event_query_complete_get_att_status(packet) != ATT_ERROR_SUCCESS)
                 break;
             state = TC_W4_READY;
@@ -125,28 +127,27 @@ static void handle_gatt_client_event(uint8_t packet_type, uint16_t channel, uint
         {
             uint16_t value_length = gatt_event_notification_get_value_length(packet);
             const uint8_t *value = gatt_event_notification_get_value(packet);
-            DEBUG_LOG("Indication value len %d\n", value_length);
-
-            uint16_t GlicoseBluetooh = 255;
-            xQueueSend(QueueBluetooth, &GlicoseBluetooh, 0);
-
+            // DEBUG_LOG("Indication value len %d\n", value_length);
             if (value_length == 2)
             {
-                // uint16_t GlicoseBluetooh = little_endian_read_16(value, 0);
-                xQueueSend(QueueBluetooth, &GlicoseBluetooh, 0);
+                bRecvBLE = true;
+                u16BLEData = little_endian_read_16(value, 0);
             }
             else
-                printf("Unexpected length %d\n", value_length);
-            
+            {
+                // printf("Unexpected length %d\n", value_length);
+            }
+
             break;
         }
         default:
+            // COLOCAR NO PICO_LOGI
             printf("Unknown packet type 0x%02x\n", hci_event_packet_get_type(packet));
             break;
         }
         break;
     default:
-        printf("Client Event error, EVENTO nao mapeado\n");
+        // printf("Client Event error, EVENTO nao mapeado\n");
         break;
     }
 }
@@ -166,7 +167,7 @@ static void hci_event_handler(uint8_t packet_type, uint16_t channel, uint8_t *pa
         if (btstack_event_state_get_state(packet) == HCI_STATE_WORKING)
         {
             gap_local_bd_addr(local_addr);
-            printf("BTstack up and running on %s.\n", bd_addr_to_str(local_addr));
+            // printf("BTstack up and running on %s.\n", bd_addr_to_str(local_addr));
             client_start();
         }
         else
@@ -186,7 +187,7 @@ static void hci_event_handler(uint8_t packet_type, uint16_t channel, uint8_t *pa
         // stop scanning, and connect to the device
         state = TC_W4_CONNECT;
         gap_stop_scan();
-        printf("Connecting to device with addr %s.\n", bd_addr_to_str(server_addr));
+        // printf("Connecting to device with addr %s.\n", bd_addr_to_str(server_addr));
         gap_connect(server_addr, server_addr_type);
         break;
     case HCI_EVENT_LE_META:
@@ -199,7 +200,7 @@ static void hci_event_handler(uint8_t packet_type, uint16_t channel, uint8_t *pa
             connection_handle = hci_subevent_le_connection_complete_get_connection_handle(packet);
             // initialize gatt client context with handle, and add it to the list of active clients
             // query primary services
-            DEBUG_LOG("Search for env sensing service.\n");
+            // DEBUG_LOG("Search for env sensing service.\n");
             state = TC_W4_SERVICE_RESULT;
             gatt_client_discover_primary_services_by_uuid16(handle_gatt_client_event, connection_handle, ORG_BLUETOOTH_SERVICE_ENVIRONMENTAL_SENSING);
             break;
@@ -215,7 +216,7 @@ static void hci_event_handler(uint8_t packet_type, uint16_t channel, uint8_t *pa
             listener_registered = false;
             gatt_client_stop_listening_for_characteristic_value_updates(&notification_listener);
         }
-        printf("Disconnected %s\n", bd_addr_to_str(server_addr));
+        // printf("Disconnected %s\n", bd_addr_to_str(server_addr));
         if (state == TC_OFF)
             break;
         client_start();
@@ -251,9 +252,8 @@ static void heartbeat_handler(struct btstack_timer_source *ts)
 //  PUBLIC FUNCTIONS
 //================================================
 
-int BLE_Init(QueueHandle_t *queue_to_mqtt)
+void ble_init(void)
 {
-    QueueBluetooth = *queue_to_mqtt;
 
     l2cap_init();
     sm_init();
@@ -274,4 +274,17 @@ int BLE_Init(QueueHandle_t *queue_to_mqtt)
 
     // turn on!
     hci_power_control(HCI_POWER_ON);
+}
+
+bool ble_get_uint16_data(uint16_t *var)
+{
+    if (bRecvBLE)
+    {
+        bRecvBLE = false;
+        *var = u16BLEData;
+
+        return true;
+    }
+
+    return false;
 }

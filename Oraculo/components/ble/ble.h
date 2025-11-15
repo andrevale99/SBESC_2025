@@ -46,6 +46,8 @@ static btstack_timer_source_t heartbeat;
 
 static QueueHandle_t QueueBluetooth = NULL;
 
-int BLE_Init(QueueHandle_t *queue_to_mqtt);
+void ble_init(void);
+
+bool ble_get_uint16_data(uint16_t *var);
 
 #endif

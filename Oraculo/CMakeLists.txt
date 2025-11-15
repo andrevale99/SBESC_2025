@@ -39,7 +39,7 @@ add_executable(Oraculo)
 
 target_sources(Oraculo PUBLIC
 main.c
-# components/BLE/BLE.c
+components/ble/ble.c
 # lib/Mqtt/Mqtt.c
 components/NTP/NTP.c
 components/Wifi/Wifi.c
@@ -79,6 +79,7 @@ target_include_directories(Oraculo PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/.. # For our common btstack config
     components/NTP
     components/Wifi/
+    components/ble/
 )
 
 # Add any user requested libraries

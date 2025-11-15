@@ -8,6 +8,7 @@
 
 #include "Wifi.h"
 #include "NTP.h"
+#include "ble.h"
 
 void vTaskNTP(void *pvArgs)
 {
@@ -26,6 +27,18 @@ void vTaskNTP(void *pvArgs)
     }
 
     ntp_deinit(xNTPData);
+}
+
+void vTaskBLE(void *pvArgs)
+{
+    uint16_t value = 0;
+    while (1)
+    {
+        if (ble_get_uint16_data(&value))
+            printf("[BLE] CHEGOU O DADO: %d\n", value);
+
+        vTaskDelay(pdMS_TO_TICKS(1000));
+    }
 }
 
 int main()
@@ -48,7 +61,10 @@ int main()
         break;
     }
 
+    ble_init();
+
     xTaskCreate(vTaskNTP, "NTP_Task", 256, NULL, 1, NULL);
+    xTaskCreate(vTaskBLE, "BLE_TASK", 256, NULL, 1, NULL);
 
     vTaskStartScheduler();
 }
