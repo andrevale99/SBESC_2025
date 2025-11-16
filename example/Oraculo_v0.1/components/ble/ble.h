@@ -7,7 +7,16 @@
 #include "btstack.h"
 #include "pico/cyw43_arch.h"
 #include "pico/stdlib.h"
-#include "pico_logs.h"
+
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+
+#if 0
+#define DEBUG_LOG(...) printf(__VA_ARGS__)
+#else
+#define DEBUG_LOG(...)
+#endif
 
 #define LED_QUICK_FLASH_DELAY_MS 100
 #define LED_SLOW_FLASH_DELAY_MS 1000
@@ -34,6 +43,8 @@ static gatt_client_characteristic_t server_characteristic;
 static bool listener_registered;
 static gatt_client_notification_t notification_listener;
 static btstack_timer_source_t heartbeat;
+
+static QueueHandle_t QueueBluetooth = NULL;
 
 void ble_init(void);
 

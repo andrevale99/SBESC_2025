@@ -3,15 +3,14 @@
 volatile bool bRecvBLE = false;
 volatile uint16_t u16BLEData = 0;
 
-const char *TAG = "BLE";
-
 //================================================
 //  STATIC FUNCTIONS
 //================================================
 
 static void client_start(void)
 {
-    PICO_LOGI(TAG, "Iniciando scanner BLE...");
+    // DEBUG_LOG("Start scanning!\n");
+
     state = TC_W4_SCAN_RESULT;
     gap_set_scan_parameters(0, 0x0030, 0x0030);
     gap_start_scan();
@@ -128,27 +127,27 @@ static void handle_gatt_client_event(uint8_t packet_type, uint16_t channel, uint
         {
             uint16_t value_length = gatt_event_notification_get_value_length(packet);
             const uint8_t *value = gatt_event_notification_get_value(packet);
-
-            PICO_LOGI(TAG, "Valor de notificação recebido, len %d", value_length);
+            // DEBUG_LOG("Indication value len %d\n", value_length);
             if (value_length == 2)
             {
                 bRecvBLE = true;
                 u16BLEData = little_endian_read_16(value, 0);
             }
             else
-                PICO_LOGW(TAG, "Unexpected length %d\n", value_length);
+            {
+                // printf("Unexpected length %d\n", value_length);
+            }
 
             break;
         }
         default:
             // COLOCAR NO PICO_LOGI
-            PICO_LOGW(TAG, "Unknown packet type 0x%02x", hci_event_packet_get_type(packet));
+            printf("Unknown packet type 0x%02x\n", hci_event_packet_get_type(packet));
             break;
         }
         break;
     default:
         // printf("Client Event error, EVENTO nao mapeado\n");
-        PICO_LOGE(TAG, "Evento de cliente, EVENTO nao mapeado");
         break;
     }
 }
@@ -169,7 +168,6 @@ static void hci_event_handler(uint8_t packet_type, uint16_t channel, uint8_t *pa
         {
             gap_local_bd_addr(local_addr);
             // printf("BTstack up and running on %s.\n", bd_addr_to_str(local_addr));
-            PICO_LOGI(TAG, "BTstack iniciado em %s.", bd_addr_to_str(local_addr));
             client_start();
         }
         else
@@ -189,9 +187,7 @@ static void hci_event_handler(uint8_t packet_type, uint16_t channel, uint8_t *pa
         // stop scanning, and connect to the device
         state = TC_W4_CONNECT;
         gap_stop_scan();
-
-        PICO_LOGI(TAG, "Conectando ao dispositivo BLE: %s.", bd_addr_to_str(server_addr));
-
+        // printf("Connecting to device with addr %s.\n", bd_addr_to_str(server_addr));
         gap_connect(server_addr, server_addr_type);
         break;
     case HCI_EVENT_LE_META:
@@ -205,7 +201,6 @@ static void hci_event_handler(uint8_t packet_type, uint16_t channel, uint8_t *pa
             // initialize gatt client context with handle, and add it to the list of active clients
             // query primary services
             // DEBUG_LOG("Search for env sensing service.\n");
-            PICO_LOGI(TAG, "Search for env sensing servic.");
             state = TC_W4_SERVICE_RESULT;
             gatt_client_discover_primary_services_by_uuid16(handle_gatt_client_event, connection_handle, ORG_BLUETOOTH_SERVICE_ENVIRONMENTAL_SENSING);
             break;
@@ -221,7 +216,7 @@ static void hci_event_handler(uint8_t packet_type, uint16_t channel, uint8_t *pa
             listener_registered = false;
             gatt_client_stop_listening_for_characteristic_value_updates(&notification_listener);
         }
-        PICO_LOGW(TAG, "Desconectado do dispositivo BLE: %s.", bd_addr_to_str(server_addr));
+        // printf("Disconnected %s\n", bd_addr_to_str(server_addr));
         if (state == TC_OFF)
             break;
         client_start();
