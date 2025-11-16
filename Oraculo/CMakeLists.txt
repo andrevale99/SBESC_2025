@@ -28,68 +28,75 @@ set(PICO_BOARD pico_w CACHE STRING "Board type")
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
 
-project(Oraculo C CXX ASM)
+project(RTC C CXX ASM)
 
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(Oraculo)
+add_executable(RTC)
 
-target_sources(Oraculo PUBLIC
-main.c
-components/ble/ble.c
-# lib/Mqtt/Mqtt.c
-components/NTP/NTP.c
-components/Wifi/Wifi.c
+target_sources(RTC
+    PRIVATE
+        main.c
+        components/ds3231/ds3231.c 
+        components/pico_logs/pico_logs.c
+        components/wifi/wifi.c
+        components/mqtt/mqtt_lib.c
+        components/ntp/ntp.c
+        components/ble/ble.c
+        components/st7735/st7735.c
+        components/st7735/hw.c
 )
 
+pico_set_program_name(RTC "RTC")
+pico_set_program_version(RTC "0.1")
 
-pico_set_program_name(Oraculo "Oraculo")
-pico_set_program_version(Oraculo "0.1")
+
+
 
 # Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_uart(Oraculo 1)
-pico_enable_stdio_usb(Oraculo 1)
+pico_enable_stdio_uart(RTC 1)
+pico_enable_stdio_usb(RTC 1)
 
-# Pull in FreeRTOS
-include(lib/FreeRTOS-Kernel/portable/ThirdParty/GCC/RP2040/FreeRTOS_Kernel_import.cmake)
+# Add the standard library to the build
+target_link_libraries(RTC
+        pico_stdlib)
 
 include_directories(${CMAKE_CURRENT_LIST_DIR}/include)
 
-# Add the standard library to the build
-target_link_libraries(Oraculo
-    FreeRTOS-Kernel 
-    FreeRTOS-Kernel-Heap4
-    pico_stdlib
-    pico_btstack_ble
-    pico_btstack_cyw43
-    pico_cyw43_arch_lwip_threadsafe_background
-    pico_async_context_freertos
-    pico_lwip_mqtt
-    pico_mbedtls
-    pico_lwip_mbedtls
-    pico_lwip_http
-        )
-
 # Add the standard include files to the build
-target_include_directories(Oraculo PRIVATE
-    ${CMAKE_CURRENT_LIST_DIR}
-    ${CMAKE_CURRENT_LIST_DIR}/.. # For our common btstack config
-    components/NTP
-    components/Wifi/
-    components/ble/
+target_include_directories(RTC PRIVATE
+        ${CMAKE_CURRENT_LIST_DIR}
+        ${CMAKE_CURRENT_LIST_DIR}/components/ds3231
+        ${CMAKE_CURRENT_LIST_DIR}/components/pico_logs
+        ${CMAKE_CURRENT_LIST_DIR}/components/wifi
+        ${CMAKE_CURRENT_LIST_DIR}/components/mqtt
+        ${CMAKE_CURRENT_LIST_DIR}/components/ntp
+        ${CMAKE_CURRENT_LIST_DIR}/components/ble
+        ${CMAKE_CURRENT_LIST_DIR}/components/st7735
 )
 
 # Add any user requested libraries
-# target_link_libraries(Oraculo 
-        
-#         )
+target_link_libraries(RTC 
+        hardware_i2c
+        hardware_dma
+        hardware_spi
+        pico_cyw43_arch_lwip_threadsafe_background
+        pico_lwip_mqtt
+        pico_mbedtls
+        pico_lwip_mbedtls
+        pico_lwip_http
+        pico_btstack_ble
+        pico_btstack_cyw43
+        )
 
-target_compile_definitions(Oraculo PRIVATE
+# Deve colocar esse comando para conseguir 
+# compilar com a definição de cliente BLE
+target_compile_definitions(RTC PRIVATE
     RUNNING_AS_CLIENT=1
 )
 
-pico_add_extra_outputs(Oraculo)
+pico_add_extra_outputs(RTC)
 
