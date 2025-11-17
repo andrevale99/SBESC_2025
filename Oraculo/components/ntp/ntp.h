@@ -77,7 +77,7 @@ void ntp_request(ntp_t *ntp);
 /// do servidor NTP
 /// @param
 /// @return true se houve, false caso contrário
-bool ntP_ntp_response(void);
+bool ntp_response(void);
 
 /// @brief Funcao para configurar o UTC do sistema
 /// @param[in] UTC_offset_seconds Novo UTC da regiao

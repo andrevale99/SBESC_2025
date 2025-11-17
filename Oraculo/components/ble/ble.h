@@ -35,8 +35,16 @@ static bool listener_registered;
 static gatt_client_notification_t notification_listener;
 static btstack_timer_source_t heartbeat;
 
+/// @brief Inicializa o Bluetooth
 void ble_init(void);
 
+/// @brief Retorna o dado de 16 bits oriundo do bluetooth
+/// @param[in] var Ponteiro para a variável que receberá o dado
+/// @return true se um dado foi recebido, false caso contrário
 bool ble_get_uint16_data(uint16_t *var);
+
+/// @brief Retorna o status da conexão BLE
+/// @return true se conectado, false caso contrário 
+bool ble_get_situation(void);
 
 #endif

@@ -156,7 +156,7 @@ void ntp_request(ntp_t *state)
     cyw43_arch_lwip_end();
 }
 
-bool ntP_ntp_response(void)
+bool ntp_response(void)
 {
     return bFlag;
 }

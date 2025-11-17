@@ -23,8 +23,11 @@
 #define I2C_SDA_PIN 0
 #define I2C_SCL_PIN 1
 
+#define OLED_I2C_SDA 14
+#define OLED_I2C_SCL 15
+
 #define DELAY_TIME_MS 500
-#define DELAY_TIME_CONF_MS 2000
+#define DELAY_TIME_CONF_MS 500
 
 // #define WIFI_SSID "LARS-301-2.4GHz"
 // #define WIFI_PASSWORD "LARS@ROBOTICA"
@@ -41,6 +44,8 @@
 // Macro para colocar a escrita no inicoio do OLED
 #define RETURN_HOME_SSD(_ssd) memset(_ssd, 0, ssd1306_buffer_length)
 
+#define MAX_LEN_BUFFER 256
+
 //====================================
 //  VARIAVEIS
 //====================================
@@ -54,6 +59,7 @@ static struct render_area frame_area = {
     end_page : ssd1306_n_pages - 1
 };
 
+char buffer[MAX_LEN_BUFFER];
 uint8_t ssd[ssd1306_buffer_length];
 
 volatile bool mqtt_is_connected = false;
@@ -68,6 +74,8 @@ pico_mqtt_client_t mqtt_client;
 
 void on_mqtt_message(const char *topic, const uint8_t *payload, uint16_t len);
 void on_mqtt_connection(mqtt_connection_status_t status);
+
+void update_oled(void);
 
 //====================================
 //  MAIN
@@ -124,7 +132,8 @@ int main()
     ntp_request(ntp_client);
     sleep_ms(DELAY_TIME_CONF_MS);
 
-    if (ntP_ntp_response())
+    static time_t ntp_time = {0};
+    if (ntp_response())
     {
         struct tm *utc_time = ntp_client->utc;
 
@@ -139,7 +148,7 @@ int main()
         PICO_LOGI(TAG, "Data e hora obtidas do NTP: %02d/%02d/%04d %02d:%02d:%02d",
                   dt.day, dt.month, dt.year,
                   dt.hour, dt.minute, dt.second);
-        time_t ntp_time = ds3231_datetime_to_tm(&dt);
+        ntp_time = ds3231_datetime_to_tm(&dt);
         if (!ds3231_is_date_valid(&rtc_module, &ntp_time, 60))
         {
             PICO_LOGW(TAG, "Data inválida no RTC. Configurando data inicial...");
@@ -152,11 +161,27 @@ int main()
         PICO_LOGE(TAG, "Falha ao obter data e hora do NTP.");
     }
 
+    // Inicialização do i2c
+    i2c_init(i2c1, ssd1306_i2c_clock * 1000);
+    gpio_set_function(OLED_I2C_SDA, GPIO_FUNC_I2C);
+    gpio_set_function(OLED_I2C_SCL, GPIO_FUNC_I2C);
+    gpio_pull_up(OLED_I2C_SDA);
+    gpio_pull_up(OLED_I2C_SCL);
+
+    // Inicia o display oled
+    ssd1306_init();
+    calculate_render_area_buffer_length(&frame_area);
+
+    // coloca no home do display
+    memset(ssd, 0, ssd1306_buffer_length);
+    render_on_display(ssd, &frame_area);
+
     uint16_t u16BLEData = 0;
+    struct tm *temporario = localtime(&ntp_time);
     while (true)
     {
-        
-        sleep_ms(10 * DELAY_TIME_MS);
+
+        sleep_ms(2 * DELAY_TIME_MS);
     }
 
     return 0;
@@ -215,6 +240,26 @@ void on_mqtt_connection(mqtt_connection_status_t status)
         mqtt_is_connected = false;
         PICO_LOGW(TAG, "MQTT Desconectado ou falha na conexão: %d", status);
     }
+}
+
+void update_oled(void)
+{
+    strftime(buffer, MAX_LEN_BUFFER, "Time %T", temporario);
+    ssd1306_draw_string(ssd, 5, 5, buffer);
+
+    sprintf(buffer, "Wifi: %s",
+            (wifi_is_connected() ? "OK" : "NO WIFI"));
+    ssd1306_draw_string(ssd, 5, 20, buffer);
+
+    sprintf(buffer, "Mqtt: %s",
+            (pico_mqtt_is_connected(&mqtt_client) ? "OK" : "NO"));
+    ssd1306_draw_string(ssd, 5, 35, buffer);
+
+    sprintf(buffer, "BLE: %s",
+            (ble_get_situation() ? "OK" : "NO"));
+    ssd1306_draw_string(ssd, 5, 50, buffer);
+
+    render_on_display(ssd, &frame_area);
 }
 
 // void tft_example_init(void)

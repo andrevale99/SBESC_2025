@@ -3,6 +3,10 @@
 volatile bool bRecvBLE = false;
 volatile uint16_t u16BLEData = 0;
 
+//Verificar se esta colocado corretamente
+// nos eventos de conexao e desconexao
+volatile bool bStatus = false;
+
 const char *TAG = "BLE";
 
 //================================================
@@ -205,8 +209,9 @@ static void hci_event_handler(uint8_t packet_type, uint16_t channel, uint8_t *pa
             // initialize gatt client context with handle, and add it to the list of active clients
             // query primary services
             // DEBUG_LOG("Search for env sensing service.\n");
-            PICO_LOGI(TAG, "Search for env sensing servic.");
+            PICO_LOGI(TAG, "Search for env sensing service.");
             state = TC_W4_SERVICE_RESULT;
+            bStatus = true;
             gatt_client_discover_primary_services_by_uuid16(handle_gatt_client_event, connection_handle, ORG_BLUETOOTH_SERVICE_ENVIRONMENTAL_SENSING);
             break;
         default:
@@ -224,6 +229,7 @@ static void hci_event_handler(uint8_t packet_type, uint16_t channel, uint8_t *pa
         PICO_LOGW(TAG, "Desconectado do dispositivo BLE: %s.", bd_addr_to_str(server_addr));
         if (state == TC_OFF)
             break;
+        bStatus = false;
         client_start();
         break;
     default:
@@ -292,4 +298,9 @@ bool ble_get_uint16_data(uint16_t *var)
     }
 
     return false;
+}
+
+bool ble_get_situation(void)
+{
+    return bStatus;
 }
