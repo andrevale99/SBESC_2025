@@ -1,3 +1,5 @@
+
+
 #include "pico/stdlib.h"
 #include <stdio.h>
 
@@ -152,11 +154,67 @@ int main()
         PICO_LOGE(TAG, "Falha ao obter data e hora do NTP.");
     }
 
-    uint16_t u16BLEData = 0;
-    while (true)
+    if (rtc_module.initialized)
     {
-        
-        sleep_ms(10 * DELAY_TIME_MS);
+        PICO_LOGI(TAG, "Módulo RTC DS3231 inicializado com sucesso.");
+
+        uint16_t u16BLEData = 0;
+        while (true)
+        {
+            DateTime current_time;
+
+            if (ds3231_get_datetime(&rtc_module, &current_time))
+            {
+                PICO_LOGI(TAG, "Hora Atual: %02d/%02d/%d %02d:%02d:%02d",
+                          current_time.day, current_time.month, current_time.year,
+                          current_time.hour, current_time.minute, current_time.second);
+            }
+            else
+            {
+                PICO_LOGE(TAG, "Erro ao ler o RTC DS3231.");
+            }
+            bool connected = wifi_is_connected();
+            PICO_LOGI(TAG, "Conectado ao Wi-Fi: %s", connected ? "Sim" : "Não");
+
+            mqtt_is_connected = pico_mqtt_is_connected(&mqtt_client);
+
+            if (mqtt_is_connected)
+            {
+                char json_msg[128];
+                snprintf(json_msg, sizeof(json_msg),
+                         "{\"day\":%d,\"month\":%d,\"year\":%d,"
+                         "\"hour\":%02d,\"minute\":%02d,\"second\":%02d}",
+                         current_time.day, current_time.month, current_time.year,
+                         current_time.hour, current_time.minute, current_time.second);
+
+                bool ok = pico_mqtt_publish(&mqtt_client,
+                                            MQTT_TOPIC_PUB,
+                                            json_msg,
+                                            strlen(json_msg),
+                                            1,
+                                            0);
+
+                if (!ok)
+                    PICO_LOGE(TAG, "Falha ao publicar no tópico '%s'", MQTT_TOPIC_PUB);
+                else
+                    PICO_LOGI(TAG, "Publicado: %s", json_msg);
+            }
+            else
+            {
+                PICO_LOGW(TAG, "MQTT ainda não conectado — pulando publish.");
+            }
+
+            if (ble_get_uint16_data(&u16BLEData))
+                PICO_LOGI(TAG, "Dado BLE recebido: %d", u16BLEData);
+
+            sleep_ms(10 * DELAY_TIME_MS);
+        }
+    }
+    else
+    {
+
+
+        PICO_LOGE(TAG, "Falha na inicialização do módulo RTC DS3231.");
     }
 
     return 0;
@@ -165,6 +223,7 @@ int main()
 //====================================
 //  FUNCOES
 //====================================
+
 
 void on_mqtt_message(const char *topic, const uint8_t *payload, uint16_t len)
 {

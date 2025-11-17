@@ -40,6 +40,7 @@ add_executable(RTC)
 target_sources(RTC
     PRIVATE
         main.c
+        # test/main_test.c # CASO QUEIRA REALIZAR TESTES
         components/ds3231/ds3231.c 
         components/pico_logs/pico_logs.c
         components/wifi/wifi.c
@@ -48,6 +49,7 @@ target_sources(RTC
         components/ble/ble.c
         components/st7735/st7735.c
         components/st7735/hw.c
+        components/ssd1306/ssd1306_i2c.c
 )
 
 pico_set_program_name(RTC "RTC")
@@ -66,6 +68,9 @@ target_link_libraries(RTC
 
 include_directories(${CMAKE_CURRENT_LIST_DIR}/include)
 
+# Pull in FreeRTOS
+include(lib/FreeRTOS-Kernel/portable/ThirdParty/GCC/RP2040/FreeRTOS_Kernel_import.cmake)
+
 # Add the standard include files to the build
 target_include_directories(RTC PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
@@ -76,6 +81,7 @@ target_include_directories(RTC PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}/components/ntp
         ${CMAKE_CURRENT_LIST_DIR}/components/ble
         ${CMAKE_CURRENT_LIST_DIR}/components/st7735
+        ${CMAKE_CURRENT_LIST_DIR}/components/ssd1306
 )
 
 # Add any user requested libraries
@@ -90,6 +96,9 @@ target_link_libraries(RTC
         pico_lwip_http
         pico_btstack_ble
         pico_btstack_cyw43
+        pico_async_context_freertos
+        FreeRTOS-Kernel 
+        FreeRTOS-Kernel-Heap4
         )
 
 # Deve colocar esse comando para conseguir 
